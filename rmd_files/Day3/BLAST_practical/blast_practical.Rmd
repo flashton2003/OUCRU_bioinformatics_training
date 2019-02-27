@@ -196,63 +196,31 @@ Use `grep ‘>’ genes_and_plasmids.fasta` or the output of bioawk from above, 
 
 3. Load the first sample into Bandage following the instructions from the [Bandage github page](https://github.com/rrwick/Bandage/wiki/Getting-started#load-a-graph)
 
-5.1. What are the characteristics of this assembly?
+**Q4. What are the characteristics of this assembly?**
 
-<div class="toggle-answer">
-
-**Answer:**  What are the number of nodes, the total length, N50, of each genome? (available in the top left of the main bandage window, for N50, need to click ‘more info’.
-
-</div>
-
-![](images/5.1.png)
-
-5.2. Do you think the assembly used an appropriate range of k-mer sizes? What other datasets do we need to get a better answer to this question? 
+**Q5. Do you think the assembly used an appropriate range of k-mer sizes? What other datasets do we need to get a better answer to this question?**
 
 <div class="toggle"><button>Hint</button>
-Look at [link](https://github.com/rrwick/Bandage/wiki/Effect-of-kmer-size)
+Look at [this](https://github.com/rrwick/Bandage/wiki/Effect-of-kmer-size)
 </div><br>
 
-<div class="toggle-answer">
-
-**Answer:**  Is the graph still quite tangled, indicating that the max k-mer size was not long enough? Or were there too many dead ends, indicating that long k-mers were given more weight in the assembly than they should be. It’s hard to give a definite answer here, need to look at the assemblies of a variety of k-mers sizes to see. But just an exercise to try and get people thinking about the effect of k-mer size on assembly. SRR5451253 looks good. SRR3285401 and SRR5451282 look a bit more tangled. 
-![](images/5.3.png)
-</div>
-
-
-
-
-5.3. Can you see any sequences which look like they could be plasmids?
+**Q6 Can you see any sequences which look like they could be plasmids?**
 
 6. Prepare the FASTG file for BLAST analysis by following the instructions from [here](https://github.com/rrwick/Bandage/wiki/BLAST-searches)
 
-<div class="toggle-answer">
-
-**Answer:**  Yes in SRR5451253. No in SRR3285401. E.g. bottom left of the below. Maybe in SRR5451282, but not circular.
-
-</div>
-
 7. BLAST the `genes_and_plasmids.fasta` against the genome loaded into Bandage. You can reduce the view to include only blast hits by changing the 'scope' drop down in the 'graph drawing' section, select 'around blast hits', change the distance to e.g. 2 or 3, and click draw graph. The distance controls how many contigs will be included in the view. Setting distance to 3 means that all contigs which are within 2 or 3 'jumps' of a contig with a blast hit will be included. Experiment with this parameter to see what effect having it at e.g. 0 and 10 has.
 
-8. Inspect the genome graph and the BLAST hits, explore the different options Bandage has for ‘scope’, zoom in and out, Node labels, Font etc. Answer the following the questions:
+8. Inspect the genome graph and the BLAST hits, explore the different options Bandage has for ‘scope’, zoom in and out, Node labels, Font etc.
     
-    8.1. Which plasmids are present in the sample? 
-    
-    8.2. Which AMR genes are present in the sample? 
+**Q7 For each genome, which plasmids and AMR genes are present in the sample?**
 
 <div class="toggle"><button>Hint</button>
-It might be easier to view the BLAST results in the ‘Create/view BLAST search results’
+It might be easier to view the BLAST results via the ‘Create/view BLAST search results’
 </div><br>
-<div class="toggle-answer">
 
-**Answer:**  
+**Q8 If a plasmid is present, what does the ‘depth’ node label (combined with the graph structure) tell you about repeat sections in the plasmid?**
 
-![](images/8.1.png)
-
-</div> <br>
-
-8.3. If a plasmid is present, what does the ‘depth’ node label (combined with the graph structure) tell you about repeat sections in the plasmid?
-
-9. In the assembly SRR5451253, what is interesting about the CTX-M15 encoding gene? 
+**Q9. In the assembly SRR5451253, what is interesting about the CTX-M15 encoding gene?**
 
 <div class="toggle"><button>Hint</button>
 blast every contig linked to the contig which encodes ctx-M15, you can do this by copying the node sequence or by using BLAST directly through Bandage via the Output tab. 
