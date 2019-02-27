@@ -1,0 +1,11 @@
+.toggle {
+  height: 1.8em;
+  overflow-y: hidden;
+}
+.toggle.open {
+  height: auto;
+}
+
+.toggle-answer {
+	display: show;
+}
