@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Phil Ashton" />
+<meta name="author" content="Philip Ashton" />
 
 
 <title>BLAST practical</title>
@@ -284,7 +284,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">BLAST practical</h1>
-<h4 class="author"><em>Phil Ashton</em></h4>
+<h4 class="author"><em>Philip Ashton</em></h4>
 <h4 class="date"><em>27 February, 2019</em></h4>
 
 </div>
@@ -302,46 +302,41 @@ div.tocify {
 </div>
 <div id="exercise-1" class="section level1 unnumbered">
 <h1>Exercise 1</h1>
-<p>In this you will be given 6 assembled Salmonella genomes of unknown serotype and you need to tell us what serotype they are based on the results of BLAST analysis against a custom database, and cross checking the results with (a shortened version of) the Kauffman-White scheme.</p>
+<p>In this exercise you will be given 6 assembled Salmonella genomes. You need to identify which serotype they are based on the results of BLAST analysis against a custom database, and cross checking the results with (a shortened version of) the Kauffman-White scheme.</p>
 <ol style="list-style-type: decimal">
 <li><p>In the terminal, navigate to the <code>OTN_bioinfx/Day3/AM/Salmonella_serotyping</code> directory, there should be 6 genome assemblies (fasta format) labelled <code>Salm_1</code> to <code>Salm_6</code> and a <code>salmonella_antigens.fasta</code> file. <br> In order to run BLAST, we need a query and a database. In this case, the database is going to be the <code>salmonella_antigens.fasta</code> file, and the queries are going to be the 6 Salmonella assemblies. For simplicity, we will process them one at a time.</p></li>
 <li><p>First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the makeblastdb program. <br></p></li>
 </ol>
 <pre class="bash"><code>makeblastdb -dbtype nucl -in salmonella_antigens.fasta</code></pre>
-How many sequences are there in the <code>salmonella_antigens.fasta</code> file? What are their names?<br />
-
+<p><strong>Q1. How many sequences are there in the <code>salmonella_antigens.fasta</code> file? What are their names?</strong></p>
 <div class="toggle">
 <button>
 Hint
 </button>
-<p>Use <code>grep ‘&gt;’ salmonella_antigens.fasta</code> to see all the sequence names in the file.</p>
+<p>Since we know that the each fasta record has a header, and each header starts with a '&gt;'. We can use <code>grep ‘&gt;’ salmonella_antigens.fasta</code> to show all the sequence headers in the file. <strong>CAREFUL</strong> - make sure to include the quotation marks around the &gt; in that command, or you will overwrite the contents of <code>salmonella_antigens.fasta</code>.</p>
 </div>
 <p><br></p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> There are 10 sequences in the Salmonella antigens file. They are named with an identifier and the antigenic structure they encode.</p>
-</div>
-<blockquote>
-<p>CAREFUL - make sure to include the quotation marks around the &gt; in that command, or you will overwrite the contents of <code>salmonella_antigens.fasta</code>.</p>
-</blockquote>
 <ol start="3" style="list-style-type: decimal">
 <li>Then, we can BLAST our query against the database we just made. Note that we use <code>blastn</code> here as we are comparing nucleotides.</li>
 </ol>
 <p>3.1. Run</p>
 <pre class="bash"><code>blastn -help</code></pre>
-<p>Look at the <code>*** Formatting options</code> section. We are going to load our data into Excel. Which do you think is the most suitable <code>-outfmt</code> option to use?</p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> Outfmt 6 (tabular) is the best format</p>
-</div>
+<p><strong>Q2. Look at the <code>*** Formatting options</code> section of the <code>blastn -help</code> output. We are going to load our data into Excel; which do you think is the most suitable <code>-outfmt</code> option to use?</strong></p>
 <p>3.2. Run</p>
 <pre class="bash"><code>blastn -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1_vs_salmonella_antigens.tsv</code></pre>
 <p>where XXX is the outfmt option you chose in question 3.1</p>
 <p>3.3. Then, examine the output file using <code>head</code></p>
 <pre class="bash"><code>head Salm_1_vs_salmonella_antigens.tsv</code></pre>
-<p>How many columns does the output have?</p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> There are 12 columns in the output.</p>
+<p><strong>Q3. How many columns does the output have?</strong></p>
+<p><strong>Q4. How many lines of the file has <code>head</code> shown you? How do you only show the top 4 lines of the file?</strong></p>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p><a href="http://www.letmegooglethat.com/?q=how+do+i+increase+the+number+of+lines+shown+by+head+linux">Google it!</a></p>
 </div>
-What is separating the columns?
+<p><br></p>
+<strong>Q5. What is separating the columns?</strong>
 <div class="toggle">
 <button>
 Hint
@@ -349,37 +344,22 @@ Hint
 <p>What does the T in tsv stand for?</p>
 </div>
 <p><br></p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> The columns are separated by tabs.</p>
-</div>
-<p>3.4. What happens if you run the command without the <code>-outfmt</code> option, or with different <code>-outfmt</code> options?</p>
+<p>3.4. Run the blastn command without including the <code>-outfmt</code> option</p>
+<p><strong>Q6. What happens if you run the command without the <code>-outfmt</code> option, or with different <code>-outfmt</code> options?</strong></p>
 <div class="toggle">
 <button>
 Hint
 </button>
-<p>Look at the output file using <code>head</code> or <code>cat</code>.</p>
+<p>Run the command with different outfmt options and look at the output file using <code>head</code> or <code>cat</code>.</p>
 </div>
 <p><br></p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> The results are presented in a different format (which may be more familiar if you have used the NCBI BLAST website, but which is less convenient for analysing lots of different results.</p>
-</div>
 <p>3.5. Make sure that each of your output files (e.g. <code>Salm_1_vs_salmonella_antigens.tsv</code>) is in the best format for viewing in Excel before proceeding.</p>
-<p>3.6. What kind of <code>blast</code> would we do if we were comparing proteins against <code>Salm_1.fasta</code>? What kind of BLAST would we do if we were comparing <code>salmonella_antigens.fasta</code> against <code>Salm_1.fasta</code>?</p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> proteins vs salm1 should be tblastn, salmonella antigens vs salm1 is still just blastn, the choice of query and database is somewhat arbitrary.</p>
-</div>
+<p><strong>Q7. What kind of <code>blast</code> would we do if we were comparing proteins against <code>Salm_1.fasta</code>? What kind of BLAST would we do if we were comparing <code>salmonella_antigens.fasta</code> against <code>Salm_1.fasta</code>?</strong></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Now, we are going to look at the BLAST output using Excel. For this, the output files (e.g. <code>Salm_1_vs_salmonella_antigens.tsv</code>) need to be on your local computer rather than your CLIMB instance.</li>
 </ol>
 <p>4.1. Use Filezilla to move the output files onto your local computer and open them one at a time using Excel.</p>
 <p>4.2. You might notice that <code>blastn</code> does not include column names in the output, these are the column headings, paste them into row 1 in Excel.</p>
-<div class="toggle">
-<button>
-Hint
-</button>
-<p>Use Paste Special -&gt; transpose.</p>
-</div>
-<p><br></p>
 <table>
 <thead>
 <tr class="header">
@@ -425,7 +405,14 @@ Hint
 </tr>
 </tbody>
 </table>
-<p>4.3. What do the different column headings mean?</p>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>Use Paste Special -&gt; transpose.</p>
+</div>
+<p><br></p>
+<p><strong>Q8 What do the different column headings mean?</strong></p>
 <div class="toggle">
 <button>
 Hint
@@ -433,24 +420,10 @@ Hint
 <p>Use Google to find out. For example, <a href="http://www.metagenomics.wiki/tools/blast/blastn-output-format-6">here</a> or <a href="https://www.ncbi.nlm.nih.gov/books/NBK279690/">here</a></p>
 </div>
 <p><br></p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> Query sequence id, subject sequence id, percent identical bases, alignment length, number of mismatches, number of gap openings in the match, position in the query where the blast match starts, position in the query where the blast match ends, position in the subject where the blast match starts, position in the subject where the blast match ends, expect value, bit score.</p>
-</div>
-<p>4.4. How many BLAST hits are there for <code>Salm_1</code> vs `salmonella_antigens?</p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> There are 36 BLAST hits.</p>
-</div>
-<p>4.5. Look at the help for <code>blastn</code>, can you figure out some additional command line parameters you could enter which would reduce the number of results you have to look at? What are the potential downsides of applying these additional parameters?</p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> You could filter by e-value <code>-evalue 1e-5</code> or <code>-evalue 0.00001</code>, but you might miss some interesting hits. You shouldn’t apply filters by default, always look at all the results generated and then filter.</p>
-</div>
-<p>4.6. Which is the best column to sort by so that you see the best hits first? Sort the data by this column?</p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> The best column to filter by is bitscore as more discriminatory than e-value.</p>
-</div>
-<ol start="5" style="list-style-type: decimal">
-<li>There are multiple different alleles of <code>fljB</code> and <code>fliC</code> in the database. Identify the best fljB and fliC hits for each genome, and then lookup those alleles in the Salmonella Serotypes excel file to identify the serotype of each genome.</li>
-</ol>
+<p><strong>Q9. How many BLAST hits are there for <code>Salm_1</code> vs `salmonella_antigens?</strong></p>
+<p><strong>Q10. Look at the help for <code>blastn</code>, can you figure out some additional command line parameters you could enter which would reduce the number of results you have to look at? What are the potential downsides of applying these additional parameters?</strong></p>
+<p><strong>Q11. Which is the best column to sort by so that you see the best hits first? Sort the data by this column?</strong></p>
+<p><strong>Q12. There are multiple different alleles of <code>fljB</code> and <code>fliC</code> in the BLAST database. Look at your BLAST results to identify the best fljB and fliC hits for each genome, and then lookup those alleles in the Salmonella Serotypes excel file to identify the serotype of each genome.</strong></p>
 <blockquote>
 <p>Reminder: fliC is H1 and fljB is H2. Do this for all 6 genomes.</p>
 </blockquote>
@@ -461,12 +434,10 @@ Hint
 <p>One of the genomes might not have both H1 and H2.</p>
 </div>
 <p><br></p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> See ‘salmonella serotypes - answers’ excel file.</p>
-</div>
 <ol start="6" style="list-style-type: decimal">
-<li>Take the BLAST results for one of the genomes, e.g. Salm_6. Filter the BLAST results so that only hits where the subject was either the ‘best’ <code>fljB</code> or ‘best’ <code>fliC</code>. You should have <code>6</code> blast hits. Why are there 6 results? Hint1: Look at the query start and query end values for the <code>fljB</code> and <code>fliC</code> hits.</li>
+<li>Take the BLAST results for one of the genomes, e.g. Salm_6. Filter the BLAST results so that only hits where the subject was either the ‘best’ <code>fljB</code> or ‘best’ <code>fliC</code>. You should have <code>6</code> blast hits.</li>
 </ol>
+<p><em>Q13. Why are there 6 results? Hint1: Look at the query start and query end values for the <code>fljB</code> and <code>fliC</code> hits.</em></p>
 <div class="toggle">
 <button>
 Hint
@@ -474,15 +445,7 @@ Hint
 <p>There is an area of sequence similarity between <code>fljB</code> and <code>fliC</code>.</p>
 </div>
 <p><br></p>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> You see multiple hits because <code>fljB</code> hits against `fliC and vice versa because these two proteins have homologous areas.</p>
-</div>
-<ol start="7" style="list-style-type: decimal">
-<li>What is another way you could tell which serotype the genomes are? The above method, looking at the genes which determine the serotype could be described as the ‘biologist’ way of serotyping from the genome, what might the ‘computer scientist/bioinformatician’ way be?</li>
-</ol>
-<div class="toggle-answer">
-<p><strong>Answer:</strong> You can just BLAST sections of the genome against the full NCBI nt/nr BLAST database. A section of around 50 kbp of e.g. Salm_1 will give a 100% hit against Mbandaka, and a 99% hit against some other serotypes.</p>
-</div>
+<p><strong>Q14. What is another way you could tell which serotype the genomes are? The above method, looking at the genes which determine the serotype could be described as the ‘biologist’ way of serotyping from the genome, what might the ‘computer scientist/bioinformatician’ way be?</strong></p>
 </div>
 <div id="exercise-2" class="section level1 unnumbered">
 <h1>Exercise 2</h1>
