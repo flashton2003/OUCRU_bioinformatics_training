@@ -226,13 +226,8 @@ It might be easier to view the BLAST results via the ‘Create/view BLAST search
 blast every contig linked to the contig which encodes ctx-M15, you can do this by copying the node sequence or by using BLAST directly through Bandage via the Output tab. 
 </div><br>
 
-<div class="toggle-answer">
 
-**Answer:**  Looks like there are two copies of ctx-M15, one on the plasmid and one on the chromosome. OmpD is included because the integron carrying ctx-M15 is inserted into the middle of OmpD . 
-
-</div>
-
-Bonus question: why do you think OmpD is included in the genes_and_plasmids.fasta?
+**Bonus question Q10: why do you think OmpD is included in the genes_and_plasmids.fasta?**
  
 <script>
   $(".toggle").click(function() {
