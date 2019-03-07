@@ -4,8 +4,5 @@
 }
 .toggle.open {
   height: auto;
-}
-
-.toggle-answer {
-	display: show;
+  display: show;
 }
