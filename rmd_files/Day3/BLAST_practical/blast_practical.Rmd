@@ -20,6 +20,11 @@ output:
                 number_sections: no
 ---
 
+<style>
+body {
+text-align: justify}
+</style>
+
 ```{r settings, include = FALSE}
 switch <- FALSE
 ```
