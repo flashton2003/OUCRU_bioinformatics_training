@@ -320,4 +320,6 @@ You can input your answer here...
   $(".toggle").click(function() {
     $(this).toggleClass("open");
   });
+  function RemoveText(obj) 
+{   obj.value = ''; }
 </script>
