@@ -42,7 +42,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Part 1 {-}
 
-Inject 1 - In the aftermath of a massive earthquake in Haiti, the poorest country in the Americas, there has been a dramatic and worrying increase in the number of cases of cholera, the disease caused by the bacterium Vibrio cholera. This is the first time in more than 100 years than there has been a cholera outbreak in Haiti. Urgent efforts are underway to identify the source of the outbreak. Fortunately, in addition to field epidemiologists undertaking shoe-leather epidemiology in the affected areas, we have WGS of some of the isolates from the outbreak. You are the lead bioinformatician in charge of analysing this data. You need to process and interpret the data, and feedback to the public health doctors in charge of outbreak response to provide them with the fullest picture possible.
+Inject 1 - In the aftermath of a massive earthquake in Haiti, the poorest country in the Americas, there has been a dramatic and worrying increase in the number of cases of cholera, the disease caused by the bacterium *Vibrio cholera*. This is the first time in more than 100 years than there has been a cholera outbreak in Haiti. Urgent efforts are underway to identify the source of the outbreak. Fortunately, in addition to field epidemiologists carrying out shoe-leather investigations in the affected areas, we have WGS of some of the isolates from the outbreak. You are the lead bioinformatician in charge of analysing this data. You need to process and interpret the data, and feedback to the public health doctors in charge of outbreak response to provide them with the fullest picture possible.
 
 From using Google, or your microbiology knowledge about cholera:
 
@@ -104,11 +104,7 @@ Answer - there are three peaks in the distribution, one at low SNP distance (0-1
 
 Answer - there are 40 samples in the comparison. In the upper-triangular  pairwise distance matrix, not including self-self comparisons there are `N * (N - 1) / 2` comparisons; For `N = 40` this is `40 * 39 / 2 = 780.`
 
-<div class="alert alert-info">
-More on pairwise SNP distances in lecture.
-</div>
-
-* Run IQ-TREE to generate a Maximum Likelihood tree
+* Run IQ-TREE to generate a Maximum Likelihood tree. When IQ-TREE is run like this, it will also test a wide range of nucleotide substitution models to see which best fits the data. For larger alignments this can be a very time consuming step, so if speed is important, it might make sense to omit this step and use a general model (e.g. GTR).
 `iqtree -s dataset1.aln -nt AUTO`
 
 **Question 6:** Read the IQTREE output, which model was selected as the best? What is the full name of the model? I.e. what do the initials stand for?
@@ -122,14 +118,14 @@ Answer -  “K3P+ASC chosen according to BIC” Kimura 3 Parameter
 
 Answer - 1 (on my computer anyway). Because I/O takes time, so not always quickest to divide tasks between different processors.
 
-* Download the tree (the file you want is the one which ends in `.treefile`) to your local computer, you can either do this with filezilla or by using `cat` to print the contents of the file to screen and then copy and pasting it into a new file on your local computer. Make sure that the file extension of the tree file is `.nwk`.
+* Download the tree (the file you want is the one which ends in `.treefile`) to your local computer, you can either do this with filezilla or by using `cat` to print the contents of the file to screen and then copy and pasting it into a new file on your local computer. **Change the file extension of the tree file to `.nwk`.**
 
 * Navigate to https://microreact.org/upload and upload the `dataset1.aln.nwk` file and the `geog_loc_microreact.csv` file. The microreact interface is hopefully quite intuitive, spend a few minutes becoming familiar with the various options and buttons. 
 
 **Question/task 8:** Identify the Haiti outbreak genomes in the tree. 
 
 <div class="toggle"><button>Hint</button>
-They are most of the non-black tips.
+They are **most** of the non-black tips.
 </div><br>
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
@@ -194,7 +190,7 @@ cat all_vchol.aln.treefile | python ~/scripts/midpoint_root_tree.py | nw_order -
 
 * Then download the `all_vchol.aln.pretty.tree` onto your local computer and open it with `FigTree`. 
 
-* `In FigTree`, go to `File -> Import annotations` in the menu bar, and navigate to the `outbreak_practical/phylo/dataset2/annot.txt` file. Select this file and press open. Then in the main `FigTree` window, go to `Tip Lables`, and in the drop down `Display` menu, select ANNOT. You should now be able to see tip labels containing information about continent, country and year on the tree.
+* `In FigTree`, go to `File -> Import annotations` in the menu bar, and navigate to the `outbreak_practical/phylo/dataset2/annotation_figtree.txt` file. Select this file and press open. Then in the main `FigTree` window, go to `Tip Lables`, and in the drop down `Display` menu, select ANNOT. You should now be able to see tip labels containing information about continent, country and year on the tree.
 
 **Question 2:** SRR308716 was the most closely related non-Haitian genome to the Haiti outbreak strains in dataset 1. Is it still the most closely related genome?
 
@@ -202,19 +198,14 @@ cat all_vchol.aln.treefile | python ~/scripts/midpoint_root_tree.py | nw_order -
 
 Answer - No, there are some very closely related genomes from Nepal e.g. SRR308715
 
-**Question 4:**  What do you think happened with ERR466848?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-
-Answer - transmission from Haiti to Mexico? From Nepal to Mexico?
-
-**Question 5:** Do all the genomes from Nepal form a monophyletic group? What does this tell you about cholera in Nepal?
+**Question 4:** Do all the genomes from Nepal form a monophyletic group? What does this tell you about cholera in Nepal?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
 Answer - No. Tells you that there are multiple circulating cholera clones/clades in Nepal.
 
-**Question 6:** What does the root of the tree represent?
+**Question 5:** What does the root of the tree represent?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
@@ -226,7 +217,7 @@ Add in question on assessing bootstrap support - TODO
 </div>
 
 
-**Question 7:**  What is the impact of this extra context on your report to the public health doctors? Write a short paragraph reporting your conclusions.
+**Question 6:**  What is the impact of this extra context on your report to the public health doctors? Write a short paragraph reporting your conclusions.
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
