@@ -272,6 +272,18 @@ blast every contig linked to the contig which encodes ctx-M15, you can do this b
 **Bonus question Q10: why do you think OmpD is included in the genes_and_plasmids.fasta?**
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+
+# Bonus Exercise {-}
+
+If you have finsihed all the above exercises in good time, then feel free to have a go at this exercise, carrying out a Needleman-Wunsch alignment by hand. You can use paper or Excel, whichever you prefer.
+
+1. Establish a scoring system - e.g. match = 1, mismatch = -1, gap = -1
+2. You will be aligning two sequences `GAATTAA` and `GATTACA`. Create a scoring matrix like the below:   
+![Scoring matrix](https://imgur.com/7JAQ6c9)
+3. Fill in the table according to the instructions [here](https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm#Filling_in_the_table)
+4. Trace back the arrows from the bottom right cell to the top left following the rules [here](https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm#Tracing_arrows_back_to_origin)
+5. Check your answer by putting the sequences into [this](http://experiments.mostafa.io/public/needleman-wunsch/) website
+
  
 <script>
   $(".toggle").click(function() {

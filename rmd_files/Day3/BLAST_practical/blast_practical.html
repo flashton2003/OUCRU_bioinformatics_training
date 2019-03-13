@@ -72,7 +72,7 @@ h6 {
 }
 </style>
 
-<link href="data:text/css;charset=utf-8,%2Etoggle%20%7B%0Aheight%3A%201%2E8em%3B%0Aoverflow%2Dy%3A%20hidden%3B%0A%7D%0A%2Etoggle%2Eopen%20%7B%0Aheight%3A%20auto%3B%0A%7D%0A%2Etoggle%2Danswer%20%7B%0Adisplay%3A%20show%3B%0A%7D" rel="stylesheet" type="text/css" />
+<link href="data:text/css;charset=utf-8,%2Etoggle%20%7B%0Aheight%3A%201%2E8em%3B%0Aoverflow%2Dy%3A%20hidden%3B%0A%7D%0A%2Etoggle%2Eopen%20%7B%0Aheight%3A%20auto%3B%0Adisplay%3A%20show%3B%0A%7D%0A" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -285,11 +285,15 @@ div.tocify {
 
 <h1 class="title toc-ignore">BLAST practical</h1>
 <h4 class="author"><em>Philip Ashton</em></h4>
-<h4 class="date"><em>12 March, 2019</em></h4>
+<h4 class="date"><em>13 March, 2019</em></h4>
 
 </div>
 
 
+<style>
+body {
+text-align: justify}
+</style>
 <div id="learning-objectives" class="section level1 unnumbered">
 <h1>Learning objectives</h1>
 <p>To become familiar with:</p>
@@ -316,18 +320,21 @@ Hint
 <p>Since we know that the each fasta record has a header, and each header starts with a '&gt;'. We can use <code>grep ‘&gt;’ salmonella_antigens.fasta</code> to show all the sequence headers in the file. <strong>CAREFUL</strong> - make sure to include the quotation marks around the &gt; in that command, or you will overwrite the contents of <code>salmonella_antigens.fasta</code>.</p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <ol start="3" style="list-style-type: decimal">
 <li>Then, we can BLAST our query against the database we just made. Note that we use <code>blastn</code> here as we are comparing nucleotides.</li>
 </ol>
 <p>3.1. Run</p>
 <pre class="bash"><code>blastn -help</code></pre>
 <p><strong>Q2. Look at the <code>*** Formatting options</code> section of the <code>blastn -help</code> output. We are going to load our data into Excel; which do you think is the most suitable <code>-outfmt</code> option to use?</strong></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p>3.2. Run</p>
 <pre class="bash"><code>blastn -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1_vs_salmonella_antigens.tsv</code></pre>
 <p>where XXX is the outfmt option you chose in question 3.1</p>
 <p>3.3. Then, examine the output file using <code>head</code></p>
 <pre class="bash"><code>head Salm_1_vs_salmonella_antigens.tsv</code></pre>
 <p><strong>Q3. How many columns does the output have?</strong></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q4. How many lines of the file has <code>head</code> shown you? How do you only show the top 4 lines of the file?</strong></p>
 <div class="toggle">
 <button>
@@ -336,6 +343,7 @@ Hint
 <p><a href="http://www.letmegooglethat.com/?q=how+do+i+increase+the+number+of+lines+shown+by+head+linux">Google it!</a></p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <strong>Q5. What is separating the columns?</strong>
 <div class="toggle">
 <button>
@@ -344,6 +352,7 @@ Hint
 <p>What does the T in tsv stand for?</p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p>3.4. Run the blastn command without including the <code>-outfmt</code> option</p>
 <p><strong>Q6. What happens if you run the command without the <code>-outfmt</code> option, or with different <code>-outfmt</code> options?</strong></p>
 <div class="toggle">
@@ -353,9 +362,11 @@ Hint
 <p>Run the command with different outfmt options and look at the output file using <code>head</code> or <code>cat</code>.</p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p>3.5. Run blastn for each genome against the</p>
 <p>3.6. Make sure that each of your output files (e.g. <code>Salm_1_vs_salmonella_antigens.tsv</code>) is in the best format for viewing in Excel before proceeding.</p>
 <p><strong>Q7. What kind of <code>blast</code> would we do if we were comparing proteins against <code>Salm_1.fasta</code>? What kind of BLAST would we do if we were comparing <code>salmonella_antigens.fasta</code> against <code>Salm_1.fasta</code>?</strong></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <ol start="4" style="list-style-type: decimal">
 <li>Now, we are going to look at the BLAST output using Excel. For this, the output files (e.g. <code>Salm_1_vs_salmonella_antigens.tsv</code>) need to be on your local computer rather than your CLIMB instance.</li>
 </ol>
@@ -421,13 +432,17 @@ Hint
 <p>Use Google to find out. For example, <a href="http://www.metagenomics.wiki/tools/blast/blastn-output-format-6">here</a> or <a href="https://www.ncbi.nlm.nih.gov/books/NBK279690/">here</a></p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q9. How many BLAST hits are there for <code>Salm_1</code> vs `salmonella_antigens?</strong></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q10. Look at the help for <code>blastn</code>, can you figure out some additional command line parameters you could enter which would reduce the number of results you have to look at? What are the potential downsides of applying these additional parameters?</strong></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q11. Which is the best column to sort by so that you see the best hits first? Sort the data by this column.</strong></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q12. There are multiple different alleles of <code>fljB</code> and <code>fliC</code> in the BLAST database. Look at your BLAST results to identify the best fljB and fliC hits for each genome, and then lookup those alleles in the Salmonella Serotypes excel file to identify the serotype of each genome. Do this for all 6 genomes.</strong></p>
-<blockquote>
+<div class="alert alert-info">
 <p>Reminder: fliC is H1 and fljB is H2.</p>
-</blockquote>
+</div>
 <div class="toggle">
 <button>
 Hint
@@ -435,6 +450,7 @@ Hint
 <p>One of the genomes might not have both H1 and H2.</p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <ol start="6" style="list-style-type: decimal">
 <li>Take the BLAST results for one of the genomes, e.g. Salm_6. Filter the BLAST results so that only hits where the subject was either the ‘best’ <code>fljB</code> or ‘best’ <code>fliC</code>. You should have <code>6</code> blast hits.</li>
 </ol>
@@ -446,7 +462,9 @@ Hint
 <p>There is an area of sequence similarity between <code>fljB</code> and <code>fliC</code>.</p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q14. What is another way you could tell which serotype the genomes are? The above method, looking at the genes which determine the serotype could be described as the ‘biologist’ way of serotyping from the genome, what might the ‘computer scientist/bioinformatician’ way be?</strong></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 </div>
 <div id="exercise-2" class="section level1 unnumbered">
 <h1>Exercise 2</h1>
@@ -462,7 +480,9 @@ Hint
 <p>Use google to tell you how to do this. <a href="https://www.biostars.org/p/118954/#119009">this answer</a> works well</p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q2. What are the differences between the sequences which have a name beginning with ‘p’ (i.e. lowercase p) and those which don’t?</strong></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q3. Either using Google or your microbiology knowledge, which genes in the file are typically plasmid-borne and which are typically chromosomal?</strong></p>
 <div class="toggle">
 <button>
@@ -471,11 +491,13 @@ Hint
 <p>Use <code>grep ‘&gt;’ genes_and_plasmids.fasta</code> or the output of bioawk from above, to find the names of the sequences in the file.</p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Using filezilla, download the 3 FASTG files and genes_and_plasmids.fasta from <code>Day3/AM/Salmonella_graph_genome_exercise</code> to your local computer</p></li>
 <li><p>Load the first sample into Bandage following the instructions from the <a href="https://github.com/rrwick/Bandage/wiki/Getting-started#load-a-graph">Bandage github page</a></p></li>
 </ol>
 <p><strong>Q4. What are the characteristics of this assembly?</strong></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q5. Do you think the assembly used an appropriate range of k-mer sizes? What other datasets do we need to get a better answer to this question?</strong></p>
 <div class="toggle">
 <button>
@@ -484,6 +506,7 @@ Hint
 <p>Look at <a href="https://github.com/rrwick/Bandage/wiki/Effect-of-kmer-size">this</a></p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q6 Can you see any sequences which look like they could be plasmids?</strong></p>
 <ol start="6" style="list-style-type: decimal">
 <li><p>Prepare the FASTG file for BLAST analysis by following the instructions from <a href="https://github.com/rrwick/Bandage/wiki/BLAST-searches">here</a></p></li>
@@ -498,6 +521,7 @@ Hint
 <p>It might be easier to view the BLAST results via the ‘Create/view BLAST search results’</p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Q8 If a plasmid is present, what does the ‘depth’ node label (combined with the graph structure) tell you about repeat sections in the plasmid?</strong></p>
 <p><strong>Q9. In the assembly SRR5451253, what is interesting about the CTX-M15 encoding gene?</strong></p>
 <div class="toggle">
@@ -507,7 +531,21 @@ Hint
 <p>blast every contig linked to the contig which encodes ctx-M15, you can do this by copying the node sequence or by using BLAST directly through Bandage via the Output tab.</p>
 </div>
 <p><br></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Bonus question Q10: why do you think OmpD is included in the genes_and_plasmids.fasta?</strong></p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+</div>
+<div id="bonus-exercise-3" class="section level1 unnumbered">
+<h1>Bonus Exercise 3</h1>
+<p>If you have finsihed all the above exercises in good time, then feel free to have a go at this exercise, carrying out a Needleman-Wunsch alignment by hand. You can use paper or Excel, whichever you prefer.</p>
+<ol style="list-style-type: decimal">
+<li>Establish a scoring system - e.g. match = 1, mismatch = -1, gap = -1</li>
+<li>You will be aligning two sequences <code>TATCACG</code> and <code>GATTACA</code>. Create a scoring matrix like the below:<br />
+<img src="data:image/png;base64,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" alt="Scoring matrix" /></li>
+<li>Fill in the table according to the instructions <a href="https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm#Filling_in_the_table">here</a></li>
+<li>Trace back the arrows from the bottom right cell to the top left following the rules <a href="https://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm#Tracing_arrows_back_to_origin">here</a></li>
+<li>Check your answer by putting the sequences into <a href="http://experiments.mostafa.io/public/needleman-wunsch/">this</a> website</li>
+</ol>
 <script>
   $(".toggle").click(function() {
     $(this).toggleClass("open");
