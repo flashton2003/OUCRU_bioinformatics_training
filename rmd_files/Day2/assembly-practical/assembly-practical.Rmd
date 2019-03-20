@@ -60,7 +60,7 @@ We will run spades with the `--careful` setting which aims to minimise the numbe
 
 **Q2: How many cores is this assembly using? How would you change this?**
 
-Spades will take around 15 minutes  to run. When spades has finished, look at the output files which are produced. 
+Spades will take around 6 or 7 minutes  to run. When spades has finished, look at the output files which are produced. 
 
 
 **Q3: Can you tell which k-mers Spades used for the assembly?**

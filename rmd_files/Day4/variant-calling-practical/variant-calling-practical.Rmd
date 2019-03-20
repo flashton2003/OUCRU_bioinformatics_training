@@ -103,7 +103,7 @@ In the alignment window, the top bars show an overview of the whole genome and t
 
 Try the different features available in Tablet to look at your alignment.
 
-**Q7: Colour the reads by the type of read? What does "type" mean in this case?**
+**Q7: Colour the reads by the type of read. What does "type" mean in this case?**
 <div class="toggle"><button>Hint</button>
 Under "Colour Schemes", select " Read Type".
 </div><br> 
