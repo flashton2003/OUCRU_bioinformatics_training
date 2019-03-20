@@ -1,0 +1,22 @@
+**Exercise 1**
+
+Q1. Read 1 fails 'Per base sequence content' and 'Adapter Content'. Read 2 fails 'Per tile sequence quality', 'Per base sequence content' and 'Adapter Content'. Read 1 has the best quality reads.
+
+**Exercise 2**
+
+Q2. In read 1, 169,237 reads have adapters. In read 2, 170,508 reads have adapters.
+
+Q3.
+```mkdir fastqc-trimmed
+fastqc --outdir fastqc-trimmed out_1.fastq out_2.fastq```
+
+**Exercise 3**
+Q4. Above 1: 20-39% (1.32), 40-59% (1.04), 60-79% (1.01). Below 1: 80-100% (0.52).
+
+**Optional Exercise 4**
+Q5. It sets the minimum length of the overlap between read and adapter.
+
+Q6. if you make -O smaller, it requires less overlap between reads and adapter. This makes it more conservative and removes more bases, but ensures no adapters are missed. If you make -O bigger, it is less conservative about finding adapters, so you will keep more bases of sequence at the risk of missing some adapter contamination.
+
+Q7. `-q` is the option to remove low-quality bases. You pass a quality, eg `cutadapt -q 20`, would trim bases below q20 from the 3' end of the read. See https://cutadapt.readthedocs.io/en/stable/algorithms.html#quality-trimming-algorithm for how the quality-trimming algorithm works.
+
