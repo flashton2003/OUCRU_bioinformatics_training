@@ -34,7 +34,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 2. Be able to build phylogenetic trees from snippy output.
 
-3. Be able to interpret phylogenetic trees for epidemiology.
+3. Be able to interpret phylogenetic trees for epidemiological purposes.
 
 4. Be familiar with various tree visualisation options.
 
@@ -46,84 +46,74 @@ Inject 1 - In the aftermath of a massive earthquake in Haiti, the poorest countr
 
 From using Google, or your microbiology knowledge about cholera:
 
-* Why might there be an increase in cholera cases following an event like an earthquake?
+**Question 1:** Why might there be an increase in cholera cases following an event like an earthquake?
 
-* What is unusual about the genome of *V. cholera*?
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+
+**Question 2:** What is unusual about the genome of *V. cholera*?
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
 On your CLIMB instance,
 
-* Navigate to `~/data/outbreak_practical/dataset1`. 
+* Navigate to `/home/ubuntu/data/day-4/outbreak_practical/dataset1`. 
 
-* Run `ls` in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome for 19 *V. cholera* genomes from Haiti and 20 other *V. cholera* genomes from around the world by `snippy-core`.
+* Run `ls` in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome for 19 *V. cholera* genomes from Haiti and 21 other *V. cholera* genomes from around the world by `snippy-core`.
 
-* Calculate the pairwise SNP distance between all the isolates and plot the distribution as a histogram: 
+* Calculate the pairwise SNP distance between all the isolates and plot the distribution as a histogram, using the following command: 
 
 ```{bash eval=FALSE}
 disty dataset1.aln | python ~/scripts/process_disty_output.py | histogram.py -b 30 --percentage
 ```
 
-**Question 1:** How many processes are happening in this command? 
+The `process_disty_output.py` script is available [here](https://gist.github.com/flashton2003/6518a4a877f5a1dae781c75ff02c57a1).
+
+**Question 3:** How many processes are happening in this command? 
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
 <div class="toggle"><button>Hint</button>
 The `|` character is the unix command for ‘piping’ data between different processes.
 </div><br>
 
+**Question 4:** What does each stage of the process do? 
+
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-
-Answer - 3
-
-**Question 2:** What does each stage of the process do? 
 
 <div class="toggle"><button>Hint</button>
 Run the different processes of the command, building up to the full command.
 </div><br>
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-
-Answer - 
-Information on `disty` is [here](https://github.com/c2-d2/disty) and histogram.py is [here](https://github.com/bitly/data_hacks). `process_disty_output.py` is a script I wrote for data format conversion.
-
 **Bonus question:** If you know any python, can you figure out what each line of `process_disty_output.py` is doing?
 
-
-**Question 3:** What is the median pairwise SNP distance? How well do you think this describes the dataset?
-
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-
-Answer - Median pairwise SNP distance is 61 SNPs. It doesn’t desribe the distribution well because there are three peaks in the distribution.
-
-**Question 4: ** What does the histogram tell you about the relatedness of the samples in your dataset?
+**Question 5:** What is the median pairwise SNP distance? How well do you think this describes the dataset?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer - there are three peaks in the distribution, one at low SNP distance (0-10), one at intermediate (50-60) and one at high(ish) (140-151). The low SNP distance pairs represent very closely related isolates, like we might see in an outbreak, the medium and high pairs represent the distance between different clades in the tree, and the population structure within the tree. See picture in outbreak practical directory.
-
-**Question 5:**  Why are there 780 ‘samples’ in the output?
+**Question 6: ** What does the histogram tell you about the relatedness of the samples in your dataset?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer - there are 40 samples in the comparison. In the upper-triangular  pairwise distance matrix, not including self-self comparisons there are `N * (N - 1) / 2` comparisons; For `N = 40` this is `40 * 39 / 2 = 780.`
+**Question 7:**  Why are there 780 ‘samples’ in the output?
 
-* Run IQ-TREE to generate a Maximum Likelihood tree. When IQ-TREE is run like this, it will also test a wide range of nucleotide substitution models to see which best fits the data. For larger alignments this can be a very time consuming step, so if speed is important, it might make sense to omit this step and use a general model (e.g. GTR).
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+
+* At this step, you will run IQ-TREE to generate a Maximum Likelihood tree. By default IQ-TREE will also test a wide range of nucleotide substitution models to see which best fits the data. For larger alignments this can be a very time consuming step, so if speed is important, it might make sense to omit this step and use a general model (e.g. GTR).
 `iqtree -s dataset1.aln -nt AUTO`
 
-**Question 6:** Read the IQTREE output, which model was selected as the best? What is the full name of the model? I.e. what do the initials stand for?
+**Question 8:** Read the IQTREE output, which model was selected as the best? What is the full name of the model? I.e. what do the initials stand for?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer -  “K3P+ASC chosen according to BIC” Kimura 3 Parameter
-
-** Question 7:** How many threads were selected as best? Why might the maximum number of threads not be selected?
+** Question 9:** How many threads were selected as best? Why might the maximum number of threads not be selected?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer - 1. See "BEST NUMBER OF THREADS: 1" in IQTREE log. Because I/O takes time, so it is not always the quickest to divide tasks between different processors.
-
-* Download the tree (the file you want is the one which ends in `.treefile`) to your local computer, you can either do this with `Filezilla` or by using `cat` to print the contents of the file to screen and then copy and pasting it into a new file on your local computer. **Change the file extension of the tree file to `.nwk`.**
+* Download the tree (the file you want is the one which ends in `.treefile`) to your local computer with `Filezilla`. You should also download the `geog_loc_microreact.csv` file. **Change the file extension of the tree file to `.nwk`.**
 
 * Navigate to https://microreact.org/upload and upload the `dataset1.aln.nwk` file and the `geog_loc_microreact.csv` file. The microreact interface is hopefully quite intuitive, spend a few minutes becoming familiar with the various options and buttons. 
 
-**Question/task 8:** Identify the Haiti outbreak genomes in the tree. 
+**Question/task 10:** Identify the Haiti outbreak genomes in the tree. 
 
 <div class="toggle"><button>Hint</button>
 They are **most** of the non-black tips.
@@ -131,36 +121,30 @@ They are **most** of the non-black tips.
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer - example tree is [here](https://microreact.org/project/TuDufF5vs)
-Question - Experiment with the different tree visualisation setting, which do you prefer? The different tree settings look like this:
+* Experiment with the different tree visualisation setting. The different tree settings look like this:
 
 <center>![](images/tree_settings.png)</center>
 
-**Question 9:** Are the isolates from Haiti monophyletic?
+**Question 11:** Are the isolates from Haiti monophyletic?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer - yes.
-Microreact is an ideal way to investigate relationships between phylogeny and geography (aka phylogeographical relationships). 
+* Microreact is an ideal way to investigate relationships between phylogeny and geography (aka phylogeographical relationships). 
 
-**Question 10:** Is there phylogeographical signal in the *V. cholerae* genomes from Haiti? You will have to zoom in on Haiti to see this. 
+**Question 12:** Is there phylogeographical signal in the *V. cholerae* genomes from Haiti? You will have to zoom in on Haiti to see this. 
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
 <div class="toggle"><button>Hint</button>
 * Haiti is in the Caribbean.
-* Or you can think of this another way, looking at the data, if you were given another isolate with no geographical information, how confident would you be in your prediction of it’s geographic origin?
+* You can think of this another way, looking at the data, if you were given another isolate with no geographical information, how confident would you be in your prediction of it’s geographic origin?
 </div><br>
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-
-Answer - not very strong. There is not very much diversity within the outbreak, which will always make it difficult for there to be geographical signal. There is a sub-clade of the outbreak separated by 1 SNP from the others, most of the isolates from northern Haiti are in here, but there are also some isolates from southern Haiti.
-
-**Question 11:** Where is the closest neighbour of the Haiti genomes from?
+**Question 13:** Where is the closest neighbour of the Haiti genomes from?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer - Nepal
-
-**Question 12:** Write a short paragraph, summarising your results for the public health officials.
+**Question 14:** Write a short paragraph, summarising your results for the public health officials.
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
@@ -172,7 +156,7 @@ On your CLIMB instance:
 
 * Navigate to `~/data/outbreak_practical/dataset2`. 
 
-* Run `ls` in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome for 19 *V. cholerae* genomes from Haiti and 103 other *V. cholerae* genomes from around the world by `snippy-core`. In terms of the inclusion from other countries, we have focussed on isolates from the Indian sub-continent.
+* Run `ls` in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome for 19 *V. cholerae* genomes from Haiti and 101 other *V. cholerae* genomes from around the world by `snippy-core`. In terms of the inclusion from other countries, we have focussed on isolates from the Indian sub-continent.
 
 * Run IQ-TREE to generate a Maximum Likelihood tree
 `iqtree -s dataset2.aln -nt AUTO -bb 1000` 
@@ -186,84 +170,59 @@ On your CLIMB instance:
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer - `-bb 1000` ultrafast bootstrapping with 1000 re-samples, means each node in the tree. 
-
-* Then we need to run a couple of commands to convert the tree to a good format to visualise (we will midpoint root the tree and order the nodes to be descending). For this, we will use a custom python script which uses the [ete3](http://etetoolkit.org/docs/latest/index.html) library and the very useful [Newick Utilities](http://cegg.unige.ch/newick_utils) package.
+* Then we need to run a couple of commands to convert the tree to a good format to visualise (we will midpoint root the tree and order the nodes to be descending). For this, we will use a custom python script which uses the [ete3](http://etetoolkit.org/docs/latest/index.html) module and the very useful [Newick Utilities](http://cegg.unige.ch/newick_utils) package.
 
 ```{bash, eval=FALSE}
 cat dataset2.aln.treefile | python ~/scripts/midpoint_root_tree.py | nw_order -c n - > dataset2.aln.pretty.tree
 ```
+The `midpoint_root_tree.py` script is available [here](https://gist.github.com/flashton2003/a2633c40ab683c0a02191344652ba52e).
 
-* Then download the `dataset2.aln.pretty.tree` onto your local computer and open it with `FigTree`. 
+* Then download the `dataset2.aln.pretty.tree` onto your local computer, along with `annotation_figtree.txt` and `annotation_phandango.csv` and open it with `FigTree`.
 
-* In `FigTree`, go to `File -> Import annotations` in the menu bar, and navigate to the `outbreak_practical/dataset2/annotation_figtree.txt` file. Select this file and press open. Then in the main `FigTree` window, go to `Tip Lables`, and in the drop down `Display` menu, select `ANNOT`. You should now be able to see tip labels containing information about continent, country and year on the tree.
+* In `FigTree`, go to `File -> Import annotations` in the menu bar, and navigate to the `outbreak_practical/dataset2/annotation_figtree.txt` file. Select this file and press open. Then in the main `FigTree` window, go to `Tip Labels`, and in the drop down `Display` menu, select `ANNOT`. You should now be able to see tip labels containing information about continent, country and year on the tree.
 
 **Question 2:** `SRR308716` was the most closely related non-Haitian genome to the Haiti outbreak strains in `dataset1`. Is it still the most closely related genome?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer - No, there are some very closely related genomes from Nepal, e.g. SRR308715
-
-
-**Question 4:** Do all the genomes from Nepal form a monophyletic group? What does this tell you about cholera in Nepal?
+**Question 3:** Do all the genomes from Nepal form a monophyletic group? What does this tell you about cholera in Nepal?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer - No. Tells you that there are multiple circulating cholera clones/clades in Nepal.
-
-**Question 5:** What does the root of the tree represent?
+**Question 4:** What does the root of the tree represent?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
-Answer - the inferred ancestor of all the *V. cholerae* in our tree (not the reference genome).
+* On the lefthand side of the figtree interface, tick the box which says 'Node labels', click the arrow to enable you to select 'label' from the dropdown `Display` menu. This will place the bootstraps on the nodes of the tree.
 
+**Question 5:** Does adding in the bootstraps alter your interpretation at all?
 
-<div class="alert alert-info">
-Add in question on assessing bootstrap support - TODO
-</div>
-
-
-**Question 6:**  What is the impact of this extra context on your report to the public health doctors? Write a short paragraph reporting your conclusions.
+**Question 6:**  What is the impact of this extra context on your report to the public health doctors? Write a short paragraph reporting your new findings.
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-
-Answer - We have confirmed that the Haitian outbreak strain shares a recent common ancestor with South Asian/Nepalese genomes. We are now confident that this geographical region is the likely origin of this outbreak.
 
 **Extra task:**  Use the `phandango` tool to visualise the meta-data in a more interesting way. Navigate to [here](https://jameshadfield.github.io/phandango/#/). And drag and drop your tree and the `annotation_phandango.csv` file onto the web page. Pressing `k` will bring up the key. Further instructions are [here](https://github.com/jameshadfield/phandango/wiki).
 
 **Advanced question 1:** Using the phylogenetic tree, estimate the SNP distance between `SRR308691` and  `SRR308715`. A piece of paper might help you estimate the distance between the two tips. Remember you have to go from one tip, down to the MRCA, back to the other tip. Only ‘horizontal’ distance (if you are viewing the tree in rectangular format) counts. The other information you need to calculate this is the tree length, which is 0.029 (from IQTREE log) and the alignment length, which is 987 bp (calculated by `bioawk -c fastx '{ print $name, length($seq) }' < dataset2.aln`).
 
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+
 <div class="toggle"><button>Hint</button>
 Comes from this formula: (`distance between nodes` / `total tree length`) * `alignment length`
 </div><br>
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-
-Answer - (0.0012 / 0.029)  * 987 = 41 SNPs
-
 **Advanced question 2:** How does this compare with `disty`?
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 
 <div class="toggle"><button>Hint</button>
  `grep -A 1 SRR308691 dataset2.aln > tmp.fa; grep -A 1 SRR308715 dataset2.aln >> tmp.fa; disty tmp.fa`
 </div><br>
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-
-Answer - 34 SNPs. Why is it different? Evolutionary model, measurement error?
-
 ## Notes {-}
-* Should mention about ‘what is a useful cluster’ being a subjective measure (though some clustering methods do exist)
-https://docs.google.com/presentation/d/1QFpPlBkIRSd977WO1tNp0DQMwJJIKtga9cjhNRCIlL4/edit#slide=id.g22fa57d6c6_0_635
-https://www.dropbox.com/s/6r3hv1yg277igz2/RSLee_Workshop_I_instructions_20180609_no_drop.pdf
 
-* Data selection - random selected 46 non-{Nepal,Bangladesh,Haiti} from Donman et al.
-https://mbio.asm.org/content/5/6/e01721-14
+For more information on *V. cholera* genomics you can see [here](https://www.ncbi.nlm.nih.gov/pubmed/29123068). There are multiple papers on the genomics of the Haiti cholera outbreak, I leaned on [this](https://mbio.asm.org/content/5/6/e01721-14) one to write this material.
 
-https://www.ncbi.nlm.nih.gov/pubmed/29123068
-
-* Put in the talk about trees as mobiles, same tree as unsorted, ascending, descending, circle, rectangular, etc. 
-
-* Put in about identifying ‘signal’ in phylogenies into talk, in the context of prediction (strong signal, easy to predict where metadata not known)
 
 <script>
   $(".toggle").click(function() {

@@ -285,7 +285,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Outbreak practical</h1>
 <h4 class="author"><em>Philip Ashton</em></h4>
-<h4 class="date"><em>13 March, 2019</em></h4>
+<h4 class="date"><em>21 March, 2019</em></h4>
 
 </div>
 
@@ -299,27 +299,29 @@ text-align: justify}
 <ol style="list-style-type: decimal">
 <li><p>Be able to interpret SNP distance histograms.</p></li>
 <li><p>Be able to build phylogenetic trees from snippy output.</p></li>
-<li><p>Be able to interpret phylogenetic trees for epidemiology.</p></li>
+<li><p>Be able to interpret phylogenetic trees for epidemiological purposes.</p></li>
 <li><p>Be familiar with various tree visualisation options.</p></li>
 <li><p>Have a grasp on the relationship between trees and SNPs.</p></li>
 </ol>
 </div>
 <div id="part-1" class="section level1 unnumbered">
 <h1>Part 1</h1>
-<p>Inject 1 - In the aftermath of a massive earthquake in Haiti, the poorest country in the Americas, there has been a dramatic and worrying increase in the number of cases of cholera, the disease caused by the bacterium Vibrio cholera. This is the first time in more than 100 years than there has been a cholera outbreak in Haiti. Urgent efforts are underway to identify the source of the outbreak. Fortunately, in addition to field epidemiologists undertaking shoe-leather epidemiology in the affected areas, we have WGS of some of the isolates from the outbreak. You are the lead bioinformatician in charge of analysing this data. You need to process and interpret the data, and feedback to the public health doctors in charge of outbreak response to provide them with the fullest picture possible.</p>
+<p>Inject 1 - In the aftermath of a massive earthquake in Haiti, the poorest country in the Americas, there has been a dramatic and worrying increase in the number of cases of cholera, the disease caused by the bacterium <em>Vibrio cholera</em>. This is the first time in more than 100 years than there has been a cholera outbreak in Haiti. Urgent efforts are underway to identify the source of the outbreak. Fortunately, in addition to field epidemiologists carrying out shoe-leather investigations in the affected areas, we have WGS of some of the isolates from the outbreak. You are the lead bioinformatician in charge of analysing this data. You need to process and interpret the data, and feedback to the public health doctors in charge of outbreak response to provide them with the fullest picture possible.</p>
 <p>From using Google, or your microbiology knowledge about cholera:</p>
-<ul>
-<li><p>Why might there be an increase in cholera cases following an event like an earthquake?</p></li>
-<li><p>What is unusual about the genome of V. cholera?</p></li>
-</ul>
+<p><strong>Question 1:</strong> Why might there be an increase in cholera cases following an event like an earthquake?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+<p><strong>Question 2:</strong> What is unusual about the genome of <em>V. cholera</em>?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p>On your CLIMB instance,</p>
 <ul>
-<li><p>Navigate to <code>~/data/outbreak_practical/phylo/dataset1</code>.</p></li>
-<li><p>Run <code>ls</code> in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome a for 19 <em>V. cholera</em> genomes from Haiti and 20 other <em>V. cholera</em> genomes from around the world by <code>snippy-core</code>.</p></li>
-<li><p>Calculate the pairwise SNP distance between all the isolates and plot the distribution as a histogram:</p></li>
+<li><p>Navigate to <code>/home/ubuntu/data/day-4/outbreak_practical/dataset1</code>.</p></li>
+<li><p>Run <code>ls</code> in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome for 19 <em>V. cholera</em> genomes from Haiti and 21 other <em>V. cholera</em> genomes from around the world by <code>snippy-core</code>.</p></li>
+<li><p>Calculate the pairwise SNP distance between all the isolates and plot the distribution as a histogram, using the following command:</p></li>
 </ul>
 <pre class="bash"><code>disty dataset1.aln | python ~/scripts/process_disty_output.py | histogram.py -b 30 --percentage</code></pre>
-<p><strong>Question 1:</strong> How many processes are happening in this command?</p>
+<p>The <code>process_disty_output.py</code> script is available <a href="https://gist.github.com/flashton2003/6518a4a877f5a1dae781c75ff02c57a1">here</a>.</p>
+<p><strong>Question 3:</strong> How many processes are happening in this command?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <div class="toggle">
 <button>
 Hint
@@ -327,9 +329,8 @@ Hint
 <p>The <code>|</code> character is the unix command for ‘piping’ data between different processes.</p>
 </div>
 <p><br></p>
+<p><strong>Question 4:</strong> What does each stage of the process do?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - 3</p>
-<p><strong>Question 2:</strong> What does each stage of the process do?</p>
 <div class="toggle">
 <button>
 Hint
@@ -337,72 +338,69 @@ Hint
 <p>Run the different processes of the command, building up to the full command.</p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - Information on <code>disty</code> is here and histogram.py is here. <code>process_disty_output.py</code> is a script I wrote for data format conversion.</p>
 <p><strong>Bonus question:</strong> If you know any python, can you figure out what each line of <code>process_disty_output.py</code> is doing?</p>
-<p><strong>Question 3:</strong> What is the median pairwise SNP distance? How well do you think this describes the dataset?</p>
+<p><strong>Question 5:</strong> What is the median pairwise SNP distance? How well do you think this describes the dataset?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - Median pairwise SNP distance is 61 SNPs. It doesn’t desribe the distribution well because there are three peaks in the distribution.</p>
-<p><strong>Question 4: </strong> What does the histogram tell you about the relatedness of the samples in your dataset?</p>
+<p><strong>Question 6: </strong> What does the histogram tell you about the relatedness of the samples in your dataset?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - there are three peaks in the distribution, one at low SNP distance (0-10), one at intermediate (50-60) and one at high(ish) (140-151). The low SNP distance pairs represent very closely related isolates, like we might see in an outbreak, the medium and high pairs represent the distance between different clades in the tree, and the population structure within the tree. See picture in outbreak practical directory.</p>
-<p><strong>Question 5:</strong> Why are there 780 ‘samples’ in the output?</p>
+<p><strong>Question 7:</strong> Why are there 780 ‘samples’ in the output?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - there are 40 samples in the comparison. In the upper-triangular pairwise distance matrix, not including self-self comparisons there are <code>N * (N - 1) / 2</code> comparisons; For <code>N = 40</code> this is <code>40 * 39 / 2 = 780.</code></p>
-<div class="alert alert-info">
-<p>More on pairwise SNP distances in lecture.</p>
-</div>
 <ul>
-<li>Run IQ-TREE to generate a Maximum Likelihood tree <code>iqtree -s dataset1.aln -nt AUTO</code></li>
+<li>At this step, you will run IQ-TREE to generate a Maximum Likelihood tree. By default IQ-TREE will also test a wide range of nucleotide substitution models to see which best fits the data. For larger alignments this can be a very time consuming step, so if speed is important, it might make sense to omit this step and use a general model (e.g. GTR). <code>iqtree -s dataset1.aln -nt AUTO</code></li>
 </ul>
-<p><strong>Question 6:</strong> Read the IQTREE output, which model was selected as the best? What is the full name of the model? I.e. what do the initials stand for?</p>
+<p><strong>Question 8:</strong> Read the IQTREE output, which model was selected as the best? What is the full name of the model? I.e. what do the initials stand for?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - “K3P+ASC chosen according to BIC” Kimura 3 Parameter ** Question 7:** How many threads were selected as best? Why might the maximum number of threads not be selected?</p>
+<p>** Question 9:** How many threads were selected as best? Why might the maximum number of threads not be selected?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - 1 (on my computer anyway). Because I/O takes time, so not always quickest to divide tasks between different processors.</p>
 <ul>
-<li><p>Download the tree (the file you want is the one which ends in <code>.treefile</code>) to your local computer, you can either do this with filezilla or by using <code>cat</code> to print the contents of the file to screen and then copy and pasting it into a new file on your local computer. Make sure that the file extension of the tree file is <code>.nwk</code>.</p></li>
+<li><p>Download the tree (the file you want is the one which ends in <code>.treefile</code>) to your local computer with <code>Filezilla</code>. You should also download the <code>geog_loc_microreact.csv</code> file. <strong>Change the file extension of the tree file to <code>.nwk</code>.</strong></p></li>
 <li><p>Navigate to <a href="https://microreact.org/upload" class="uri">https://microreact.org/upload</a> and upload the <code>dataset1.aln.nwk</code> file and the <code>geog_loc_microreact.csv</code> file. The microreact interface is hopefully quite intuitive, spend a few minutes becoming familiar with the various options and buttons.</p></li>
 </ul>
-<p><strong>Question/task 8:</strong> Identify the Haiti outbreak genomes in the tree.</p>
+<p><strong>Question/task 10:</strong> Identify the Haiti outbreak genomes in the tree.</p>
 <div class="toggle">
 <button>
 Hint
 </button>
-<p>They are most of the non-black tips.</p>
+<p>They are <strong>most</strong> of the non-black tips.</p>
 </div>
 <p><br></p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - example tree is here Question - Experiment with the different tree visualisation setting, which do you prefer? The different tree settings look like this:</p>
-<p><strong>Question 9:</strong> Are the isolates from Haiti monophyletic?</p>
+<ul>
+<li>Experiment with the different tree visualisation setting. The different tree settings look like this:</li>
+</ul>
+<center>
+<img src="data:image/png;base64,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" />
+</center>
+<p><strong>Question 11:</strong> Are the isolates from Haiti monophyletic?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - yes. Microreact is an ideal way to investigate relationships between phylogeny and geography (aka phylogeographical relationships).</p>
-<p>** Question 10:** Is there phylogeographical signal in the Cholera genomes from Haiti? You will have to zoom in on Haiti to see this.</p>
+<ul>
+<li>Microreact is an ideal way to investigate relationships between phylogeny and geography (aka phylogeographical relationships).</li>
+</ul>
+<p><strong>Question 12:</strong> Is there phylogeographical signal in the <em>V. cholerae</em> genomes from Haiti? You will have to zoom in on Haiti to see this.</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <div class="toggle">
 <button>
 Hint
 </button>
 <ul>
 <li>Haiti is in the Caribbean.</li>
-<li>Or you can think of this another way, looking at the data, if you were given another isolate with no geographical information, how confident would you be in your prediction of it’s geographic origin?</li>
+<li>You can think of this another way, looking at the data, if you were given another isolate with no geographical information, how confident would you be in your prediction of it’s geographic origin?</li>
 </ul>
 </div>
 <p><br></p>
+<p><strong>Question 13:</strong> Where is the closest neighbour of the Haiti genomes from?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - not very strong. There is not very much diversity within the outbreak, which will always make it difficult for there to be geographical signal. There is a sub-clade of the outbreak separated by 1 SNP from the others, most of the isolates from northern Haiti are in here, but there are also some isolates from southern Haiti.</p>
-<p><strong>Question 11:</strong> Where is the closest neighbour of the Haiti genomes from?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - Nepal</p>
-<p><strong>Question 12:</strong> Write a short paragraph, summarising your results for the public health officials.</p>
+<p><strong>Question 14:</strong> Write a short paragraph, summarising your results for the public health officials.</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 </div>
 <div id="part-2" class="section level1 unnumbered">
 <h1>Part 2</h1>
 <p>Inject 2 - Using the feedback we gave them on the likely origin of the cholera, public health officials have traced the likely source of the cholera outbreak to the UN Stabilisation Mission in Haiti Camp. A contingent of Nepalese soldiers had recently arrived in camp, and cholera is endemic in Nepal. Sewage from the camp is discharged into the Artibonite River, where many people draw their drinking water from. This is an incredibly sensitive subject because, while identifying the true source is very important, if the source is mis-identified, it could lead to a major diplomatic incident. Therefore, you have decided to search the public databases for all sequences from Nepal and Bangladesh and re-run the analysis, including these genomes. This will provide extra context for the Haitian outbreak and increase our certainty of what is happening.</p>
-<p>On your CLIMB instance: * Navigate to <code>~/data/outbreak_practical/phylo/dataset2</code>.</p>
+<p>On your CLIMB instance:</p>
 <ul>
-<li><p>Run <code>ls</code> in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome a for 19 <em>V. cholera</em> genomes from Haiti and 103 other <em>V. cholera</em> genomes from around the world by <code>snippy-core</code>. In terms of the inclusion from other countries, we have focussed on Isolates from the Indian sub-continent.</p></li>
-<li><p>Run IQ-TREE to generate a Maximum Likelihood tree <code>iqtree -s dataset1.aln -nt AUTO -bb 100</code></p></li>
+<li><p>Navigate to <code>~/data/outbreak_practical/dataset2</code>.</p></li>
+<li><p>Run <code>ls</code> in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome for 19 <em>V. cholerae</em> genomes from Haiti and 101 other <em>V. cholerae</em> genomes from around the world by <code>snippy-core</code>. In terms of the inclusion from other countries, we have focussed on isolates from the Indian sub-continent.</p></li>
+<li><p>Run IQ-TREE to generate a Maximum Likelihood tree <code>iqtree -s dataset2.aln -nt AUTO -bb 1000</code></p></li>
 </ul>
 <div class="alert alert-info">
 <ul>
@@ -412,32 +410,30 @@ Hint
 </div>
 <p><strong>Question 1:</strong> What is different between this command and the last time we ran <code>iqtree</code>? What does this option mean?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - <code>-bb 1000</code> ultrafast bootstrapping with 1000 re-samples, means each node in the tree * Then we need to run a couple of commands to convert the tree to a good format to visualise (we will midpoint root the tree and order the nodes to be descending). For this we will use a custom python script which uses the <code>ete3</code> library and the very useful Newick Utilities package.</p>
-<pre class="bash"><code>cat all_vchol.aln.treefile | python ~/scripts/midpoint_root_tree.py | nw_order -c n - &gt; all_vchol.aln.pretty.tree</code></pre>
 <ul>
-<li><p>Then download the <code>all_vchol.aln.pretty.tree</code> onto your local computer and open it with <code>FigTree</code>.</p></li>
-<li><p><code>In FigTree</code>, go to <code>File -&gt; Import annotations</code> in the menu bar, and navigate to the <code>outbreak_practical/phylo/dataset2/annot.txt</code> file. Select this file and press open. Then in the main <code>FigTree</code> window, go to <code>Tip Lables</code>, and in the drop down <code>Display</code> menu, select ANNOT. You should now be able to see tip labels containing information about continent, country and year on the tree.</p></li>
+<li>Then we need to run a couple of commands to convert the tree to a good format to visualise (we will midpoint root the tree and order the nodes to be descending). For this, we will use a custom python script which uses the <a href="http://etetoolkit.org/docs/latest/index.html">ete3</a> module and the very useful <a href="http://cegg.unige.ch/newick_utils">Newick Utilities</a> package.</li>
 </ul>
-<p><strong>Question 2:</strong> SRR308716 was the most closely related non-Haitian genome to the Haiti outbreak strains in dataset 1. Is it still the most closely related genome?</p>
+<pre class="bash"><code>cat dataset2.aln.treefile | python ~/scripts/midpoint_root_tree.py | nw_order -c n - &gt; dataset2.aln.pretty.tree</code></pre>
+<p>The <code>midpoint_root_tree.py</code> script is available <a href="https://gist.github.com/flashton2003/a2633c40ab683c0a02191344652ba52e">here</a>.</p>
+<ul>
+<li><p>Then download the <code>dataset2.aln.pretty.tree</code> onto your local computer, along with <code>annotation_figtree.txt</code> and <code>annotation_phandango.csv</code> and open it with <code>FigTree</code>.</p></li>
+<li><p>In <code>FigTree</code>, go to <code>File -&gt; Import annotations</code> in the menu bar, and navigate to the <code>outbreak_practical/dataset2/annotation_figtree.txt</code> file. Select this file and press open. Then in the main <code>FigTree</code> window, go to <code>Tip Labels</code>, and in the drop down <code>Display</code> menu, select <code>ANNOT</code>. You should now be able to see tip labels containing information about continent, country and year on the tree.</p></li>
+</ul>
+<p><strong>Question 2:</strong> <code>SRR308716</code> was the most closely related non-Haitian genome to the Haiti outbreak strains in <code>dataset1</code>. Is it still the most closely related genome?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - No, there are some very closely related genomes from Nepal e.g. SRR308715</p>
-<p><strong>Question 4:</strong> What do you think happened with ERR466848?</p>
+<p><strong>Question 3:</strong> Do all the genomes from Nepal form a monophyletic group? What does this tell you about cholera in Nepal?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - transmission from Haiti to Mexico? From Nepal to Mexico?</p>
-<p><strong>Question 5:</strong> Do all the genomes from Nepal form a monophyletic group? What does this tell you about cholera in Nepal?</p>
+<p><strong>Question 4:</strong> What does the root of the tree represent?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - No. Tells you that there are multiple circulating cholera clones/clades in Nepal.</p>
-<p><strong>Question 6:</strong> What does the root of the tree represent?</p>
+<ul>
+<li>On the lefthand side of the figtree interface, tick the box which says 'Node labels', click the arrow to enable you to select 'label' from the dropdown <code>Display</code> menu. This will place the bootstraps on the nodes of the tree.</li>
+</ul>
+<p><strong>Question 5:</strong> Does adding in the bootstraps alter your interpretation at all?</p>
+<p><strong>Question 6:</strong> What is the impact of this extra context on your report to the public health doctors? Write a short paragraph reporting your new findings.</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - the inferred ancestor of all the V. cholera in our tree (not the reference genome)</p>
-<div class="alert alert-info">
-<p>Add in question on assessing bootstrap support - TODO</p>
-</div>
-<p><strong>Question 7:</strong> What is the impact of this extra context on your report to the public health doctors? Write a short paragraph reporting your conclusions.</p>
+<p><strong>Extra task:</strong> Use the <code>phandango</code> tool to visualise the meta-data in a more interesting way. Navigate to <a href="https://jameshadfield.github.io/phandango/#/">here</a>. And drag and drop your tree and the <code>annotation_phandango.csv</code> file onto the web page. Pressing <code>k</code> will bring up the key. Further instructions are <a href="https://github.com/jameshadfield/phandango/wiki">here</a>.</p>
+<p><strong>Advanced question 1:</strong> Using the phylogenetic tree, estimate the SNP distance between <code>SRR308691</code> and <code>SRR308715</code>. A piece of paper might help you estimate the distance between the two tips. Remember you have to go from one tip, down to the MRCA, back to the other tip. Only ‘horizontal’ distance (if you are viewing the tree in rectangular format) counts. The other information you need to calculate this is the tree length, which is 0.029 (from IQTREE log) and the alignment length, which is 987 bp (calculated by <code>bioawk -c fastx '{ print $name, length($seq) }' &lt; dataset2.aln</code>).</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - We have confirmed that the Haitian outbreak strain shares a recent common ancestor with South Asian/Nepalese genomes. We are now confident that this geographical region is the likely origin of this outbreak.</p>
-<p><strong>Extra task:</strong> Use the <code>phandango</code> tool to visualise the meta-data in a more interesting way. Navigate to here. And drag and drop your tree and the <code>annotation_phandango.csv</code> file onto the web page. Pressing <code>k</code> will bring up the key. Further instructions are here.</p>
-<p><strong>Advanced question 1:</strong> Using the phylogenetic tree, estimate the SNP distance between SRR308691 and SRR308715. A piece of paper might help you estimate the distance between the two tips. Remember you have to go from one tip, down to the MRCA, back to the other tip. Only ‘horizontal’ distance (if you are viewing the tree in rectangular format) counts. The other information you need to calculate this is the tree length, which is 0.029 (from IQTREE log) and the alignment length, which is 987 bp (calculate dby <code>bioawk -c fastx '{ print $name, length($seq) }' &lt; dataset2.aln</code>).</p>
 <div class="toggle">
 <button>
 Hint
@@ -445,9 +441,8 @@ Hint
 <p>Comes from this formula: (<code>distance between nodes</code> / <code>total tree length</code>) * <code>alignment length</code></p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - (0.0012 / 0.029) * 987 = 41 SNPs</p>
 <p><strong>Advanced question 2:</strong> How does this compare with <code>disty</code>?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <div class="toggle">
 <button>
 Hint
@@ -455,19 +450,9 @@ Hint
 <p><code>grep -A 1 SRR308691 dataset2.aln &gt; tmp.fa; grep -A 1 SRR308715 dataset2.aln &gt;&gt; tmp.fa; disty tmp.fa</code></p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
-<p>Answer - 34 SNPs. Why is it different? Evolutionary model, measurement error?</p>
 <div id="notes" class="section level2 unnumbered">
 <h2>Notes</h2>
-<ul>
-<li><p>Should mention about ‘what is a useful cluster’ being a subjective measure (though some clustering methods do exist) <a href="https://docs.google.com/presentation/d/1QFpPlBkIRSd977WO1tNp0DQMwJJIKtga9cjhNRCIlL4/edit#slide=id.g22fa57d6c6_0_635" class="uri">https://docs.google.com/presentation/d/1QFpPlBkIRSd977WO1tNp0DQMwJJIKtga9cjhNRCIlL4/edit#slide=id.g22fa57d6c6_0_635</a> <a href="https://www.dropbox.com/s/6r3hv1yg277igz2/RSLee_Workshop_I_instructions_20180609_no_drop.pdf" class="uri">https://www.dropbox.com/s/6r3hv1yg277igz2/RSLee_Workshop_I_instructions_20180609_no_drop.pdf</a></p></li>
-<li><p>Data selection - random selected 46 non-{Nepal,Bangladesh,Haiti} from Donman et al. <a href="https://mbio.asm.org/content/5/6/e01721-14" class="uri">https://mbio.asm.org/content/5/6/e01721-14</a></p></li>
-</ul>
-<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/29123068" class="uri">https://www.ncbi.nlm.nih.gov/pubmed/29123068</a></p>
-<ul>
-<li><p>Put in the talk about trees as mobiles, same tree as unsorted, ascending, descending, circle, rectangular, etc.</p></li>
-<li><p>Put in about identifying ‘signal’ in phylogenies into talk, in the context of prediction (strong signal, easy to predict where metadata not known)</p></li>
-</ul>
+<p>For more information on <em>V. cholera</em> genomics you can see <a href="https://www.ncbi.nlm.nih.gov/pubmed/29123068">here</a>. There are multiple papers on the genomics of the Haiti cholera outbreak, I leaned on <a href="https://mbio.asm.org/content/5/6/e01721-14">this</a> one to write this material.</p>
 <script>
   $(".toggle").click(function() {
     $(this).toggleClass("open");
