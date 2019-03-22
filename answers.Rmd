@@ -5,7 +5,17 @@ title: "answers"
 Answers 
 
 # Day 1
-
 # Day 2
+
+* [Assembly practical](assembly_practical_answers.html)
+* [Sequenc QC](sequenceqc_practical_answers.html)
+
 # Day 3
+
+* [BLAST practical excercise 1](BLAST_practical_Ex1_Answers.html)
+* [BLAST practical excercise 2](BLAST_practical_Ex2_Answers.html)
+
 # Day 4
+
+* [Variant calling](variant-calling-practical-answers.html)
+* [Outbreak practical](outbreak-practical-answers.html)

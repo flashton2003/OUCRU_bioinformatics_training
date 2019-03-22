@@ -9,9 +9,10 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Liz Batty" />
 
 
-<title>Day 1</title>
+<title>Sequence QC practical</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -292,16 +293,99 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Day 1</h1>
+<h1 class="title toc-ignore">Sequence QC practical</h1>
+<h4 class="author"><em>Liz Batty</em></h4>
+<h4 class="date"><em>22 March, 2019</em></h4>
 
 </div>
 
 
-<p>Introduction of Day 1</p>
-<ul>
-<li>Lectures</li>
-<li><a href="command-line-practical.html">Command line practical</a></li>
-</ul>
+<style>
+body {
+text-align: justify}
+</style>
+<div id="learning-objectives" class="section level1 unnumbered">
+<h1>Learning objectives</h1>
+<p>In this practical we will learn some basic techniques to check the quality of your sequencing dataset before we perform any further analysis, and fix some common problems.</p>
+<ol style="list-style-type: decimal">
+<li>Use FastQC to assess the quality of your data and understand how problems arise</li>
+<li>Use trimming tools to remove problem bases</li>
+<li>Use Picard to analyse GC bias in your data</li>
+</ol>
+</div>
+<div id="exercise-1" class="section level1 unnumbered">
+<h1>Exercise 1</h1>
+<p>The first program we will run is FastQC: <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" class="uri">https://www.bioinformatics.babraham.ac.uk/projects/fastqc/</a></p>
+<p>This takes a BAM or FASTQ file as input. Here we will use the two FASTQ files from an isolate of <em>Burkholderia pseudomallei</em>.</p>
+<p>In the terminal, log on to your CLIMB server and navigate to the directory <code>/home/ubuntu/workshop/day-2/sequenceqc</code></p>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>Use the <code>cd</code> command to change directory.</p>
+</div>
+<p><br></p>
+<p>Fastqc likes the output directory to exist before you run it, so make a directory called fastqc: <code>mkdir fastqc</code></p>
+<p>Now you can run fastqc:</p>
+<p><code>fastqc --outdir fastqc reads_1.fastq reads_2.fastq</code></p>
+<p>This will take a few minutes to run and give you a progress message while it runs.</p>
+<p>Navigate to your output directory <code>fastqc</code> and look at the files inside. You should see a .html and a .zip file named after each of your FASTQ files.</p>
+<p>The .html file is designed to be viewed in a web browser. Move it to your desktop using Filezilla and then open them in your browser.</p>
+<p><strong>Q1 What tests do your files pass? What do they fail? Think about what might cause them to fail. Which file has the best quality reads?</strong></p>
+</div>
+<div id="exercise-2" class="section level1 unnumbered">
+<h1>Exercise 2</h1>
+<p>In exercise 1, you identified that the reads in this dataset are contaminated with Illumina sequencing adapters. We will use <code>cutadapt</code> to remove the adapters from this dataset.</p>
+<p>Run cutadapt with the following command line:</p>
+<p><code>cutadapt -O 3 -G AGATCGGAAGAGC -g AGATCGGAAGAGC -o out_1.fastq -p out_2.fastq reads_1.fastq reads_2.fastq</code></p>
+<p>This tells cutadapt to trim both reads in our paired-end read dataset together. The -G and -g tell it which adapter should be removed from the 3’ end of the forward and reverse reads respectively. In this case it is the sequence of the Illumina sequencing adapter which should be removed.</p>
+<p><strong>Q2: How many reads had adapters trimmed from the ends?</strong></p>
+<strong>Q3: What command would you run to run fastqc on the trimmed output?</strong>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>Take your fastqc command line above and change the read files to out_1.fastq and out_2.fastq. Remember you need to make the output directory before you run fastqc.</p>
+</div>
+<p><br></p>
+</div>
+<div id="exercise-3" class="section level1 unnumbered">
+<h1>Exercise 3</h1>
+<p>To investigate GC bias in our sequencing we can use a tool called Picard. Picard contains many different useful tools, but the one we are using today is the CollectGcMetrics tool. This takes a BAM files and the reference genome for your organism and gives you a summary of the GC bias in your sequencing, and whether regions of high and low GC are over- or underrepresented. We will look at GC bias in the reads we used for the first part of the practical, which are from <em>Burkholderia pseudomallei</em>.</p>
+<p>Run picard CollectGcBiasMetrics on the file <code>reads.bam</code> using the reference genome <code>E264.fasta</code>:</p>
+<p><code>picard CollectGcBiasMetrics REFERENCE_SEQUENCE=E264.fasta INPUT=reads.bam OUTPUT=gcbias.out CHART=gcbias.pdf SUMMARY_OUTPUT=gcbias.summary</code></p>
+Look at the summary file gcbias.summary.
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>Use the <code>less</code> command to open a text file.</p>
+</div>
+<p><br></p>
+<p>In the last two lines of the file, you will see the column headings and the results for this analysis. Look at the columns for GC bias in different GC windows (GC_NC_0_19 GC_NC_20_39 GC_NC_40_59 GC_NC_60_79 GC_NC_80_100), which show GC bias scores for windows with GC content of 0-19%, 20-39%, 40-59%, 60-79%, and 80-100%.</p>
+<p><strong>Q4: What are the numbers in these columns? Which GC windows are overrepresented (a score above 1)? Which are underrepresented (a score below 1)?</strong></p>
+<p>There is also a graphical output from the CollectGCBiasMetrics tool. Move it to your desktop using Filezilla and open it. This shows the coverage in each GC window of the genome as open blue circles. Above 1 the GC window is overrepresented, below 1 they are underrepresented.</p>
+</div>
+<div id="optional-exercise-4" class="section level1 unnumbered">
+<h1>Optional Exercise 4</h1>
+<p>If you have finished the exercise in plenty of time, here is an optional exercise for you. Look at the cutadapt command line above:</p>
+<p><code>cutadapt  -O 3 -G AGATCGGAAGAGC -g AGATCGGAAGAGC -o out_1.fastq -p out_2.fastq reads_1.fastq reads_2.fastq</code></p>
+<strong>Q5: what is the -O option doing in the command line above?</strong>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>Run <code>cutadapt --help</code> to see the help file.</p>
+</div>
+<p><br></p>
+<p><strong>Q6: Try running <code>cutadapt</code> with a different <code>-O</code> value. What happens if you vary the -O parameter? Why?</strong></p>
+<p><strong>Q7: how would you modify the command to remove low-quality bases from the end of your reads?</strong></p>
+<script>
+  $(".toggle").click(function() {
+    $(this).toggleClass("open");
+  });
+</script>
+</div>
 
 
 

@@ -6,4 +6,3 @@ Introduction of Day 3
 
 * Lectures
 * [BLAST practical](blast_practical.html)
-* [Outbreak practical](Outbreak_practical.html)
