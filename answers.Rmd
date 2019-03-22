@@ -2,9 +2,8 @@
 title: "answers"
 ---
 
-Answers 
+**Answers** 
 
-# Day 1
 # Day 2
 
 * [Assembly practical](assembly_practical_answers.html)

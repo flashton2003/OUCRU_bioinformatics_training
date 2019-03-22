@@ -98,6 +98,7 @@ Run `quast` on the two assemblies. Remember to change the `quast` output directo
 <div class="toggle"><button>Hint</button>
 Here is an example command line: `quast -o exercise4 optional/K_pneumoniae.fasta optional/M_tuberculosis.fasta`
 </div><br>
+
 **Q8: How many contigs are in the assemblies? How does this compare to our *S. aureus* assembly?**
 
 <script>
