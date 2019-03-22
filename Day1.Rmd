@@ -2,7 +2,20 @@
 title: "Day 1"
 ---
 
-Introduction of Day 1
+Schedule for Day 1
 
-* Lectures
-* [Command line practical](command-line-practical.html)
+AM
+
+* Lecture - Introduction to genome sequencing [(slides)](20190102_how_we_sequence.pdf)
+
+* Lecture - Introduction to file formats [(slides)](20190111-fileformats.pdf)
+
+* Lecture - Introduction to CLIMB
+
+PM
+
+* Activity - Draw your career path
+
+* Lecture & [practical](command-line-practical.html) - Introduction to command line
+
+* Demonstration - using FileZilla

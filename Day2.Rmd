@@ -2,8 +2,12 @@
 title: "Day 2"
 ---
 
-Introduction of Day 2
+Schedule for Day 2
 
-* Lectures
-* [Assembly practical](assembly-practical.html)
-* [Sequence QC](sequenceqc-practical.html)
+AM
+
+* [Lecture](20190206-sequenceqc.pdf) & [Practical](sequenceqc-practical.html) - Sequence quality control
+
+PM
+
+* [Lecture](20190111_genomeassembly.pdf) & [practical](assembly-practical.html) - genome assembly

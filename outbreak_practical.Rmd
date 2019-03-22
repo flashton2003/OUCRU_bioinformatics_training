@@ -53,9 +53,9 @@ ls -lh
 
 * Calculate the pairwise SNP distance between all the isolates and plot the distribution as a histogram, using the following command: 
 
-```{bash eval=FALSE}
+<pre class="bash">
 disty dataset1.aln | python ~/scripts/process_disty_output.py | histogram.py -b 30 --percentage
-```
+</pre>
 
 The `process_disty_output.py` script is available [here](https://gist.github.com/flashton2003/6518a4a877f5a1dae781c75ff02c57a1). The `histogram.py` script is from [this](https://github.com/bitly/data_hacks) package.
 
