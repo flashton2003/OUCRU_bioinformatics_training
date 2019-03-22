@@ -1,0 +1,14 @@
+.toggle {
+  height: 1.8em;
+  overflow-y: hidden;
+}
+.toggle.open {
+  height: auto;
+  display: show;
+}
+
+pre.bash {
+ background-color: black;
+ color: silver;
+ font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+}

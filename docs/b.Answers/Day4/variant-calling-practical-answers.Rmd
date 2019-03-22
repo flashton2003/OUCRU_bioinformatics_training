@@ -1,0 +1,27 @@
+**Exercise 1**
+
+Q1. You should recognise BAM files, the .fa extension for a FASTA file, and .vcf extension for a Variant Call Format file.
+
+Q2. 197,394bp
+
+Q3. 24858 reads, and 100%.
+
+Q4. 16 variants: 5 deletions, 1 insertion, 1 MNP, and 9 SNPs
+
+Q5. 20236 to 21636bp.
+
+Q6. 13
+
+**Exercise 2**
+
+Q7. This will colour the forward read in a pair in green and the reverse read in blue.
+
+Q8. 27 reads support the variant, no reads which don't support the variant. You can count them, or get this from the "Coverage" figure in tablet.
+
+Q9. There is a red box around the base next to the insertion and the base which has been inserted. This will add 1bp to the length of the strain and increase the co-ordinates for all positions after this by 1 base relative to the reference genome.
+
+**Exercise 3**
+
+Q10. 141253-157403bp
+
+Q11. 103506-138689bp

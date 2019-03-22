@@ -1,0 +1,26 @@
+name: "Training"
+output_dir: "docs"
+navbar:
+  title: "OUCRU-MORU bioinformatics workshop"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Day 1"
+      href: rmd_files/Day1/command-line-practical/command-line-practical.html
+    - text: "Day 2"
+      href: rmd_files/Day2/assembly-practical/assembly-practical.html
+    - text: "Day 3"
+      href: rmd_files/Day3/BLAST_practical/BLAST_practical.html
+output:
+  html_document:
+    css: style.css
+    theme: cerulean
+    highlight: tango
+    toc: yes
+    toc_depth: 1
+    number_sections: yes
+    toc_float: yes
+    fig_width: 7
+    fig_height: 6
+    fig_caption: yes
+    self_contained: yes
