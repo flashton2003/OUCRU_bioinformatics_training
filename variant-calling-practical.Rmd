@@ -14,6 +14,7 @@ switch <- FALSE
 ```
 
 # Learning objectives {-}
+
 1. Understand alignment of reads to a reference genome
 2. Understand SNP and indel calling from an alignment
 3. Understand how to visualise alignments and SNP calls
@@ -31,55 +32,76 @@ In here you will find part of a *Staphyloccocus aureus* reference genome, and th
 
 Run the following Snippy command line:
 
-```snippy --outdir varcall --ref wildtype.gbk -R1 mutant_R1.fastq -R2 mutant_R2.fastq```
+```{bash, eval=FALSE}
+snippy --outdir varcall --ref wildtype.gbk -R1 mutant_R1.fastq -R2 mutant_R2.fastq
+```
 
 This should take only a few seconds. The output files will all be in the `varcall` directory. Navigate to this directory and look at the Snippy output files.
 
-**Q1: which file extensions do you recognise? Do you know what type of data will be in each file?**
+**Question 1:** Which file extensions do you recognise? Do you know what type of data will be in each file?
 
-The `snps.bam` file contains the alignments of the reads in the fastq files against the reference genome. We will use a tool called `samtools` to look at the alignments and get some statistics about the alignment.
+The `snps.bam` file contains the alignments of the reads in the `fastq` files against the reference genome. We will use a tool called `samtools` to look at the alignments and get some statistics about the alignment.
 
 From the varcall directory, run the following command:
 `samtools view -H snps.bam`
 
 This will show you the headers of the BAM file. These headers give you important information about the reads in the file, the reference genome, and how the file was generated.
 
-**Q2: can you look at the headers and determine how long the reference genome is?**
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
+**Question 2:** Can you look at the headers and determine how long the reference genome is?
 
 <div class="toggle"><button>Hint</button>
 Use https://www.samformat.info/sam-format-header to help you work out what to look at.
 </div><br> 
 
-Now we will use the samtools flagstat command to get some basic statistics about the alignment of reads to the genome. Run the following command:
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
-```samtools flagstat snps.bam```
+Now we will use the `samtools flagstat` command to get some basic statistics about the alignment of reads to the genome. Run the following command:
 
-**Q3: How many reads are there in total? What percentage of them have been aligned to the reference?**
+```{bash, eval=FALSE}
+samtools flagstat snps.bam
+```
 
-The snps.txt file has a summary of the variants called in this strain against the reference. 
+**Question 3:** How many reads are there in total? What percentage of them have been aligned to the reference?
 
-**Q4: How many variants were called? How many of them are deletions, insertions, multinucleotide polymorphisms (MNPs), and single nucleotide polymorphisms (SNPs)?**
+The `snps.txt` file has a summary of the variants called in this strain against the reference. 
 
-You can look in more detail at the variant call in the snps.vcf file. This is a Variant Call Format file which has a standard set of information about each variant. 
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
+**Question 4:** How many variants were called? How many of them are deletions, insertions, multinucleotide polymorphisms (MNPs), and single nucleotide polymorphisms (SNPs)?
+
+<div class="toggle"><button>Hint</button>
+You can look in more detail at the variant call in the `snps.vcf` file. This is a Variant Call Format file which has a standard set of information about each variant. 
+</div><br>
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 As part of the Snippy variant calling process, it annotates the variants which are in genes with the functional consequences of the variant. To add functional annotation to the variants, we need to provide a reference genome which has gene annotations. This is provided in the `wildtype.gbk` file in the `variant_calling` directory.
 
 Open the `wildtype.gbk` file and look at the gene annotations in the file. This is a Genbank-format file, which has a CDS entry for every coding sequence in the file with the gene name, the start and end positions on the reference genome, and a description of the protein product the gene produces.
 
-**Q5: what are the start and end positions of the dnaC gene?**
+**Question 5:** what are the start and end positions of the dnaC gene?
 
-Using the Genbank file, Snippy has added annotations to all the variants which fall inside a gene. You can see these in the file snps.csv. 
+<div class="toggle"><button>Hint</button>
+Using the Genbank file, Snippy has added annotations to all the variants which fall inside a gene. You can see these in the file `snps.csv`.
+</div><br>
 
-**Q6: how many of the variants are within a gene?**
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
+**Question 6:** How many of the variants are within a gene?
+
 <div class="toggle"><button>Hint</button>
 If they fall outside a gene, there will be no information in the last 8 columns of the table.
 </div><br> 
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 # Exercise 2 {-}
 
 Now we will take a deeper look at how Snippy uses the read alignments to call a variant. Navigate to the desktop and open the program Tablet. This is an alignment viewer which allows you to open the BAM file and see the read alignments.
 
-Click on "Import an assembly into Tablet" under the "Getting Started" header. Under "Primary assembly file" select the snps.bam file in the data directory. Under "Secondary assembly file" select the wildtype.fna file. Now click "Open". You will see a sidebar with the heading "Contigs: 1". Click on the contig "Wildtype". This will load the alignment. When the alignment has loaded, click on "Import Features" under "Home" and select the wildtype.gff file.
+Click on `Import an assembly into Tablet` under the `Getting Started` header. Under `Primary assembly file` select the snps.bam file in the data directory. Under `Secondary assembly file` select the `wildtype.fna` file. Now click `Open`. You will see a sidebar with the heading `Contigs: 1`. Click on the contig `Wildtype`. This will load the alignment. When the alignment has loaded, click on `Import Features` under `Home` and select the `wildtype.gff` file.
 
 In the alignment window, the top bars show an overview of the whole genome and the region you are looking at right now. Underneath this you can also see the reference genome (nucleotides and codons in genes), the locations of annotated coding sequences and RNA genes, and the coverage of reads at each position. Below these you can see the reads, with one row representing a sequence read.
 
@@ -87,10 +109,13 @@ In the alignment window, the top bars show an overview of the whole genome and t
 
 Try the different features available in Tablet to look at your alignment.
 
-**Q7: Colour the reads by the type of read. What does "type" mean in this case?**
+**Question 7:** Colour the reads by the type of read. What does "type" mean in this case?
+
 <div class="toggle"><button>Hint</button>
 Under "Colour Schemes", select " Read Type".
 </div><br> 
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 Now we want to investigate the variants called by Snippy on our alignment viewer. To make this easier, we will colour in the positions where the bases in the reads vary from the reference genome. Under the "Visual" section of the "Home" toolbar, select 'Tag Variants':
 
@@ -106,11 +131,17 @@ Note that there are many scattered bases which do not match the reference. Now w
 
 And scroll down until you find the mecR1 gene and click on it. This will jump to this region of the genome. You should be able to see the variant at 47299bp as a line of pink bases.
 
-**Q8: Can you count how many reads have the variant base? Do any reads at this position not have the variant base?**
+**Quesition 8:** Can you count how many reads have the variant base? Do any reads at this position not have the variant base?
 
+<div class="toggle"><button>Hint</button>
 Now look at a insertion variant. There is one in the sirA gene. Navigate to this gene and look at the insertion variant at position 106,722.
+</div><br> 
 
-**Q9: How is the insertion in the reads marked on the browser? What effect will this have on the genome positions for features in this strain?**
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
+**Questio 9:** How is the insertion in the reads marked on the browser? What effect will this have on the genome positions for features in this strain?
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 # Exercise 3 {-}
 
@@ -126,9 +157,13 @@ Then you need to give it an output file - click on the "..." next to output and 
 
 You are now ready to click "Align...". This will take a few seconds and you will be shown the output with coloured blocks in the wildtype and mutant genomes. Each block represents a piece of the genome conserved between the two strains, and the placement above or below the horizontal line shows whether it is a positive or negative strand block. 
 
-**Q10: There is a region of the genome which is deleted in the mutant strain. Can you give the approximate positions of this region in the wildtype genome?**
+**Question 10:** There is a region of the genome which is deleted in the mutant strain. Can you give the approximate positions of this region in the wildtype genome?
 
-**Q11: There is a rearrangement which has inverted part of the mutant strain. Can you give the approximate locations of this inversion?**
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
+**Question 11:** There is a rearrangement which has inverted part of the mutant strain. Can you give the approximate locations of this inversion?
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <script>
   $(".toggle").click(function() {
