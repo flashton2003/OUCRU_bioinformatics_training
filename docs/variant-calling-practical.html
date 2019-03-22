@@ -84,6 +84,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -98,7 +101,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -118,6 +120,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -139,18 +178,77 @@ $(document).ready(function () {
 });
 </script>
 
-
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -357,22 +455,34 @@ Hint
 <p>Now we will take a deeper look at how Snippy uses the read alignments to call a variant. Navigate to the desktop and open the program Tablet. This is an alignment viewer which allows you to open the BAM file and see the read alignments.</p>
 <p>Click on “Import an assembly into Tablet” under the “Getting Started” header. Under “Primary assembly file” select the snps.bam file in the data directory. Under “Secondary assembly file” select the wildtype.fna file. Now click “Open”. You will see a sidebar with the heading “Contigs: 1”. Click on the contig “Wildtype”. This will load the alignment. When the alignment has loaded, click on “Import Features” under “Home” and select the wildtype.gff file.</p>
 <p>In the alignment window, the top bars show an overview of the whole genome and the region you are looking at right now. Underneath this you can also see the reference genome (nucleotides and codons in genes), the locations of annotated coding sequences and RNA genes, and the coverage of reads at each position. Below these you can see the reads, with one row representing a sequence read.</p>
-<p><img src="images/tablet.jpg" /></p>
+<div class="figure">
+<img src="images/tablet.jpg" />
+
+</div>
 <p>Try the different features available in Tablet to look at your alignment.</p>
 <strong>Q7: Colour the reads by the type of read. What does “type” mean in this case?</strong>
 <div class="toggle">
 <button>
 Hint
 </button>
-<p>Under “Colour Schemes”, select " Read Type".</p>
+<p>Under “Colour Schemes”, select &quot; Read Type“.</p>
 </div>
 <p><br></p>
 <p>Now we want to investigate the variants called by Snippy on our alignment viewer. To make this easier, we will colour in the positions where the bases in the reads vary from the reference genome. Under the “Visual” section of the “Home” toolbar, select ‘Tag Variants’:</p>
-<p><img src="images/tag_vars.png" /></p>
+<div class="figure">
+<img src="images/tag_vars.png" />
+
+</div>
 <p>The bases which vary from the reference will now be pink, while the bases which match the reference are in grey. You can also adjust the colour balance so that the variant bases stand out:</p>
-<p><img src="images/variant_zoom.png" /></p>
+<div class="figure">
+<img src="images/variant_zoom.png" />
+
+</div>
 <p>Note that there are many scattered bases which do not match the reference. Now we will look at a position where we have called a variant. First we will jump to a genome feature where we know there is a variant. Select “Features” in the navigation bar (the blue downward-pointing arrow):</p>
-<p><img src="images/features_arrow.png" /></p>
+<div class="figure">
+<img src="images/features_arrow.png" />
+
+</div>
 <p>And scroll down until you find the mecR1 gene and click on it. This will jump to this region of the genome. You should be able to see the variant at 47299bp as a line of pink bases.</p>
 <p><strong>Q8: Can you count how many reads have the variant base? Do any reads at this position not have the variant base?</strong></p>
 <p>Now look at a insertion variant. There is one in the sirA gene. Navigate to this gene and look at the insertion variant at position 106,722.</p>
