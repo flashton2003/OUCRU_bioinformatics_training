@@ -1,0 +1,8 @@
+---
+title: "Day4"
+---
+
+Introduction of Day 4
+
+* Lectures
+* [Variant calling](variant-calling-practical.html)

@@ -11,7 +11,7 @@
 
 
 
-<title></title>
+<title>Day 1</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -83,9 +83,6 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
-summary {
-  display: list-item;
-}
 </style>
 
 
@@ -100,6 +97,7 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
+
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -119,43 +117,6 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -177,77 +138,18 @@ $(document).ready(function () {
 });
 </script>
 
+
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
 </script>
 
 <!-- code folding -->
+
 
 
 
@@ -390,19 +292,17 @@ div.tocify {
 
 
 
+<h1 class="title toc-ignore">Day 1</h1>
 
 </div>
 
 
-<p><strong>Exercise 1</strong></p>
-<p>Q1. Read 1 fails ‘Per base sequence content’ and ‘Adapter Content’. Read 2 fails ‘Per tile sequence quality’, ‘Per base sequence content’ and ‘Adapter Content’. Read 1 has the best quality reads.</p>
-<p><strong>Exercise 2</strong></p>
-<p>Q2. In read 1, 169,237 reads have adapters. In read 2, 170,508 reads have adapters.</p>
-<p>Q3. <code>mkdir fastqc-trimmed fastqc --outdir fastqc-trimmed out_1.fastq out_2.fastq</code></p>
-<p><strong>Exercise 3</strong> Q4. Above 1: 20-39% (1.32), 40-59% (1.04), 60-79% (1.01). Below 1: 80-100% (0.52).</p>
-<p><strong>Optional Exercise 4</strong> Q5. It sets the minimum length of the overlap between read and adapter.</p>
-<p>Q6. if you make -O smaller, it requires less overlap between reads and adapter. This makes it more conservative and removes more bases, but ensures no adapters are missed. If you make -O bigger, it is less conservative about finding adapters, so you will keep more bases of sequence at the risk of missing some adapter contamination.</p>
-<p>Q7. <code>-q</code> is the option to remove low-quality bases. You pass a quality, eg <code>cutadapt -q 20</code>, would trim bases below q20 from the 3’ end of the read. See <a href="https://cutadapt.readthedocs.io/en/stable/algorithms.html#quality-trimming-algorithm" class="uri">https://cutadapt.readthedocs.io/en/stable/algorithms.html#quality-trimming-algorithm</a> for how the quality-trimming algorithm works.</p>
+<p>Introduction of Day 1</p>
+<ul>
+<li>Lectures</li>
+<li><a href="command-line-practical.html">Command line practical</a></li>
+<li><a href="sequenceqc_practical.html">Sequenc QC</a></li>
+</ul>
 
 
 

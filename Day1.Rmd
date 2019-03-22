@@ -1,0 +1,9 @@
+---
+title: "Day 1"
+---
+
+Introduction of Day 1
+
+* Lectures
+* [Command line practical](command-line-practical.html)
+* [Sequenc QC](sequenceqc_practical.html)

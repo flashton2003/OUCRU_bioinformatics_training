@@ -1,0 +1,8 @@
+---
+title: "Day 2"
+---
+
+Introduction of Day 2
+
+* Lectures
+* [Assembly practical](assembly-practical.html)

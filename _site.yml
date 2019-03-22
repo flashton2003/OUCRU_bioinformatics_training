@@ -6,11 +6,15 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "Day 1"
-      href: command-line-practical.html
+      href: Day1.html    
     - text: "Day 2"
-      href: assembly-practical.html
+      href: Day2.html
     - text: "Day 3"
-      href: BLAST_practical.html
+      href: Day3.html
+    - text: "Day 3"
+      href: Day4.html
+    - text: "Answers"
+      href: answers.html 
 output:
   html_document:
     css: style.css
