@@ -13,6 +13,8 @@ navbar:
       href: Day3.html
     - text: "Day 4"
       href: Day4.html
+    - text: "Day 5"
+      href: Day5.html
     - text: "Answers"
       href: answers.html 
 output:

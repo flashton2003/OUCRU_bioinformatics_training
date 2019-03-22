@@ -2,7 +2,18 @@
 title: "Day 3"
 ---
 
-Introduction of Day 3
+Schedule for Day 3
 
-* Lectures
-* [BLAST practical](blast_practical.html)
+AM
+
+* [Lecture](2019.03.12_BLAST_Lecture.pdf) & [Practical](blast_practical.html) - BLAST
+
+11.30am - OUCRU academic meeting (Prof Seemann)
+
+PM
+
+* Post-lunch seminar - Trung Nguyen Vinh
+
+* Lecture & Practical - Genome annotation & visualisation
+
+* Lecture - Core/pan genome analysis

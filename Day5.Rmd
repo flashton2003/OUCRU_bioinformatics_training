@@ -1,0 +1,16 @@
+---
+title: "Day4"
+---
+
+Schedule of Day 5
+
+AM
+
+* Group presentations; you will be divided into teams and have to design a bioinformatics strategy to solve a specific microbiological question, and then present back to the whole group
+
+12.30pm - OUCRU Academic meeting
+
+PM
+
+* free time to talk to instructors about bioinformatics approaches to take with your own datasets or biological questions
+

@@ -2,8 +2,12 @@
 title: "Day4"
 ---
 
-Introduction of Day 4
+Schedule of Day 4
 
-* Lectures
-* [Variant calling](variant-calling-practical.html)
-* [Outbreak practical](outbreak_practical.html)
+AM
+
+* [Lecture](20190322-combined_alignment_lecture.pdf) & [Practical](variant-calling-practical.html) - mapping and variant calling
+
+PM
+
+* [Lecture](2019.03.12_phylogenetics.pdf) & [Practical](outbreak_practical.html) - phylogenetics and outbreak investigation

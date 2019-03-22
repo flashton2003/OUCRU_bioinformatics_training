@@ -8,6 +8,8 @@ AM
 
 * [Lecture](20190206-sequenceqc.pdf) & [Practical](sequenceqc-practical.html) - Sequence quality control
 
+11.30am - OUCRU academic meeting
+
 PM
 
-* [Lecture](20190111_genomeassembly.pdf) & [practical](assembly-practical.html) - genome assembly
+* [Lecture](20190111_genomeassembly.pdf) & [practical](assembly-practical.html) - Genome assembly
