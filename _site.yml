@@ -20,7 +20,7 @@ navbar:
 output:
   html_document:
     css: style.css
-    theme: cerulean
+    theme: flatly
     highlight: tango
     toc: yes
     toc_depth: 1
