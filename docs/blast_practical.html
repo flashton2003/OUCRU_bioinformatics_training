@@ -27,68 +27,65 @@
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  { background-color: #f8f8f8; }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -152,6 +149,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -166,7 +166,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -186,6 +185,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -207,18 +243,77 @@ $(document).ready(function () {
 });
 </script>
 
-
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -373,50 +468,54 @@ text-align: justify}
 <li><p>The mechanics of running BLAST searches</p></li>
 <li><p>How to interpret BLAST results</p></li>
 <li><p>Ways in which homology can complicate the interpretation of BLAST results</p></li>
-<li><p>How BLAST, combined with the use of the extra information in graph genomes can aid in the localisation of AMR determinants to genomic elements</p></li>
+<li><p>How BLAST, combined with the use of the extra information in graph representation of genome assemblies can aid in the localisation of AMR determinants to genomic elements</p></li>
 </ol>
 </div>
 <div id="exercise-1" class="section level1 unnumbered">
 <h1>Exercise 1</h1>
-<p>In this exercise you will be given 6 assembled Salmonella genomes. You need to identify which serotype they are based on the results of BLAST analysis against a custom database, and cross checking the results with (a shortened version of) the Kauffman-White scheme.</p>
+<p>In this exercise you will be given 6 assembled <em>Salmonella</em> genomes. You need to identify which serotype they are based on the results of BLAST analysis against a custom database, and cross checking the results with (a shortened version of) the Kauffman-White scheme.</p>
 <ol style="list-style-type: decimal">
-<li><p>In the terminal, navigate to the <code>OTN_bioinfx/Day3/AM/Salmonella_serotyping</code> directory, there should be 6 genome assemblies (fasta format) labelled <code>Salm_1</code> to <code>Salm_6</code> and a <code>salmonella_antigens.fasta</code> file. <br> In order to run BLAST, we need a query and a database. In this case, the database is going to be the <code>salmonella_antigens.fasta</code> file, and the queries are going to be the 6 Salmonella assemblies. For simplicity, we will process them one at a time.</p></li>
-<li><p>First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the makeblastdb program. <br></p></li>
+<li><p>In the terminal, navigate to the <code>/home/ubuntu/data/day-3/blast-practical</code> directory, you should see 6 <em>Salmonella</em> reference genomes (fasta format) labelled <code>Salm_1</code> to <code>Salm_6</code> and a <code>salmonella_antigens.fasta</code> file. <br> In order to run BLAST, we need a query and a database. In this case, the database is going to be the <code>salmonella_antigens.fasta</code> file, and the queries are going to be the 6 <em>Salmonella</em> assemblies. For simplicity, we will process them one at a time.</p></li>
+<li><p>First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the <code>makeblastdb</code> program. <br></p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">makeblastdb</span> -dbtype nucl -in salmonella_antigens.fasta</a></code></pre></div>
-<p><strong>Q1. How many sequences are there in the <code>salmonella_antigens.fasta</code> file? What are their names?</strong></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">makeblastdb</span> -dbtype nucl -in salmonella_antigens.fasta</code></pre></div>
+<p><strong>Question 1:</strong> How many sequences are there in the <code>salmonella_antigens.fasta</code> file? What are their names?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <div class="toggle">
 <button>
 Hint
 </button>
-<p>Since we know that the each fasta record has a header, and each header starts with a ‘&gt;’. We can use <code>grep ‘&gt;’ salmonella_antigens.fasta</code> to show all the sequence headers in the file. <strong>CAREFUL</strong> - make sure to include the quotation marks around the &gt; in that command, or you will overwrite the contents of <code>salmonella_antigens.fasta</code>.</p>
+<p>Since we know that each fasta record has a header, and each header starts with a ‘&gt;’. We can use <code>grep ‘&gt;’ salmonella_antigens.fasta</code> to show all the sequence headers in the file. <strong>CAREFUL</strong> - make sure to include the quotation marks around the &gt; in that command, or you will overwrite the contents of <code>salmonella_antigens.fasta</code>.</p>
 </div>
 <p><br></p>
+<p>3.1. Now, we can BLAST our query against the database we just made. Note that we use <code>blastn</code> here as we are comparing nucleotides. Run</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">blastn</span> -help</code></pre></div>
+<p><strong>Question 2:</strong> Look at the <code>*** Formatting options</code> section of the <code>blastn -help</code> output. We are going to load our data into Excel; which do you think is the most suitable <code>-outfmt</code> option to use?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<ol start="3" style="list-style-type: decimal">
-<li>Then, we can BLAST our query against the database we just made. Note that we use <code>blastn</code> here as we are comparing nucleotides.</li>
-</ol>
-<p>3.1. Run</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">blastn</span> -help</a></code></pre></div>
-<p><strong>Q2. Look at the <code>*** Formatting options</code> section of the <code>blastn -help</code> output. We are going to load our data into Excel; which do you think is the most suitable <code>-outfmt</code> option to use?</strong></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p>3.2. Run</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">blastn</span> -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1_vs_salmonella_antigens.tsv</a></code></pre></div>
-<p>where XXX is the outfmt option you chose in question 3.1</p>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>If you aren’t sure which is the best format, move onto section 3.2 and experiment with different -outfmt options.</p>
+</div>
+<p><br></p>
+<p>3.2. Now we are going to run our first BLAST. Enter the below command, where XXX is the outfmt option you chose in section 3.1</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">blastn</span> -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1_vs_salmonella_antigens.tsv</code></pre></div>
 <p>3.3. Then, examine the output file using <code>head</code></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="fu">head</span> Salm_1_vs_salmonella_antigens.tsv</a></code></pre></div>
-<p><strong>Q3. How many columns does the output have?</strong></p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">head</span> Salm_1_vs_salmonella_antigens.tsv</code></pre></div>
+<p><strong>Question 3:</strong> How many columns does the output have?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q4. How many lines of the file has <code>head</code> shown you? How do you only show the top 4 lines of the file?</strong></p>
+<p><strong>Question 4:</strong> How many lines of the file has <code>head</code> shown you? How do you only show the top 4 lines of the file?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <div class="toggle">
 <button>
 Hint
 </button>
-<p><a href="http://www.letmegooglethat.com/?q=how+do+i+increase+the+number+of+lines+shown+by+head+linux">Google it!</a></p>
+<p>Run <code>head --help</code> for more info.</p>
 </div>
 <p><br></p>
+<p><strong>Question 5:</strong> What is separating the columns?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<strong>Q5. What is separating the columns?</strong>
 <div class="toggle">
 <button>
 Hint
@@ -424,9 +523,8 @@ Hint
 <p>What does the T in tsv stand for?</p>
 </div>
 <p><br></p>
+<p><strong>Question 6:</strong> What happens if you run the command without the <code>-outfmt</code> option, or with different <code>-outfmt</code> options?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p>3.4. Run the blastn command without including the <code>-outfmt</code> option</p>
-<p><strong>Q6. What happens if you run the command without the <code>-outfmt</code> option, or with different <code>-outfmt</code> options?</strong></p>
 <div class="toggle">
 <button>
 Hint
@@ -434,13 +532,12 @@ Hint
 <p>Run the command with different outfmt options and look at the output file using <code>head</code> or <code>cat</code>.</p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p>3.5. Run blastn for each genome against the</p>
-<p>3.6. Make sure that each of your output files (e.g. <code>Salm_1_vs_salmonella_antigens.tsv</code>) is in the best format for viewing in Excel before proceeding.</p>
-<p><strong>Q7. What kind of <code>blast</code> would we do if we were comparing proteins against <code>Salm_1.fasta</code>? What kind of BLAST would we do if we were comparing <code>salmonella_antigens.fasta</code> against <code>Salm_1.fasta</code>?</strong></p>
+<p>3.4. Run blastn for each genome against the <code>salmonella_antigens.fasta</code> database. Remember to change the name of the</p>
+<p>3.5. Make sure that each of your output files (e.g. <code>Salm_1_vs_salmonella_antigens.tsv</code>) is in the best format for viewing in Excel before proceeding.</p>
+<p><strong>Question 7:</strong> What kind of <code>blast</code> would we do if we were comparing proteins against <code>Salm_1.fasta</code>? What kind of BLAST would we do if we were comparing <code>salmonella_antigens.fasta</code> against <code>Salm_1.fasta</code>?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <ol start="4" style="list-style-type: decimal">
-<li>Now, we are going to look at the BLAST output using Excel. For this, the output files (e.g. <code>Salm_1_vs_salmonella_antigens.tsv</code>) need to be on your local computer rather than your CLIMB instance.</li>
+<li>Now, we are going to look at the BLAST output using Excel. For this, the output files (e.g. <code>Salm_1_vs_salmonella_antigens.tsv</code>) need to be on your local computer rather than your CLIMB instance.</li>
 </ol>
 <p>4.1. Use Filezilla to move the output files onto your local computer and open them one at a time using Excel.</p>
 <p>4.2. You might notice that <code>blastn</code> does not include column names in the output, these are the column headings, paste them into row 1 in Excel.</p>
@@ -496,7 +593,8 @@ Hint
 <p>If you are having trouble with changing the orientation of the headers, use Paste Special -&gt; transpose in Excel.</p>
 </div>
 <p><br></p>
-<p><strong>Q8 What do the different column headings mean?</strong></p>
+<p><strong>Question 8:</strong> What do the different column headings mean?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <div class="toggle">
 <button>
 Hint
@@ -504,17 +602,17 @@ Hint
 <p>Use Google to find out. For example, <a href="http://www.metagenomics.wiki/tools/blast/blastn-output-format-6">here</a> or <a href="https://www.ncbi.nlm.nih.gov/books/NBK279690/">here</a></p>
 </div>
 <p><br></p>
+<p><strong>Question 9:</strong> How many BLAST hits are there for <code>Salm_1</code> vs `salmonella_antigens?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q9. How many BLAST hits are there for <code>Salm_1</code> vs `salmonella_antigens?</strong></p>
+<p><strong>Question 10:</strong> Look at the help for <code>blastn</code>, can you figure out some additional command line parameters you could enter which would reduce the number of results you have to look at? What are the potential downsides of applying these additional parameters?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q10. Look at the help for <code>blastn</code>, can you figure out some additional command line parameters you could enter which would reduce the number of results you have to look at? What are the potential downsides of applying these additional parameters?</strong></p>
+<p><strong>Question 11:</strong> Which is the best column to sort by so that you see the best hits first? Sort the data by this column.</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q11. Which is the best column to sort by so that you see the best hits first? Sort the data by this column.</strong></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q12. There are multiple different alleles of <code>fljB</code> and <code>fliC</code> in the BLAST database. Look at your BLAST results to identify the best fljB and fliC hits for each genome, and then lookup those alleles in the Salmonella Serotypes excel file to identify the serotype of each genome. Do this for all 6 genomes.</strong></p>
+<p><strong>Question 12:</strong> There are multiple different alleles of <em>fljB</em> and <em>fliC</em> in the BLAST database. Look at your BLAST results to identify the best fljB and fliC hits for each genome, and then lookup those alleles in the Salmonella Serotypes excel file to identify the serotype of each genome. Do this for all 6 genomes.</p>
 <div class="alert alert-info">
-<p>Reminder: fliC is H1 and fljB is H2.</p>
+<p>Reminder: <em>fliC</em> is H1 and <em>fljB</em> is H2.</p>
 </div>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <div class="toggle">
 <button>
 Hint
@@ -522,21 +620,34 @@ Hint
 <p>One of the genomes might not have both H1 and H2.</p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <ol start="6" style="list-style-type: decimal">
-<li>Take the BLAST results for one of the genomes, e.g. Salm_6. Filter the BLAST results so that only hits where the subject was either the ‘best’ <code>fljB</code> or ‘best’ <code>fliC</code>. You should have <code>6</code> blast hits.</li>
+<li>Take the BLAST results for Salm_6. Filter the BLAST results so that only hits where the subject was either the ‘best’ <code>fljB</code> or ‘best’ <code>fliC</code>. You should have <code>6</code> blast hits.</li>
 </ol>
-<p><strong>Q13. Why are there 6 results? Hint1: Look at the query start and query end values for the <code>fljB</code> and <code>fliC</code> hits.</strong></p>
+<p><strong>Question 13:</strong> Why are there 6 results?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <div class="toggle">
 <button>
 Hint
 </button>
-<p>There is an area of sequence similarity between <code>fljB</code> and <code>fliC</code>.</p>
+<p>Look at the query start and query end values for the <code>fljB</code> and <code>fliC</code> hits.</p>
 </div>
 <p><br></p>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>There is an area of sequence similarity between <em>fljB</em> and <em>fliC</em>.</p>
+</div>
+<p><br></p>
+<p><strong>Question 14:</strong> What is another way you could tell which serotype the genomes are? The above method, looking at the genes which determine the serotype could be described as the ‘biologist’ way of serotyping from the genome, what might the ‘computer scientist/bioinformatician’ way be?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q14. What is another way you could tell which serotype the genomes are? The above method, looking at the genes which determine the serotype could be described as the ‘biologist’ way of serotyping from the genome, what might the ‘computer scientist/bioinformatician’ way be?</strong></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>If a biologist uses the genes underlying a ‘traditional’ microbiological property like antigenic structure to identify the serotype, what might someone who knows nothing about the genes underlying the phenotype do?</p>
+</div>
+<p><br></p>
 </div>
 <div id="exercise-2" class="section level1 unnumbered">
 <h1>Exercise 2</h1>
@@ -544,7 +655,8 @@ Hint
 <ol style="list-style-type: decimal">
 <li>You will start by carrying out some basic data exploration on the command line of your remote instance. Locate the files in <code>OTN_bioinfx/Day3/AM/Salmonella_graph_genome_exercise</code>.</li>
 </ol>
-<p><strong>Q1. What are the longest and shortest sequences in <code>genes_and_plasmids.fasta</code>?</strong></p>
+<p><strong>Question 1:</strong> What are the longest and shortest sequences in <code>genes_and_plasmids.fasta</code>?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <div class="toggle">
 <button>
 Hint
@@ -552,10 +664,10 @@ Hint
 <p>Use google to tell you how to do this. <a href="https://www.biostars.org/p/118954/#119009">this answer</a> works well</p>
 </div>
 <p><br></p>
+<p><strong>Question 2:</strong> What are the differences between the sequences which have a name beginning with ‘p’ (i.e. lowercase p) and those which don’t?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q2. What are the differences between the sequences which have a name beginning with ‘p’ (i.e. lowercase p) and those which don’t?</strong></p>
+<p><strong>Question 3:</strong> Either using Google or your microbiology knowledge, which genes in the file are typically plasmid-borne and which are typically chromosomal?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q3. Either using Google or your microbiology knowledge, which genes in the file are typically plasmid-borne and which are typically chromosomal?</strong></p>
 <div class="toggle">
 <button>
 Hint
@@ -563,14 +675,14 @@ Hint
 <p>Use <code>grep ‘&gt;’ genes_and_plasmids.fasta</code> or the output of bioawk from above, to find the names of the sequences in the file.</p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Using filezilla, download the 3 FASTG files and genes_and_plasmids.fasta from <code>Day3/AM/Salmonella_graph_genome_exercise</code> to your local computer</p></li>
+<li><p>Using filezilla, download the 3 FASTG files and genes_and_plasmids.fasta from <code>/home/ubuntu/data/day-3/blast-practical</code> to your local computer</p></li>
 <li><p>Load the first sample into Bandage following the instructions from the <a href="https://github.com/rrwick/Bandage/wiki/Getting-started#load-a-graph">Bandage github page</a></p></li>
 </ol>
-<p><strong>Q4. What are the characteristics of this assembly?</strong></p>
+<p><strong>Question 4:</strong> What are the characteristics of this assembly?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q5. Do you think the assembly used an appropriate range of k-mer sizes? What other datasets do we need to get a better answer to this question?</strong></p>
+<p><strong>Question 5:</strong> Do you think the assembly used an appropriate range of k-mer sizes? What other datasets do we need to get a better answer to this question?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <div class="toggle">
 <button>
 Hint
@@ -578,14 +690,15 @@ Hint
 <p>Look at <a href="https://github.com/rrwick/Bandage/wiki/Effect-of-kmer-size">this</a></p>
 </div>
 <p><br></p>
+<p><strong>Question 6:</strong> Can you see any sequences which look like they could be plasmids?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q6 Can you see any sequences which look like they could be plasmids?</strong></p>
 <ol start="6" style="list-style-type: decimal">
 <li><p>Prepare the FASTG file for BLAST analysis by following the instructions from <a href="https://github.com/rrwick/Bandage/wiki/BLAST-searches">here</a></p></li>
 <li><p>BLAST the <code>genes_and_plasmids.fasta</code> against the genome loaded into Bandage. You can reduce the view to include only blast hits by changing the ‘scope’ drop down in the ‘graph drawing’ section, select ‘around blast hits’, change the distance to e.g. 2 or 3, and click draw graph. The distance controls how many contigs will be included in the view. Setting distance to 3 means that all contigs which are within 2 or 3 ‘jumps’ of a contig with a blast hit will be included. Experiment with this parameter to see what effect having it at e.g. 0 and 10 has.</p></li>
 <li><p>Inspect the genome graph and the BLAST hits, explore the different options Bandage has for ‘scope’, zoom in and out, Node labels, Font etc.</p></li>
 </ol>
-<p><strong>Q7 For each genome, which plasmids and AMR genes are present in the sample?</strong></p>
+<p><strong>Question 7:</strong> For each genome, which plasmids and AMR genes are present in the sample?</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 <div class="toggle">
 <button>
 Hint
@@ -593,9 +706,9 @@ Hint
 <p>It might be easier to view the BLAST results via the ‘Create/view BLAST search results’</p>
 </div>
 <p><br></p>
+<p><strong>Question 8:</strong> If a plasmid is present, what does the ‘depth’ node label (combined with the graph structure) tell you about repeat sections in the plasmid?</p>
+<p><strong>Question 9:</strong> In the assembly SRR5451253, what is interesting about the CTX-M15 encoding gene?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Q8 If a plasmid is present, what does the ‘depth’ node label (combined with the graph structure) tell you about repeat sections in the plasmid?</strong></p>
-<p><strong>Q9. In the assembly SRR5451253, what is interesting about the CTX-M15 encoding gene?</strong></p>
 <div class="toggle">
 <button>
 Hint
@@ -603,8 +716,7 @@ Hint
 <p>blast every contig linked to the contig which encodes ctx-M15, you can do this by copying the node sequence or by using BLAST directly through Bandage via the Output tab.</p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
-<p><strong>Bonus question Q10: why do you think OmpD is included in the genes_and_plasmids.fasta?</strong></p>
+<p><strong>Bonus Question 10:</strong> why do you think OmpD is included in the genes_and_plasmids.fasta?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
 </div>
 <div id="bonus-exercise" class="section level1 unnumbered">

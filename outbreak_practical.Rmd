@@ -2,20 +2,8 @@
 title: "Outbreak practical"
 author: "Philip Ashton"
 date: '`r format(Sys.time(), "%d %B, %Y")`'
-output:
-        html_document:
-                css: style.css
-                theme: cerulean
-                number_sections: yes
-                fig_width: 7
-                fig_height: 6
-                fig_caption: yes
-                self_contained: yes
-                smart: no
-        pdf_document:
-                toc: yes
-                number_sections: no
 ---
+
 <style>
 body {
 text-align: justify}
