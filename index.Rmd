@@ -4,13 +4,13 @@ date: '`r format(Sys.time(), "%d %B, %Y")`'
                 
 ---
 
-# Introduction
+# Introduction {-}
 
 This is the website for the OUCRU-MORU bioinformatics workshop. 
 This course is intended to take total beginners in bioinformatics and give them a grounding in the fundamentals. 
 By the end of the 5 day course, participants should be able to work on the command line and run and interpret some fundamental bioinformatics software.
 
-# Course content
+# Course content {-}
 
 **Day 1**
 
@@ -52,4 +52,4 @@ AM - Group presentations; you will be divided into teams and have to design a bi
 
 PM - free time to talk to instructors about bioinformatics approaches to take with your own datasets or biological questions
 
-# Notice
+# Notice {-}
