@@ -87,9 +87,9 @@ Which assembly do you think is better?
 
 We can also assess our assemblies by looking at the assembly graph. The assembly graph represents the assembly of the genome as a series of nodes and edges, showing regions which can be easily assembled and areas where there were multiple possibilities for assembly which have been resolved by the assembler. We will use a tool called Bandage for this. Bandage is a graphical tool so we will need to transfer the assembly graph files to the local computer and inspect them there.
 
-Open the program Bandage. Go to `File...` menu > `Load Graph` and open the `assembly_graph.fastg` file which is already in the local directory. Once it is loaded push the "draw graph" button in the Graph Drawing menu. 
+Open the program Bandage. Go to `File...` menu > `Load Graph` and open the `assembly_graph.fastg` file which is already in the local directory. Once it is loaded push the `Draw graph` button in the `Graph Drawing` menu. 
 
-![](images/drawgraph.png)
+<center>![](images/drawgraph.png)</center>
 
 **Question 5:** How many completely separate assembly graphs have been drawn? Why could you have multiple disconnected graphs?
 
@@ -97,7 +97,7 @@ Open the program Bandage. Go to `File...` menu > `Load Graph` and open the `asse
 
 To investigate this further, colour in your graph according to the depth of coverage of each node. To do this, change `Random colours` to `Colour by depth` in the menu under `Graph Display`. The nodes are coloured from red to black, with higher coverage in red. 
 
-![](images/colourbydepth.png)
+<center>![](images/colourbydepth.png)</center>
 
 **Question 6:** What do you notice about the colour of the short nodes and the long nodes in the chromosome graph? Why might this be?
 
