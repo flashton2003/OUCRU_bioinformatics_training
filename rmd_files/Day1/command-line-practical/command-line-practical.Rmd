@@ -7,6 +7,7 @@ output:
         html_document:
                 css: style.css
                 theme: cerulean
+                highlight: tango
                 toc: yes
                 toc_depth: 1
                 number_sections: yes

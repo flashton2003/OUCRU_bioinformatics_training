@@ -128,6 +128,24 @@ Now look at a insertion variant. There is one in the sirA gene. Navigate to this
 
 **Q9: How is the insertion in the reads marked on the browser? What effect will this have on the genome positions for features in this strain?**
 
+# Exercise 3 {-}
+
+Lastly, we will look at larger genome rearrangements of the mutant strain versus the wildtype. We have already assembled the genome of the mutant strain into a file called `mutant_contigs.fna`. This was assembled using `spades` in the same way you learned in the assembly practical.
+
+Move the `mutant_contigs.fna` and `wildtype.fna` files to your local computer using FileZilla.
+
+Now we will align the two genomes with a program called `mauve`. `mauve` looks for conserved blocks between genomes, and by looking at where these blocks differ between genomes, we can see where parts of the genome have been rearranged between strains.
+
+Open the `mauve` program on your local computer and go to "File" -> "Align with progressiveMauve". In the dialogue box which opens up, go to "Add sequences" and select the file for the wildtype genome, and then again to select the file for the mutant genome. 
+
+Then you need to give it an output file - click on the "..." next to output and give a directory and filename.
+
+You are now ready to click "Align...". This will take a few seconds and you will be shown the output with coloured blocks in the wildtype and mutant genomes. Each block represents a piece of the genome conserved between the two strains, and the placement above or below the horizontal line shows whether it is a positive or negative strand block. 
+
+**Q10: There is a region of the genome which is deleted in the mutant strain. Can you give the approximate positions of this region in the wildtype genome?**
+
+**Q11: There is a rearrangement which has inverted part of the mutant strain. Can you give the approximate locations of this inversion?**
+
 <script>
   $(".toggle").click(function() {
     $(this).toggleClass("open");

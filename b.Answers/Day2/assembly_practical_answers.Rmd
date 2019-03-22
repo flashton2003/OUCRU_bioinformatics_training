@@ -4,7 +4,7 @@ Q1. 100bp.
 
 Q2. 4.
 
-Q3. The kmers used are k21, k33, and k55.
+Q3. 3.12.0
 
 **Exercise 2**
 Q4. 50 and 45 contigs, n50 of 102703kb and 166277kb
