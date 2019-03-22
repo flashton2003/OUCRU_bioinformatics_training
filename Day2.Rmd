@@ -6,4 +6,4 @@ Introduction of Day 2
 
 * Lectures
 * [Assembly practical](assembly-practical.html)
-* [Sequenc QC](sequenceqc-practical.html)
+* [Sequence QC](sequenceqc-practical.html)
