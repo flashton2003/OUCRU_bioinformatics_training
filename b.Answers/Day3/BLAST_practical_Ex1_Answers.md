@@ -22,7 +22,7 @@ Q10. You could filter by e-value `-evalue 1e-5` or `-evalue 0.00001`, but you mi
 
 Q11. The best column to sort by is bitscore as more discriminatory than e-value.
 
-Q12. See ‘salmonella serotypes - answers’ excel file.
+Q12. Salmonella 1 is Mbandaka, Salmonella 2 is Braenderup, Salmonella 3 is Colindale, Salmonella 4 is Stanley, Salmonella 5 is Typhi, Salmonella 6 is Typhimurium.
 
 Q13. You see multiple hits because `fljB` hits against `fliC` and vice versa because these two proteins have homologous areas.
 
