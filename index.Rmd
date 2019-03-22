@@ -1,11 +1,46 @@
 ---
-title: "MORU-OUCRU bioinformatics workshop"
+title: "OUCRU-MORU bioinformatics workshop"
 date: '`r format(Sys.time(), "%d %B, %Y")`'
                 
 ---
 
 # Introduction
 
+This is the website for the OUCRU-MORU bioinformatics workshop. 
+This course is intended to take total beginners in bioinformatics and give them a grounding in the fundamentals. 
+By the end of the 5 day course, participants should be able to work on the command line and run and interpret some fundamental bioinformatics software.
+
 # Course content
+
+Day 1
+
+AM - Intro to genome sequencing, file formats and CLIMB
+Lunch time - Draw your career path
+PM - Command line practical
+
+Day 2
+
+AM - Sequence Quality control, speciation
+11.30am - Break for OUCRU academic meeting
+PM - Genome assembly
+
+Day 3
+
+AM - BLAST
+11.30am - Break for OUCRU academic meeting - Prof Seemann
+Post-lunch seminar - Trung Nguyen Vinh
+PM - Annotation, visualisation, core/pan genome analysis
+
+Day 4
+
+AM - Alignment and variant calling
+Post-lunch seminar - Hao Chung The
+PM - Phylogenetics and outbreak investigation, viruses
+
+Day 5
+
+AM - Group presentations; you will be divided into teams and have to design a bioinformatics strategy to solve a specific microbiological question, and then present back to the whole group
+12.30pm - OUCRU Academic meeting
+PM - free time to talk to instructors about bioinformatics approaches to take with your own datasets or biological questions
 
 # Notice
