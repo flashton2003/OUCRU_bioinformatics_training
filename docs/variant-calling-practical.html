@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Liz Batty" />
+
+
+<title>Alignment and variant calling practical</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">OUCRU-MORU bioinformatics workshop</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="command-line-practical.html">Day 1</a>
+</li>
+<li>
+  <a href="assembly-practical.html">Day 2</a>
+</li>
+<li>
+  <a href="BLAST_practical.html">Day 3</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Alignment and variant calling practical</h1>
+<h4 class="author"><em>Liz Batty</em></h4>
+<h4 class="date"><em>22 March, 2019</em></h4>
+
+</div>
+
+
+<style>
+body {
+text-align: justify}
+</style>
+<div id="learning-objectives" class="section level1 unnumbered">
+<h1>Learning objectives</h1>
+<ol style="list-style-type: decimal">
+<li>Understand alignment of reads to a reference genome</li>
+<li>Understand SNP and indel calling from an alignment</li>
+<li>Understand how to visualise alignments and SNP calls</li>
+</ol>
+<p>In this practical we will be looking at variant calling by taking reads from a strain of interest and aligning them to a reference genome to identify differences between our strain and the reference. The tool we will use to perform alignment and SNP calling is called Snippy. This provides a straightforward way to run multiple alignment and variant calling programs with a single command line.</p>
+</div>
+<div id="exercise-1" class="section level1 unnumbered">
+<h1>Exercise 1</h1>
+<p>Navigate to the directory with the variant calling example:</p>
+<p><code>/home/ubuntu/data/day-4/variant-calling-practical</code></p>
+<p>In here you will find part of a <em>Staphyloccocus aureus</em> reference genome, and the paired-end reads from an Illumina run of a different <em>Staphylococcus aureus</em> strain. We will use the tool <code>Snippy</code> to look for SNP, indels and rearrangements between the reference strain and our mutant strain.</p>
+<p>Run the following Snippy command line:</p>
+<p><code>snippy --outdir varcall --ref wildtype.gbk -R1 mutant_R1.fastq -R2 mutant_R2.fastq</code></p>
+<p>This should take only a few seconds. The output files will all be in the <code>varcall</code> directory. Navigate to this directory and look at the Snippy output files.</p>
+<p><strong>Q1: which file extensions do you recognise? Do you know what type of data will be in each file?</strong></p>
+<p>The <code>snps.bam</code> file contains the alignments of the reads in the fastq files against the reference genome. We will use a tool called <code>samtools</code> to look at the alignments and get some statistics about the alignment.</p>
+<p>From the varcall directory, run the following command: <code>samtools view -H snps.bam</code></p>
+<p>This will show you the headers of the BAM file. These headers give you important information about the reads in the file, the reference genome, and how the file was generated.</p>
+<p><strong>Q2: can you look at the headers and determine how long the reference genome is?</strong></p>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>Use <a href="https://www.samformat.info/sam-format-header" class="uri">https://www.samformat.info/sam-format-header</a> to help you work out what to look at.</p>
+</div>
+<p><br></p>
+<p>Now we will use the samtools flagstat command to get some basic statistics about the alignment of reads to the genome. Run the following command:</p>
+<p><code>samtools flagstat snps.bam</code></p>
+<p><strong>Q3: How many reads are there in total? What percentage of them have been aligned to the reference?</strong></p>
+<p>The snps.txt file has a summary of the variants called in this strain against the reference.</p>
+<p><strong>Q4: How many variants were called? How many of them are deletions, insertions, multinucleotide polymorphisms (MNPs), and single nucleotide polymorphisms (SNPs)?</strong></p>
+<p>You can look in more detail at the variant call in the snps.vcf file. This is a Variant Call Format file which has a standard set of information about each variant.</p>
+<p>As part of the Snippy variant calling process, it annotates the variants which are in genes with the functional consequences of the variant. To add functional annotation to the variants, we need to provide a reference genome which has gene annotations. This is provided in the <code>wildtype.gbk</code> file in the <code>variant_calling</code> directory.</p>
+<p>Open the <code>wildtype.gbk</code> file and look at the gene annotations in the file. This is a Genbank-format file, which has a CDS entry for every coding sequence in the file with the gene name, the start and end positions on the reference genome, and a description of the protein product the gene produces.</p>
+<p><strong>Q5: what are the start and end positions of the dnaC gene?</strong></p>
+<p>Using the Genbank file, Snippy has added annotations to all the variants which fall inside a gene. You can see these in the file snps.csv.</p>
+<strong>Q6: how many of the variants are within a gene?</strong>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>If they fall outside a gene, there will be no information in the last 8 columns of the table.</p>
+</div>
+<p><br></p>
+</div>
+<div id="exercise-2" class="section level1 unnumbered">
+<h1>Exercise 2</h1>
+<p>Now we will take a deeper look at how Snippy uses the read alignments to call a variant. Navigate to the desktop and open the program Tablet. This is an alignment viewer which allows you to open the BAM file and see the read alignments.</p>
+<p>Click on “Import an assembly into Tablet” under the “Getting Started” header. Under “Primary assembly file” select the snps.bam file in the data directory. Under “Secondary assembly file” select the wildtype.fna file. Now click “Open”. You will see a sidebar with the heading “Contigs: 1”. Click on the contig “Wildtype”. This will load the alignment. When the alignment has loaded, click on “Import Features” under “Home” and select the wildtype.gff file.</p>
+<p>In the alignment window, the top bars show an overview of the whole genome and the region you are looking at right now. Underneath this you can also see the reference genome (nucleotides and codons in genes), the locations of annotated coding sequences and RNA genes, and the coverage of reads at each position. Below these you can see the reads, with one row representing a sequence read.</p>
+<p><img src="images/tablet.jpg" /></p>
+<p>Try the different features available in Tablet to look at your alignment.</p>
+<strong>Q7: Colour the reads by the type of read. What does “type” mean in this case?</strong>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>Under “Colour Schemes”, select " Read Type".</p>
+</div>
+<p><br></p>
+<p>Now we want to investigate the variants called by Snippy on our alignment viewer. To make this easier, we will colour in the positions where the bases in the reads vary from the reference genome. Under the “Visual” section of the “Home” toolbar, select ‘Tag Variants’:</p>
+<p><img src="images/tag_vars.png" /></p>
+<p>The bases which vary from the reference will now be pink, while the bases which match the reference are in grey. You can also adjust the colour balance so that the variant bases stand out:</p>
+<p><img src="images/variant_zoom.png" /></p>
+<p>Note that there are many scattered bases which do not match the reference. Now we will look at a position where we have called a variant. First we will jump to a genome feature where we know there is a variant. Select “Features” in the navigation bar (the blue downward-pointing arrow):</p>
+<p><img src="images/features_arrow.png" /></p>
+<p>And scroll down until you find the mecR1 gene and click on it. This will jump to this region of the genome. You should be able to see the variant at 47299bp as a line of pink bases.</p>
+<p><strong>Q8: Can you count how many reads have the variant base? Do any reads at this position not have the variant base?</strong></p>
+<p>Now look at a insertion variant. There is one in the sirA gene. Navigate to this gene and look at the insertion variant at position 106,722.</p>
+<p><strong>Q9: How is the insertion in the reads marked on the browser? What effect will this have on the genome positions for features in this strain?</strong></p>
+</div>
+<div id="exercise-3" class="section level1 unnumbered">
+<h1>Exercise 3</h1>
+<p>Lastly, we will look at larger genome rearrangements of the mutant strain versus the wildtype. We have already assembled the genome of the mutant strain into a file called <code>mutant_contigs.fna</code>. This was assembled using <code>spades</code> in the same way you learned in the assembly practical.</p>
+<p>Move the <code>mutant_contigs.fna</code> and <code>wildtype.fna</code> files to your local computer using FileZilla.</p>
+<p>Now we will align the two genomes with a program called <code>mauve</code>. <code>mauve</code> looks for conserved blocks between genomes, and by looking at where these blocks differ between genomes, we can see where parts of the genome have been rearranged between strains.</p>
+<p>Open the <code>mauve</code> program on your local computer and go to “File” -&gt; “Align with progressiveMauve”. In the dialogue box which opens up, go to “Add sequences” and select the file for the wildtype genome, and then again to select the file for the mutant genome.</p>
+<p>Then you need to give it an output file - click on the “…” next to output and give a directory and filename.</p>
+<p>You are now ready to click “Align…”. This will take a few seconds and you will be shown the output with coloured blocks in the wildtype and mutant genomes. Each block represents a piece of the genome conserved between the two strains, and the placement above or below the horizontal line shows whether it is a positive or negative strand block.</p>
+<p><strong>Q10: There is a region of the genome which is deleted in the mutant strain. Can you give the approximate positions of this region in the wildtype genome?</strong></p>
+<p><strong>Q11: There is a rearrangement which has inverted part of the mutant strain. Can you give the approximate locations of this inversion?</strong></p>
+<script>
+  $(".toggle").click(function() {
+    $(this).toggleClass("open");
+  });
+</script>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

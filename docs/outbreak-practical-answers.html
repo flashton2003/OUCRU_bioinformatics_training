@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>outbreak-practical-answers.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">OUCRU-MORU bioinformatics workshop</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="command-line-practical.html">Day 1</a>
+</li>
+<li>
+  <a href="assembly-practical.html">Day 2</a>
+</li>
+<li>
+  <a href="BLAST_practical.html">Day 3</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<p><strong>Part 1</strong></p>
+<p>Q1. Because an earthquake will disrupt many basic services like water pipes, and cholera is a water borne disease.</p>
+<p>Q2. <em>V. cholera</em> has two chromosomes</p>
+<p>Q3. There are 3 processes in the command</p>
+<p>Q4. Disty calculates the pairwise SNP distance between all isolates, it outputs a symmetric distance matrix. <code>process_disty_output.py</code> takes the symetric distance matrix and converts it to an upper right distance matrix with one value per line. <code>histogram.py</code> plots a histogram on the command line. Information on <code>disty</code> is <a href="https://github.com/c2-d2/disty">here</a> and histogram.py is <a href="https://github.com/bitly/data_hacks">here</a>. <code>process_disty_output.py</code> is a script I wrote.</p>
+<p>Q5. Median pairwise SNP distance is 61 SNPs. It doesn’t desribe the distribution well because there are three peaks in the distribution.</p>
+<p>Q6. There are three peaks in the distribution, one at low SNP distance (0-10), one at intermediate (50-60) and one at high(ish) (140-151). The low SNP distance pairs represent very closely related isolates, like we might see in an outbreak, the medium and high pairs represent the distance between different clades in the tree, and the population structure within the tree. See picture in outbreak practical directory [TODO].</p>
+<p>Q7. There are 40 samples in the comparison. In the upper-triangular pairwise distance matrix, not including self-self comparisons there are <code>N * (N - 1) / 2</code> comparisons; For <code>N = 40</code> this is <code>40 * 39 / 2 = 780.</code></p>
+<p>Q8. “K3P+ASC chosen according to BIC” Kimura 3 Parameter, and ASC, which stands for ascertainment bias correction. This needs to be applied when only variable sites are being input into the tree. BIC is bayesian information criterion.</p>
+<p>Q9. One. See “BEST NUMBER OF THREADS: 1” in IQTREE log. Because I/O takes time, so it is not always the quickest to divide tasks between different processors.</p>
+<p>Q10. Example tree is <a href="https://microreact.org/project/TuDufF5vs">here</a></p>
+<p>Q11. Yes</p>
+<p>Q12. Not very strong. There is not very much diversity within the outbreak, which will always make it difficult for there to be geographical signal. There is a sub-clade of the outbreak separated by 1 SNP from the others, most of the isolates from northern Haiti are in here, but there are also some isolates from southern Haiti.</p>
+<p>Q13. Nepal</p>
+<p>Q14. Something like “We have put WGS data from the Haitian cholera outbreak into the context of other genomes from global databases. All of the cholera isolates from Haiti formed a single phylogenetic group (were monophyletic), indicating that the outbreak had a clonal origin. In the global dataset, the most closely related genome was from <em>V. cholera</em> isolated in Nepal. This is quite strong evidence that the Haitian outbreak strain shared a recent common ancestor with <em>V. cholera</em> circulating in Nepal. However, it is hard to be confident about these findings based on only a single Nepalese genome. There was not a lot of geographical structure within the genomes from Haiti, suggesting that population movement has resulted in the effacement of phylo-geographical associations. The lack of diversity within the outbreak makes such signal difficult to detect.”</p>
+<p><strong>Part 2</strong></p>
+<p>Q1. <code>-bb 1000</code> ultrafast bootstrapping with 1000 re-samples, means each node in the tree.</p>
+<p>Q2. No, there are some very closely related genomes from Nepal, e.g. SRR308715</p>
+<p>Q3. No. Tells you that there are multiple circulating cholera clones/clades in Nepal.</p>
+<p>Q4. The inferred ancestor of all the <em>V. cholerae</em> in our tree (not the reference genome).</p>
+<p>Q5. Probably not. Adding in bootstraps for a whole genome SNP tree is not very informative. Most branches have high support, shorter branches will have poor support, but this is because they rely on a small number of SNPs. Does this mean those evolutionary relationships are not valid? No. It means we are less certain of them than of a longer branch, but this information is also conferred by branch length. If you have a long branch in a whole genome SNP tree which has poor bootstrap support, that’s a warning flag, you should investigate further</p>
+<p>Q6. We have confirmed that the Haitian outbreak strain shares a recent common ancestor with South Asian/Nepalese genomes. We are now confident that this geographical region is the likely origin of this outbreak.</p>
+<p>Advanced Question 1. (0.0012 / 0.029) * 987 = 41 SNPs</p>
+<p>Advanced Question 2. 34 SNPs. Why is it different? Evolutionary model, measurement error?</p>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

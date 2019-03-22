@@ -1,0 +1,11 @@
+---
+title: "MORU-OUCRU bioinformatics workshop"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+                
+---
+
+# Introduction
+
+# Course content
+
+# Notice
