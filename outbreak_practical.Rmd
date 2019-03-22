@@ -45,7 +45,11 @@ On your CLIMB instance:
 
 * Navigate to `/home/ubuntu/data/day-4/outbreak_practical/dataset1`. 
 
-* Run `ls -lh` in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome for 19 *V. cholera* genomes from Haiti and 21 other *V. cholera* genomes from around the world by `snippy-core`.
+* Run in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome for 19 *V. cholera* genomes from Haiti and 21 other *V. cholera* genomes from around the world by `snippy-core`.
+
+<pre class="bash">
+ls -lh
+</pre>
 
 * Calculate the pairwise SNP distance between all the isolates and plot the distribution as a histogram, using the following command: 
 
@@ -87,7 +91,11 @@ Run the different processes of the command, building up to the full command.
 
 * At this step, you will run IQ-TREE to generate a Maximum Likelihood tree. By default IQ-TREE will also test a wide range of nucleotide substitution models to see which best fits the data. For larger alignments this can be a very time consuming step, so if speed is important, it might make sense to omit this step and use a general model (e.g. GTR). You can find more information about how to run a specific model by looking at `iqtree -h`.
 
-* Now run `iqtree -s dataset1.aln -nt AUTO`
+* Now run the below
+
+<pre class="bash">
+iqtree -s dataset1.aln -nt AUTO
+</pre>
 
 **Question 8:** Read the IQTREE output, which model was selected as the best? What is the full name of the model? I.e. what do the initials stand for?
 
@@ -154,7 +162,10 @@ On your CLIMB instance:
 * Run `ls -lh` in this directory. This directory contains the alignment of all the high quality variable sites found in the core genome for 19 *V. cholerae* genomes from Haiti and 101 other *V. cholerae* genomes from around the world by `snippy-core`. When deciding which genomes to include, we have focussed on isolates from the Indian sub-continent.
 
 * Run IQ-TREE to generate a Maximum Likelihood tree
-`iqtree -s dataset2.aln -nt AUTO -bb 1000` 
+
+<pre class="bash">
+iqtree -s dataset2.aln -nt AUTO -bb 1000
+</pre>
 
 <div class="alert alert-info">
 * Note: It takes around 5 minutes. 
@@ -167,9 +178,10 @@ On your CLIMB instance:
 
 * Then we need to run a couple of commands to convert the tree to a good format to visualise (we will midpoint root the tree and order the nodes to be descending). For this, we will use a custom python script which uses the [ete3](http://etetoolkit.org/docs/latest/index.html) module and the very useful [Newick Utilities](http://cegg.unige.ch/newick_utils) package.
 
-```{bash, eval=FALSE}
+<pre class="bash">
 cat dataset2.aln.treefile | python ~/scripts/midpoint_root_tree.py | nw_order -c n - > dataset2.aln.pretty.tree
-```
+</pre>
+
 The `midpoint_root_tree.py` script is available [here](https://gist.github.com/flashton2003/a2633c40ab683c0a02191344652ba52e).
 
 * On your local machine, download FigTree from [here](https://github.com/rambaut/figtree/releases/download/v1.4.4/FigTree.v1.4.4.zip), and install it.
