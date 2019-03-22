@@ -6,4 +6,4 @@ Introduction of Day 4
 
 * Lectures
 * [Variant calling](variant-calling-practical.html)
-* [Outbreak practical](Outbreak_practical.html)
+* [Outbreak practical](outbreak_practical.html)
