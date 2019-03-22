@@ -26,77 +26,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 
 
-<<<<<<< HEAD
-=======
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  { background-color: #f8f8f8; }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
->>>>>>> cosmetics
 
 
 <style type="text/css">
@@ -394,11 +323,9 @@ text-align: justify}
 <p>Fortunately, in addition to field epidemiologists carrying out shoe-leather investigations in the affected areas, we have WGS of some of the isolates from the outbreak. You are the lead bioinformatician in charge of analysing this data. You need to process and interpret the data, and feedback to the public health doctors in charge of outbreak response to provide them with the fullest picture possible.</p>
 <p>From using Google, or your microbiology knowledge about cholera:</p>
 <p><strong>Question 1:</strong> Why might there be an increase in cholera cases following an event like an earthquake?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Question 2:</strong> What is unusual about the genome of <em>V. cholera</em>?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p>On your CLIMB instance:</p>
 <ul>
 <li><p>Navigate to <code>/home/ubuntu/data/day-4/outbreak_practical/dataset1</code>.</p></li>
@@ -410,15 +337,12 @@ ls -lh
 <ul>
 <li>Calculate the pairwise SNP distance between all the isolates and plot the distribution as a histogram, using the following command:</li>
 </ul>
-
 <pre class="bash">
 disty dataset1.aln | python ~/scripts/process_disty_output.py | histogram.py -b 30 --percentage
 </pre>
-
 <p>The <code>process_disty_output.py</code> script is available <a href="https://gist.github.com/flashton2003/6518a4a877f5a1dae781c75ff02c57a1">here</a>. The <code>histogram.py</code> script is from <a href="https://github.com/bitly/data_hacks">this</a> package.</p>
 <p><strong>Question 3:</strong> How many processes are happening in this command?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <div class="toggle">
 <button>
 Hint
@@ -427,8 +351,7 @@ Hint
 </div>
 <p><br></p>
 <p><strong>Question 4:</strong> What does each stage of the process do?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <div class="toggle">
 <button>
 Hint
@@ -438,14 +361,11 @@ Hint
 <p><br></p>
 <p><strong>Bonus question:</strong> If you know any python, can you figure out what each line of <code>process_disty_output.py</code> is doing?</p>
 <p><strong>Question 5:</strong> What is the median pairwise SNP distance? How well do you think this describes the dataset?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Question 6: </strong> What does the histogram tell you about the relatedness of the samples in your dataset?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Question 7:</strong> Why are there 780 ‘samples’ in the output?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <ul>
 <li><p>At this step, you will run IQ-TREE to generate a Maximum Likelihood tree. By default IQ-TREE will also test a wide range of nucleotide substitution models to see which best fits the data. For larger alignments this can be a very time consuming step, so if speed is important, it might make sense to omit this step and use a general model (e.g. GTR). You can find more information about how to run a specific model by looking at <code>iqtree -h</code>.</p></li>
 <li><p>Now run the below</p></li>
@@ -454,14 +374,12 @@ Hint
 iqtree -s dataset1.aln -nt AUTO
 </pre>
 <p><strong>Question 8:</strong> Read the IQTREE output, which model was selected as the best? What is the full name of the model? I.e. what do the initials stand for?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <div class="alert alert-info">
 <p>The output of IQTREE is available in the file which ends <code>.log</code>.</p>
 </div>
 <p>** Question 9:** How many threads were selected as best? Why might the maximum number of threads not be selected?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <ul>
 <li><p>Download the tree (the file you want is the one which ends in <code>.treefile</code>) to your local computer with <code>Filezilla</code>. You should also download the <code>geog_loc_microreact.csv</code> file. <strong>Change the file extension of the tree file to <code>.nwk</code>.</strong></p></li>
 <li><p>Navigate to <a href="https://microreact.org/upload" class="uri">https://microreact.org/upload</a> and upload the <code>dataset1.aln.nwk</code> file and the <code>geog_loc_microreact.csv</code> file. The microreact interface is hopefully quite intuitive, spend a few minutes becoming familiar with the various options and buttons. Microreact is an ideal way to investigate relationships between phylogeny and geography (aka phylogeographical relationships).</p></li>
@@ -474,8 +392,7 @@ Hint
 <p>They are <strong>most</strong> of the non-black tips.</p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <ul>
 <li>Experiment with the different tree visualisation setting. The different tree settings look like this:</li>
 </ul>
@@ -483,8 +400,7 @@ Hint
 <img src="images/tree_settings.png" />
 </center>
 <p><strong>Question 11:</strong> Are the isolates from Haiti a monophyletic group?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <div class="toggle">
 <button>
 Hint
@@ -493,8 +409,7 @@ Hint
 </div>
 <p><br></p>
 <p><strong>Question 12:</strong> Is there phylogeographical signal in the <em>V. cholerae</em> genomes from <strong>within</strong> Haiti? You will have to zoom in on Haiti to see this. I.e. are the isolates from different regions of Haiti genetically distinct from each other?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <div class="toggle">
 <button>
 Hint
@@ -503,11 +418,9 @@ Hint
 </div>
 <p><br></p>
 <p><strong>Question 13:</strong> Where is the closest neighbour of the Haiti genomes from?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Question 14:</strong> Write a short paragraph, summarising your results for the public health officials.</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 </div>
 <div id="part-2" class="section level1 unnumbered">
 <h1>Part 2</h1>
@@ -529,8 +442,7 @@ iqtree -s dataset2.aln -nt AUTO -bb 1000
 </ul>
 </div>
 <p><strong>Question 1:</strong> What is different between this command and the last time we ran <code>iqtree</code>? What does this option mean?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <ul>
 <li>Then we need to run a couple of commands to convert the tree to a good format to visualise (we will midpoint root the tree and order the nodes to be descending). For this, we will use a custom python script which uses the <a href="http://etetoolkit.org/docs/latest/index.html">ete3</a> module and the very useful <a href="http://cegg.unige.ch/newick_utils">Newick Utilities</a> package.</li>
 </ul>
@@ -544,27 +456,21 @@ cat dataset2.aln.treefile | python ~/scripts/midpoint_root_tree.py | nw_order -c
 <li><p>In <code>FigTree</code>, go to <code>File -&gt; Import annotations</code> in the menu bar, and navigate to the <code>annotation_figtree.txt</code> file. Select this file and press open. Then in the main <code>FigTree</code> window, go to <code>Tip Labels</code>, and in the drop down <code>Display</code> menu, select <code>ANNOT</code>. You should now be able to see tip labels containing information about continent, country and year on the tree.</p></li>
 </ul>
 <p><strong>Question 2:</strong> <code>SRR308716</code> was the most closely related non-Haitian genome to the Haiti outbreak strains in <code>dataset1</code>. Is it still the most closely related genome?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Question 3:</strong> Do all the genomes from Nepal form a monophyletic group? What does this tell you about cholera in Nepal?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Question 4:</strong> What does the root of the tree represent?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <ul>
 <li>On the lefthand side of the <code>Figtree</code> interface, tick the box which says ‘Node labels’, click the arrow to enable you to select ‘label’ from the dropdown <code>Display</code> menu. This will place the bootstraps on the nodes of the tree.</li>
 </ul>
 <p><strong>Question 5:</strong> Does adding in the bootstraps alter your interpretation at all?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Question 6:</strong> What is the impact of this extra context on your report to the public health doctors? Write a short paragraph reporting your new findings.</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <p><strong>Extra task:</strong> Use the <code>phandango</code> tool to visualise the meta-data in a more interesting way. Navigate to <a href="https://jameshadfield.github.io/phandango/#/">here</a>. And drag and drop your tree and the <code>annotation_phandango.csv</code> file onto the web page. Pressing <code>k</code> will bring up the key. Further instructions are <a href="https://github.com/jameshadfield/phandango/wiki">here</a>.</p>
 <p><strong>Advanced question 1:</strong> Using the phylogenetic tree, estimate the SNP distance between <code>SRR308691</code> and <code>SRR308715</code>. A piece of paper might help you estimate the distance between the two tips. Remember you have to go from one tip, down to the MRCA, back to the other tip. Only ‘horizontal’ distance (if you are viewing the tree in rectangular format) counts. The other information you need to calculate this is the tree length, which is 0.029 (from IQTREE log) and the alignment length, which is 987 bp (calculated by <code>bioawk -c fastx '{ print $name, length($seq) }' &lt; dataset2.aln</code>).</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <div class="toggle">
 <button>
 Hint
@@ -573,8 +479,7 @@ Hint
 </div>
 <p><br></p>
 <p><strong>Advanced question 2:</strong> How does this compare with <code>disty</code>?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 <div class="toggle">
 <button>
 Hint

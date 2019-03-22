@@ -1,5 +1,5 @@
 ---
-title: "Day4"
+title: "Day 4"
 ---
 
 Schedule of Day 4
