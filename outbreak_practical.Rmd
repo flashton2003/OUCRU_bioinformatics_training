@@ -35,11 +35,11 @@ From using Google, or your microbiology knowledge about cholera:
 
 **Question 1:** Why might there be an increase in cholera cases following an event like an earthquake?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 **Question 2:** What is unusual about the genome of *V. cholera*?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 On your CLIMB instance:
 
@@ -61,7 +61,7 @@ The `process_disty_output.py` script is available [here](https://gist.github.com
 
 **Question 3:** How many processes are happening in this command? 
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <div class="toggle"><button>Hint</button>
 The `|` character is the unix command for ‘piping’ data between different processes.
@@ -69,7 +69,7 @@ The `|` character is the unix command for ‘piping’ data between different pr
 
 **Question 4:** What does each stage of the process do? 
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <div class="toggle"><button>Hint</button>
 Run the different processes of the command, building up to the full command.
@@ -79,15 +79,15 @@ Run the different processes of the command, building up to the full command.
 
 **Question 5:** What is the median pairwise SNP distance? How well do you think this describes the dataset?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 **Question 6: ** What does the histogram tell you about the relatedness of the samples in your dataset?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 **Question 7:**  Why are there 780 ‘samples’ in the output?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 * At this step, you will run IQ-TREE to generate a Maximum Likelihood tree. By default IQ-TREE will also test a wide range of nucleotide substitution models to see which best fits the data. For larger alignments this can be a very time consuming step, so if speed is important, it might make sense to omit this step and use a general model (e.g. GTR). You can find more information about how to run a specific model by looking at `iqtree -h`.
 
@@ -99,7 +99,7 @@ iqtree -s dataset1.aln -nt AUTO
 
 **Question 8:** Read the IQTREE output, which model was selected as the best? What is the full name of the model? I.e. what do the initials stand for?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <div class="alert alert-info">
 The output of IQTREE is available in the file which ends `.log`.
@@ -107,7 +107,7 @@ The output of IQTREE is available in the file which ends `.log`.
 
 ** Question 9:** How many threads were selected as best? Why might the maximum number of threads not be selected?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 * Download the tree (the file you want is the one which ends in `.treefile`) to your local computer with `Filezilla`. You should also download the `geog_loc_microreact.csv` file. **Change the file extension of the tree file to `.nwk`.**
 
@@ -119,7 +119,7 @@ The output of IQTREE is available in the file which ends `.log`.
 They are **most** of the non-black tips.
 </div><br>
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 * Experiment with the different tree visualisation setting. The different tree settings look like this:
 
@@ -127,7 +127,7 @@ They are **most** of the non-black tips.
 
 **Question 11:** Are the isolates from Haiti a monophyletic group?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <div class="toggle"><button>Hint</button>
 Remember - a monophyletic group is a group which consists of all the descendents of a common ancestor.
@@ -135,7 +135,7 @@ Remember - a monophyletic group is a group which consists of all the descendents
 
 **Question 12:** Is there phylogeographical signal in the *V. cholerae* genomes from **within** Haiti? You will have to zoom in on Haiti to see this. I.e. are the isolates from different regions of Haiti genetically distinct from each other?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <div class="toggle"><button>Hint</button>
 You can think of this another way, looking at the data, if you were given another Haitian isolate with no geographical information, how confident would you be in your prediction of it’s geographic origin?
@@ -143,11 +143,11 @@ You can think of this another way, looking at the data, if you were given anothe
 
 **Question 13:** Where is the closest neighbour of the Haiti genomes from?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 **Question 14:** Write a short paragraph, summarising your results for the public health officials.
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 # Part 2 {-}
 
@@ -174,7 +174,7 @@ iqtree -s dataset2.aln -nt AUTO -bb 1000
 
 **Question 1:** What is different between this command and the last time we ran `iqtree`? What does this option mean?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 * Then we need to run a couple of commands to convert the tree to a good format to visualise (we will midpoint root the tree and order the nodes to be descending). For this, we will use a custom python script which uses the [ete3](http://etetoolkit.org/docs/latest/index.html) module and the very useful [Newick Utilities](http://cegg.unige.ch/newick_utils) package.
 
@@ -192,31 +192,31 @@ The `midpoint_root_tree.py` script is available [here](https://gist.github.com/f
 
 **Question 2:** `SRR308716` was the most closely related non-Haitian genome to the Haiti outbreak strains in `dataset1`. Is it still the most closely related genome?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 **Question 3:** Do all the genomes from Nepal form a monophyletic group? What does this tell you about cholera in Nepal?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 **Question 4:** What does the root of the tree represent?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 * On the lefthand side of the `Figtree` interface, tick the box which says 'Node labels', click the arrow to enable you to select 'label' from the dropdown `Display` menu. This will place the bootstraps on the nodes of the tree.
 
 **Question 5:** Does adding in the bootstraps alter your interpretation at all?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 **Question 6:**  What is the impact of this extra context on your report to the public health doctors? Write a short paragraph reporting your new findings.
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 **Extra task:**  Use the `phandango` tool to visualise the meta-data in a more interesting way. Navigate to [here](https://jameshadfield.github.io/phandango/#/). And drag and drop your tree and the `annotation_phandango.csv` file onto the web page. Pressing `k` will bring up the key. Further instructions are [here](https://github.com/jameshadfield/phandango/wiki).
 
 **Advanced question 1:** Using the phylogenetic tree, estimate the SNP distance between `SRR308691` and  `SRR308715`. A piece of paper might help you estimate the distance between the two tips. Remember you have to go from one tip, down to the MRCA, back to the other tip. Only ‘horizontal’ distance (if you are viewing the tree in rectangular format) counts. The other information you need to calculate this is the tree length, which is 0.029 (from IQTREE log) and the alignment length, which is 987 bp (calculated by `bioawk -c fastx '{ print $name, length($seq) }' < dataset2.aln`).
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <div class="toggle"><button>Hint</button>
 Comes from this formula: (`distance between nodes` / `total tree length`) * `alignment length`
@@ -224,7 +224,7 @@ Comes from this formula: (`distance between nodes` / `total tree length`) * `ali
 
 **Advanced question 2:** How does this compare with `disty`?
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."/>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <div class="toggle"><button>Hint</button>
  `grep -A 1 SRR308691 dataset2.aln > tmp.fa; grep -A 1 SRR308715 dataset2.aln >> tmp.fa; disty tmp.fa`
