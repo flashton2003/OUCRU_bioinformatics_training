@@ -38,7 +38,9 @@ Fastqc likes the output directory to exist before you run it, so make a director
 
 Now you can run fastqc:
 
-```fastqc --outdir fastqc reads_1.fastq reads_2.fastq```
+```{bash, eval=FALSE}
+fastqc --outdir fastqc reads_1.fastq reads_2.fastq
+```
 
 This will take a few minutes to run and give you a progress message while it runs.
 
@@ -46,7 +48,9 @@ Navigate to your output directory `fastqc` and look at the files inside. You sho
 
 The .html file is designed to be viewed in a web browser. Move it to your desktop using Filezilla and then open them in your browser.
 
-**Q1 What tests do your files pass? What do they fail? Think about what might cause them to fail. Which file has the best quality reads?**
+**Question 1:** What tests do your files pass? What do they fail? Think about what might cause them to fail. Which file has the best quality reads?
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 # Exercise 2 {-}
 
@@ -54,16 +58,22 @@ In exercise 1, you identified that the reads in this dataset are contaminated wi
 
 Run cutadapt with the following command line:
 
-```cutadapt -O 3 -G AGATCGGAAGAGC -g AGATCGGAAGAGC -o out_1.fastq -p out_2.fastq reads_1.fastq reads_2.fastq```
+```{bash, eval=FALSE}
+cutadapt -O 3 -G AGATCGGAAGAGC -g AGATCGGAAGAGC -o out_1.fastq -p out_2.fastq reads_1.fastq reads_2.fastq
+```
 
 This tells cutadapt to trim both reads in our paired-end read dataset together. The -G and -g tell it which adapter should be removed from the 3' end of the forward and reverse reads respectively. In this case it is the sequence of the Illumina sequencing adapter which should be removed.
 
-**Q2: How many reads had adapters trimmed from the ends?**
+**Question 2:** How many reads had adapters trimmed from the ends?
 
-**Q3: What command would you run to run fastqc on the trimmed output?**
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
+**Question 3:** What command would you run to run fastqc on the trimmed output?
+
 <div class="toggle"><button>Hint</button>Take your fastqc command line above and change the read files to out_1.fastq and out_2.fastq. Remember you need to make the output directory before you run fastqc.
 </div><br>
 
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 # Exercise 3 {-}
 
@@ -71,33 +81,47 @@ To investigate GC bias in our sequencing we can use a tool called Picard. Picard
 
 Run picard CollectGcBiasMetrics on the file `reads.bam` using the reference genome `E264.fasta`:
 
-```picard CollectGcBiasMetrics REFERENCE_SEQUENCE=E264.fasta INPUT=reads.bam OUTPUT=gcbias.out CHART=gcbias.pdf SUMMARY_OUTPUT=gcbias.summary```
+```{bash, eval=FALSE}
+picard CollectGcBiasMetrics REFERENCE_SEQUENCE=E264.fasta INPUT=reads.bam OUTPUT=gcbias.out CHART=gcbias.pdf SUMMARY_OUTPUT=gcbias.summary
+```
 
-Look at the summary file gcbias.summary. 
+Look at the summary file `gcbias.summary`. 
 <div class="toggle"><button>Hint</button>
 Use the `less` command to open a text file.
 </div><br>
 
 In the last two lines of the file, you will see the column headings and the results for this analysis. Look at the columns for GC bias in different GC windows (GC_NC_0_19 GC_NC_20_39 GC_NC_40_59 GC_NC_60_79 GC_NC_80_100), which show GC bias scores for windows with GC content of 0-19%, 20-39%, 40-59%, 60-79%, and 80-100%. 
 
-**Q4: What are the numbers in these columns? Which GC windows are overrepresented (a score above 1)? Which are underrepresented (a score below 1)?**
+**Question 4:** What are the numbers in these columns? Which GC windows are overrepresented (a score above 1)? Which are underrepresented (a score below 1)?
 
+<div class="toggle"><button>Hint</button>
 There is also a graphical output from the CollectGCBiasMetrics tool. Move it to your desktop using Filezilla and open it. This shows the coverage in each GC window of the genome as open blue circles. Above 1 the GC window is overrepresented, below 1 they are underrepresented.
+</div><br>
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 # Optional Exercise 4 {-}
 
 If you have finished the exercise in plenty of time, here is an optional exercise for you. Look at the cutadapt command line above:
 
-```cutadapt  -O 3 -G AGATCGGAAGAGC -g AGATCGGAAGAGC -o out_1.fastq -p out_2.fastq reads_1.fastq reads_2.fastq```
+```{bash, eval=FALSE}
+cutadapt  -O 3 -G AGATCGGAAGAGC -g AGATCGGAAGAGC -o out_1.fastq -p out_2.fastq reads_1.fastq reads_2.fastq
+```
 
-**Q5: what is the -O option doing in the command line above?**
+**Question 5:** what is the -O option doing in the command line above?
 <div class="toggle"><button>Hint</button>
 Run `cutadapt --help` to see the help file.
 </div><br>
 
-**Q6: Try running `cutadapt` with a different `-O` value. What happens if you vary the -O parameter? Why?**
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
-**Q7: how would you modify the command to remove low-quality bases from the end of your reads?**
+**Question 6:** Try running `cutadapt` with a different `-O` value. What happens if you vary the -O parameter? Why?
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
+**Question 7:** How would you modify the command to remove low-quality bases from the end of your reads?
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <script>
   $(".toggle").click(function() {
