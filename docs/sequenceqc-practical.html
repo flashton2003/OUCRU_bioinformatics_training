@@ -27,68 +27,65 @@
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  { background-color: #f8f8f8; }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -125,9 +122,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -152,6 +147,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -166,7 +164,6 @@ body {
   padding-top: 65px;
   margin-top: -65px;
 }
-
 .section h2 {
   padding-top: 65px;
   margin-top: -65px;
@@ -186,6 +183,43 @@ body {
 .section h6 {
   padding-top: 65px;
   margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -207,18 +241,75 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -307,6 +398,16 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -365,8 +466,8 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Sequence QC practical</h1>
-<h4 class="author"><em>Liz Batty</em></h4>
-<h4 class="date"><em>23 March, 2019</em></h4>
+<h4 class="author">Liz Batty</h4>
+<h4 class="date">24 March, 2019</h4>
 
 </div>
 
@@ -398,21 +499,23 @@ Hint
 <p><br></p>
 <p>Fastqc likes the output directory to exist before you run it, so make a directory called fastqc: <code>mkdir fastqc</code></p>
 <p>Now you can run fastqc:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">fastqc</span> --outdir fastqc reads_1.fastq reads_2.fastq</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">fastqc</span> --outdir fastqc reads_1.fastq reads_2.fastq</code></pre></div>
 <p>This will take a few minutes to run and give you a progress message while it runs.</p>
 <p>Navigate to your output directory <code>fastqc</code> and look at the files inside. You should see a .html and a .zip file named after each of your FASTQ files.</p>
 <p>The .html file is designed to be viewed in a web browser. Move it to your desktop using Filezilla and then open them in your browser.</p>
 <p><strong>Question 1:</strong> What tests do your files pass? What do they fail? Think about what might cause them to fail. Which file has the best quality reads?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
 </div>
 <div id="exercise-2" class="section level1 unnumbered">
 <h1>Exercise 2</h1>
 <p>In exercise 1, you identified that the reads in this dataset are contaminated with Illumina sequencing adapters. We will use <code>cutadapt</code> to remove the adapters from this dataset.</p>
 <p>Run cutadapt with the following command line:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">cutadapt</span> -O 3 -G AGATCGGAAGAGC -g AGATCGGAAGAGC -o out_1.fastq -p out_2.fastq reads_1.fastq reads_2.fastq</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cutadapt</span> -O 3 -G AGATCGGAAGAGC -g AGATCGGAAGAGC -o out_1.fastq -p out_2.fastq reads_1.fastq reads_2.fastq</code></pre></div>
 <p>This tells cutadapt to trim both reads in our paired-end read dataset together. The -G and -g tell it which adapter should be removed from the 3’ end of the forward and reverse reads respectively. In this case it is the sequence of the Illumina sequencing adapter which should be removed.</p>
 <p><strong>Question 2:</strong> How many reads had adapters trimmed from the ends?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
 <p><strong>Question 3:</strong> What command would you run to run fastqc on the trimmed output?</p>
 <div class="toggle">
 <button>
@@ -421,13 +524,14 @@ Hint
 <p>Take your fastqc command line above and change the read files to out_1.fastq and out_2.fastq. Remember you need to make the output directory before you run fastqc.</p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
 </div>
 <div id="exercise-3" class="section level1 unnumbered">
 <h1>Exercise 3</h1>
 <p>To investigate GC bias in our sequencing we can use a tool called Picard. Picard contains many different useful tools, but the one we are using today is the CollectGcMetrics tool. This takes a BAM files and the reference genome for your organism and gives you a summary of the GC bias in your sequencing, and whether regions of high and low GC are over- or underrepresented. We will look at GC bias in the reads we used for the first part of the practical, which are from <em>Burkholderia pseudomallei</em>.</p>
 <p>Run picard CollectGcBiasMetrics on the file <code>reads.bam</code> using the reference genome <code>E264.fasta</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">picard</span> CollectGcBiasMetrics REFERENCE_SEQUENCE=E264.fasta INPUT=reads.bam OUTPUT=gcbias.out CHART=gcbias.pdf SUMMARY_OUTPUT=gcbias.summary</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">picard</span> CollectGcBiasMetrics REFERENCE_SEQUENCE=E264.fasta INPUT=reads.bam OUTPUT=gcbias.out CHART=gcbias.pdf SUMMARY_OUTPUT=gcbias.summary</code></pre></div>
 Look at the summary file <code>gcbias.summary</code>.
 <div class="toggle">
 <button>
@@ -445,12 +549,13 @@ Hint
 <p>There is also a graphical output from the CollectGCBiasMetrics tool. Move it to your desktop using Filezilla and open it. This shows the coverage in each GC window of the genome as open blue circles. Above 1 the GC window is overrepresented, below 1 they are underrepresented.</p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
 </div>
 <div id="optional-exercise-4" class="section level1 unnumbered">
 <h1>Optional Exercise 4</h1>
 <p>If you have finished the exercise in plenty of time, here is an optional exercise for you. Look at the cutadapt command line above:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">cutadapt</span>  -O 3 -G AGATCGGAAGAGC -g AGATCGGAAGAGC -o out_1.fastq -p out_2.fastq reads_1.fastq reads_2.fastq</a></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">cutadapt</span>  -O 3 -G AGATCGGAAGAGC -g AGATCGGAAGAGC -o out_1.fastq -p out_2.fastq reads_1.fastq reads_2.fastq</code></pre></div>
 <strong>Question 5:</strong> what is the -O option doing in the command line above?
 <div class="toggle">
 <button>
@@ -459,11 +564,14 @@ Hint
 <p>Run <code>cutadapt --help</code> to see the help file.</p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
 <p><strong>Question 6:</strong> Try running <code>cutadapt</code> with a different <code>-O</code> value. What happens if you vary the -O parameter? Why?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
 <p><strong>Question 7:</strong> How would you modify the command to remove low-quality bases from the end of your reads?</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
 <script>
   $(".toggle").click(function() {
     $(this).toggleClass("open");
