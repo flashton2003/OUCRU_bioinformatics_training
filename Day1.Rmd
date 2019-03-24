@@ -6,15 +6,15 @@ Schedule for Day 1
 
 AM
 
-* Lecture - Introduction to genome sequencing [(slides)](20190102_how_we_sequence.pdf)
+* [Lecture](20190102_how_we_sequence.pdf) - Introduction to genome sequencing [(slides)]
 
-* Lecture - Introduction to file formats [(slides)](20190111-fileformats.pdf)
+* [Lecture](20190111-fileformats.pdf) - Introduction to file formats
 
-* Lecture - Introduction to CLIMB
+* Activity - Draw your career path
 
 PM
 
-* Activity - Draw your career path
+* Lecture - Introduction to CLIMB
 
 * Lecture & [practical](command-line-practical.html) - Introduction to command line
 
