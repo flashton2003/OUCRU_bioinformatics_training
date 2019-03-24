@@ -6,7 +6,7 @@ Schedule for Day 1
 
 AM
 
-* [Lecture](20190102_how_we_sequence.pdf) - Introduction to genome sequencing [(slides)]
+* [Lecture](20190102_how_we_sequence.pdf) - Introduction to genome sequencing
 
 * [Lecture](20190111-fileformats.pdf) - Introduction to file formats
 
