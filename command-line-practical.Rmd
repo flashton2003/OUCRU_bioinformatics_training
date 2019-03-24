@@ -22,13 +22,22 @@ Welcome to the first practical of this course, a tutorial in the Unix command li
 
 We will start by logging in to your computer. For this workshop, we are using a remote system called CLIMB, the Cloud Infrastructure for Microbial Bioinformatics. This makes it easy for us to give you all your own Unix server to work on for this course, but as the computers are in the UK, we need to use a Unix tool called `ssh` to access the computer. **`ssh` must be in lower-case - Unix commands are case-sensitive and `SSH` is not the same as `ssh`.**
 
-Open up the program `mobaXterm` on your computer. You have been given the IP address of your computer (four sets of numbers separated by dots) and a password. Type the following into your `mobaXterm` window:
+Open up the program `mobaXterm` on your computer. You have been given the IP address of your computer (four sets of numbers separated by dots). Type the following into your `mobaXterm` window:
 
 <pre class="bash">
-ssh ubuntu@137.44.59.149
+ssh -i '<path.to/oucru.key>' ubuntu@137.44.59.149
 </pre>
 
-replacing 137.44.59.149 with the IP address you have been given. When you hit Enter, you will be asked for your password. Type this in and hit Enter.
+replacing `137.44.59.149` with the IP address you have been given, and `<path.to/oucru.key>` with the location of the `oucru.key` file on your computer. 
+
+You will see a message a bit like this appear on your screen:
+<pre class="bash">
+The authenticity of host '137.44.59.164 (137.44.59.164)' can't be established.
+ECDSA key fingerprint is SHA256:YCF2nOj7HGtPTX5Md6BKCh8h1MGhI4yu5t9frTutvLc.
+Are you sure you want to continue connecting (yes/no)?
+</pre
+
+Type `yes` and hit enter.
 
 Now you have logged on to the remote server. This is where you will do all the practical exercises for this course. You will see a screen which looks a lot like this:
 
@@ -41,11 +50,11 @@ Welcome to your Galaxy on the Cloud instance.
  * Documentation: https://wiki.galaxyproject.org/CloudMan
 
 *** System restart required ***
-(base) ubuntu@liz-workshop-demo:~$
+(base) ubuntu@student-1:~$
 
 </pre>
 
-This is called the command prompt. It shows you the username you have used to connect to the server (in this case 'ubuntu') and the name of the machine (my machine is called 'liz-workshop-demo'), and the directory where you are (in this case, '~' - more about this later). The $ marks the end of the command prompt.
+This is called the command prompt. It shows you the username you have used to connect to the server (in this case 'ubuntu') and the name of the machine (my machine is called 'student-1'), and the directory where you are (in this case, '~' - more about this later). The $ marks the end of the command prompt.
 
 # Files and directories {-}
 
@@ -57,9 +66,9 @@ ls
 
 The output will look like this:
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ ls
+(base) ubuntu@student-1:~$ ls
 anaconda2  data  Desktop  galaxy-app  galaxy-indices  galaxy-tools  ncbi  scripts
-(base) ubuntu@liz-workshop-demo:~$
+(base) ubuntu@student-1:~$
 </pre>
 
 This gives you a list of the files and directories in the directory you are in, then puts you back at the command prompt ready to type another command.
@@ -67,17 +76,17 @@ This gives you a list of the files and directories in the directory you are in, 
 The `ls` command is used to list the contents of any directory, not necessarily the one that you are currently in. Try the following:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ ls /etc/perl
+(base) ubuntu@student-1:~$ ls /etc/perl
 CPAN  Net  XML
-(base) ubuntu@liz-workshop-demo:~$
+(base) ubuntu@student-1:~$
 </pre>
 
 Looking at directories from within a Unix terminal can often seem confusing. But bear in mind that these directories are exactly the same type of folders that you can see if you use any graphical file browser. From the root level (/) there are usually around 20 directories. You can treat the root directory like any other, e.g. you can list its contents with `ls`:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ ls /
+(base) ubuntu@student-1:~$ ls /
 bin  boot  cvmfs  dev  etc  galaxy  home  initrd.img  initrd.img.old  lib  lib64  lost+found  media  mnt  nonexistent  opt  proc  root  run  sbin  snap  srv  sys  tmp  usr  var  vmlinuz  vmlinuz.old
-(base) ubuntu@liz-workshop-demo:~$
+(base) ubuntu@student-1:~$
 </pre>
 
 You might notice some of these names appearing in different colors. Many Unix systems will display files and directories differently by default. Other colors may be used for special types of files. When you log in to a computer you are working with your files in your home directory, and this is often inside a directory called 'users' or 'home'.
@@ -85,7 +94,7 @@ You might notice some of these names appearing in different colors. Many Unix sy
 There may be many hundreds of directories on any Unix machine, so how do you know which one you are in? The command `pwd` will 'Print the Working Directory' and that's pretty much all this command does:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ pwd
+(base) ubuntu@student-1:~$ pwd
 /home/ubuntu
 </pre>
 
@@ -98,28 +107,28 @@ As you learn Unix you will frequently type commands that don't seem to work. Mos
 If we want to make a new directory (e.g. to store some work related data), we can use the `mkdir` command:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ mkdir learning_unix
-(base) ubuntu@liz-workshop-demo:~$ ls
+(base) ubuntu@student-1:~$ mkdir learning_unix
+(base) ubuntu@student-1:~$ ls
 anaconda2  data  Desktop  galaxy-app  galaxy-indices  galaxy-tools  learning_unix  ncbi  scripts
 </pre>
 
 We are in the `home` directory on the computer but we want to to work in the new `learning_unix` directory. To change directories in Unix, we use the `cd` command:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ cd learning_unix/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$
+(base) ubuntu@student-1:~$ cd learning_unix/
+(base) ubuntu@student-1:~/learning_unix$
 </pre>
 
 Let's make two new subdirectories and navigate into them:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mkdir outer
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd outer
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$
+(base) ubuntu@student-1:~/learning_unix$ mkdir outer
+(base) ubuntu@student-1:~/learning_unix$ cd outer
+(base) ubuntu@student-1:~/learning_unix/outer$
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$ mkdir inner
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$ cd inner/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer/inner$
+(base) ubuntu@student-1:~/learning_unix/outer$ mkdir inner
+(base) ubuntu@student-1:~/learning_unix/outer$ cd inner/
+(base) ubuntu@student-1:~/learning_unix/outer/inner$
 </pre>
 
 We created the two directories in separate steps, but it is possible to use the `mkdir` command in way to do this all in one step.
@@ -135,10 +144,10 @@ mkdir -p outer/inner
 Let's change directory to the root directory, and then into our `home` directory
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer/inner$ cd /
-(base) ubuntu@liz-workshop-demo:/$ cd home
-(base) ubuntu@liz-workshop-demo:/home$ cd ubuntu
-(base) ubuntu@liz-workshop-demo:~$
+(base) ubuntu@student-1:~/learning_unix/outer/inner$ cd /
+(base) ubuntu@student-1:/$ cd home
+(base) ubuntu@student-1:/home$ cd ubuntu
+(base) ubuntu@student-1:~$
 </pre>
 
 In this case, we may as well have just changed directory in one go:
@@ -164,10 +173,10 @@ Learn and understand the difference between these two commands.
 Frequently, you will find that you want to go 'upwards' one level in the directory hierarchy. Two dots `..` are used in Unix to refer to the parent directory of wherever you are. Every directory has a parent except the root level of the computer. Let's go into the `learning_unix` directory and then navigate up two levels:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ cd learning_unix/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd ..
-(base) ubuntu@liz-workshop-demo:~$ cd ..
-(base) ubuntu@liz-workshop-demo:/home$
+(base) ubuntu@student-1:~$ cd learning_unix/
+(base) ubuntu@student-1:~/learning_unix$ cd ..
+(base) ubuntu@student-1:~$ cd ..
+(base) ubuntu@student-1:/home$
 </pre>
 
 What if you wanted to navigate up two levels in the file system in one go? It's very simple, just use two sets of the `..` operator, separated by a forward slash:
@@ -179,9 +188,9 @@ cd ../..
 Using `cd ..` allows us to change directory relative to where we are now. You can also always change to a directory based on its absolute location. E.g. if you are working in the `/home/ubuntu/learning_unix` directory and you then want to change to the `/tmp` directory, then you could do either of the following:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd ../../../tmp
+(base) ubuntu@student-1:~/learning_unix$ cd ../../../tmp
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd /tmp
+(base) ubuntu@student-1:~/learning_unix$ cd /tmp
 </pre>
 
 They both achieve the same thing, but the 2nd example requires that you know about the full path from the root level of the computer to your directory of interest (the 'path' is an important concept in Unix). Sometimes it is quicker to change directories using the relative path, and other times it will be quicker to use the absolute path.
@@ -201,15 +210,15 @@ Hopefully, you should find that `cd` and `cd ~` do the same thing, i.e. they tak
 The `..` operator that we saw earlier can also be used with the ls command, e.g. you can list directories that are 'above' you:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd ~/learning_unix/outer/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$ ls ../../
+(base) ubuntu@student-1:~/learning_unix$ cd ~/learning_unix/outer/
+(base) ubuntu@student-1:~/learning_unix/outer$ ls ../../
 anaconda2  data  Desktop  galaxy-app  galaxy-indices  galaxy-tools  learning_unix  ncbi  scripts
 </pre>
 
 Time to learn another useful command-line option. If you add the letter 'l' to the `ls` command it will give you a longer output compared to the default:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls -l /home
+(base) ubuntu@student-1:~/learning_unix$ ls -l /home
 total 24
 drwxr-xr-x  2 cloudgene  cloudgene 4096 Apr 10  2018 cloudgene
 drwxr-xr-x  2 fuse       users     4096 Mar 12 12:41 fuse
@@ -247,12 +256,12 @@ When you are using the `man` command, press `space` to scroll down a page, `b` t
 We now have a few (empty) directories that we should remove. To do this use the `rmdir` command, this will only remove empty directories so it is quite safe to use. If you want to know more about this command (or any Unix command), then remember that you can just look at its `man` page.
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd ~/learning_unix/outer/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$ rmdir inner/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$ cd ..
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ rmdir outer/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
-(base) ubuntu@liz-workshop-demo:~/learning_unix$
+(base) ubuntu@student-1:~/learning_unix$ cd ~/learning_unix/outer/
+(base) ubuntu@student-1:~/learning_unix/outer$ rmdir inner/
+(base) ubuntu@student-1:~/learning_unix/outer$ cd ..
+(base) ubuntu@student-1:~/learning_unix$ rmdir outer/
+(base) ubuntu@student-1:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$
 </pre>
 
 **Note, you have to be outside a directory before you can remove it with `rmdir`!**
@@ -272,21 +281,21 @@ Another great time-saver is that Unix stores a list of all the commands that you
 The following sections will deal with Unix commands that help us to work with files, i.e. copy files to/from places, move files, rename files, remove files, and most importantly, look at files. First, we need to have some files to play with. The Unix command `touch` will let us create a new, empty file. The touch command does other things too, but for now we just want a couple of files to work with.
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ touch heaven.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ touch earth.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ touch heaven.txt
+(base) ubuntu@student-1:~/learning_unix$ touch earth.txt
+(base) ubuntu@student-1:~/learning_unix$ ls
 earth.txt  heaven.txt
 </pre>
 
 Now, let's assume that we want to move these files to a new directory ('temp'). We will do this using the Unix `mv` (move) command. Remember to use tab completion:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mkdir temp
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mv heaven.txt temp/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mv earth.txt temp/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ mkdir temp
+(base) ubuntu@student-1:~/learning_unix$ mv heaven.txt temp/
+(base) ubuntu@student-1:~/learning_unix$ mv earth.txt temp/
+(base) ubuntu@student-1:~/learning_unix$ ls
 temp
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls temp/
+(base) ubuntu@student-1:~/learning_unix$ ls temp/
 earth.txt  heaven.txt
 </pre>
 
@@ -309,26 +318,26 @@ The '?' matches any *single* character.
 In the earlier example, the destination for the `mv` command was a directory name (temp). So we moved a file from its source location to a target location. Note that the target could have also been a (different) file name, rather than a directory, so `mv` can also allow us to rename a file. E.g. let's make a new file and move it whilst renaming it at the same time:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ touch rags
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ touch rags
+(base) ubuntu@student-1:~/learning_unix$ ls
 rags  temp
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mv rags temp/riches
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls temp/
+(base) ubuntu@student-1:~/learning_unix$ mv rags temp/riches
+(base) ubuntu@student-1:~/learning_unix$ ls temp/
 earth.txt  heaven.txt  riches
 </pre>
 
 In this example we create a new file ('rags') and move it to a new location and in the process change the name (to 'riches'). So `mv` can rename a file as well as move it. The logical extension of this is using `mv` to rename a file without moving it (you have to use `mv` to do this as Unix does not have a separate 'rename' command):
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mv temp/riches temp/rags
+(base) ubuntu@student-1:~/learning_unix$ mv temp/riches temp/rags
 </pre>
 
 It is important to understand that as long as you have specified a 'source' and a 'target' location when you are moving a file, then it doesn't matter what your current directory is. You can move or copy things within the same directory or between different directories regardless of whether you are in any of those directories. Moving directories is just like moving files:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mkdir temp2
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mv temp2 temp
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls temp/
+(base) ubuntu@student-1:~/learning_unix$ mkdir temp2
+(base) ubuntu@student-1:~/learning_unix$ mv temp2 temp
+(base) ubuntu@student-1:~/learning_unix$ ls temp/
 earth.txt  heaven.txt  rags  temp2
 </pre>
 
@@ -336,11 +345,11 @@ This step moves the `temp2` directory inside the `temp` directory. Try creating 
 
 <div class="toggle"><button>Answer</button>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mkdir temp3
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd /tmp
-(base) ubuntu@liz-workshop-demo:/tmp$ mv ~/learning_unix/temp3 ~/learning_unix/temp/temp2
-(base) ubuntu@liz-workshop-demo:/tmp$ cd ~/learning_unix/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls temp/temp2/
+(base) ubuntu@student-1:~/learning_unix$ mkdir temp3
+(base) ubuntu@student-1:~/learning_unix$ cd /tmp
+(base) ubuntu@student-1:/tmp$ mv ~/learning_unix/temp3 ~/learning_unix/temp/temp2
+(base) ubuntu@student-1:/tmp$ cd ~/learning_unix/
+(base) ubuntu@student-1:~/learning_unix$ ls temp/temp2/
 temp3
 </pre>
 </div><br>
@@ -356,10 +365,10 @@ Potentially, `rm` is a very dangerous command; if you delete something with `rm`
 Let me repeat that last part again. It is possible to delete EVERY file you have ever created with the `rm` command. Are you scared yet? You should be. Luckily there is a way of making rm a little bit safer. We can use it with the `-i` command-line option which will ask for confirmation before deleting anything (remember to use tab-completion). Run the following commands, and type "y" (for yes) to indicate you truly intend to delete the files.
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd temp
-(base) ubuntu@liz-workshop-demo:~/learning_unix/temp$ ls
+(base) ubuntu@student-1:~/learning_unix$ cd temp
+(base) ubuntu@student-1:~/learning_unix/temp$ ls
 earth.txt  heaven.txt  rags  temp2
-(base) ubuntu@liz-workshop-demo:~/learning_unix/temp$ rm -i earth.txt heaven.txt rags
+(base) ubuntu@student-1:~/learning_unix/temp$ rm -i earth.txt heaven.txt rags
 rm: remove regular empty file 'earth.txt'? y
 rm: remove regular empty file 'heaven.txt'? y
 rm: remove regular empty file 'rags'? y
@@ -368,10 +377,10 @@ rm: remove regular empty file 'rags'? y
 We could have simplified this step by using a wild-card (e.g. `rm -i *.txt`) or we could have made things more complex by removing each file with a separate `rm` command. Let's finish cleaning up:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix/temp$ rmdir temp2/temp3/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/temp$ rmdir temp2/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/temp$ cd ..
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ rmdir temp/
+(base) ubuntu@student-1:~/learning_unix/temp$ rmdir temp2/temp3/
+(base) ubuntu@student-1:~/learning_unix/temp$ rmdir temp2/
+(base) ubuntu@student-1:~/learning_unix/temp$ cd ..
+(base) ubuntu@student-1:~/learning_unix$ rmdir temp/
 </pre>
 
 # Copying files {-}
@@ -379,20 +388,20 @@ We could have simplified this step by using a wild-card (e.g. `rm -i *.txt`) or 
 Copying files with the `cp` (copy) command is very similar to moving them. Remember to always specify a source and a target location. Let's create a new file and make a copy of it:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ touch file1
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cp file1 file2
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ touch file1
+(base) ubuntu@student-1:~/learning_unix$ cp file1 file2
+(base) ubuntu@student-1:~/learning_unix$ ls
 file1  file2
 </pre>
 
 What if we wanted to copy files from a different directory to our current directory? Let's put a file in our home directory (specified by `~` remember) and copy it to the current directory (`learning_unix`):
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ touch ~/file3
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls ~
+(base) ubuntu@student-1:~/learning_unix$ touch ~/file3
+(base) ubuntu@student-1:~/learning_unix$ ls ~
 anaconda2  data  Desktop  file3  galaxy-app  galaxy-indices  galaxy-tools  learning_unix  ncbi  scripts
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cp ~/file3 .
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ cp ~/file3 .
+(base) ubuntu@student-1:~/learning_unix$ ls
 file1  file2  file3
 </pre>
 
@@ -409,7 +418,7 @@ In this case, using the dot is somewhat pointless because ls will already list t
 Finally, let's clean up this directory. Note the use of the * wildcard, which allows us to delete all three files at once.
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ rm file*
+(base) ubuntu@student-1:~/learning_unix$ rm file*
 </pre>
 
 The `cp` command also allows us (with the use of a command-line option) to copy entire directories. Use `man cp` to see how the `-R` or `-r` options let you copy a directory recursively.
@@ -419,12 +428,12 @@ The `cp` command also allows us (with the use of a command-line option) to copy 
 So far we have covered listing the contents of directories and moving/copying/deleting either files and/or directories. Now we will quickly cover how you can look at files. The less command lets you view (but not edit) text files. We will use the echo command to put some text in a file and then view it:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo "Call me Ishmael."
+(base) ubuntu@student-1:~/learning_unix$ echo "Call me Ishmael."
 Call me Ishmael.
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo "Call me Ishmael." > opening_lines.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ echo "Call me Ishmael." > opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ ls
 opening_lines.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ less opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ less opening_lines.txt
 </pre>
 
 On its own, `echo` isn't a very exciting Unix command. It just echoes text back to the screen. But we can redirect that text into an output file by using the `>` symbol. This allows for something called file redirection.
@@ -436,8 +445,8 @@ When you are using less, you can bring up a page of help commands by pressing `h
 Let's add another line to the file:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo "The primroses were over." >> opening_lines.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cat opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ echo "The primroses were over." >> opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ cat opening_lines.txt
 Call me Ishmael.
 The primroses were over.
 </pre>
@@ -445,29 +454,29 @@ The primroses were over.
 **Notice that we use `>>` and not just `>`.** This operator will append to a file. If we only used `>`, we would end up overwriting the file. The `cat` command displays the contents of the file (or files) and then returns you to the command line. Unlike `less` you have no control on how you view that text (or what you do with it). It is a very simple, but sometimes useful, command. You can use `cat` to quickly combine multiple files or, if you wanted to, make a copy of an existing file:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cat opening_lines.txt > file_copy.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ less file_copy.txt
+(base) ubuntu@student-1:~/learning_unix$ cat opening_lines.txt > file_copy.txt
+(base) ubuntu@student-1:~/learning_unix$ less file_copy.txt
 </pre>
 
 And again, let's clean up the redundant file:
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ rm file_copy.txt
+(base) ubuntu@student-1:~/learning_unix$ rm file_copy.txt
 </pre>
 
 Now let's learn how to count the characters, words, and lines in a file.
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ ls
 opening_lines.txt
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls -l
+(base) ubuntu@student-1:~/learning_unix$ ls -l
 total 4
 -rw-rw-r-- 1 ubuntu ubuntu 42 Mar 20 08:52 opening_lines.txt
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ wc opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ wc opening_lines.txt
  2  7 42 opening_lines.txt
  
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ wc -l opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ wc -l opening_lines.txt
 2 opening_lines.txt
 </pre>
 
@@ -483,7 +492,7 @@ What options would you use to count just the words in the file?
 `nano` is a lightweight editor installed on most Unix systems. There are many more powerful editors (such as 'emacs' and 'vi'), but these have steep learning curves. `nano` is very simple. You can edit (or create) files by typing:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ nano opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ nano opening_lines.txt
 </pre>
 
 You simply type the text you want to include in the file.
@@ -517,7 +526,7 @@ You will often want to search files to find lines that match a certain pattern. 
 * Use wildcard characters and other patterns to allow for alternatives (`*`, `.`, and `[]`)
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep was opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep was opening_lines.txt
 The Galactic Empire was dying.
 It was a pleasure to burn.
 It was a bright, cold day in April, and the clocks were striking thirteen.
@@ -528,7 +537,7 @@ Marley was dead, to begin with.
 </pre>
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep -v was opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep -v was opening_lines.txt
 Call me Ishmael.
 The primroses were over.
 Now is the winter of our discontent.
@@ -538,16 +547,16 @@ I am an invisible man.
 </pre>
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep all opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep all opening_lines.txt
 Call me Ishmael.
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep -i all opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep -i all opening_lines.txt
 Call me Ishmael.
 All children, except one, grow up.
 </pre>
 (Note how searching for 'all' without any options matches the word 'call', but not 'All' due to the capital letter.
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep in opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep in opening_lines.txt
 Now is the winter of our discontent.
 The Galactic Empire was dying.
 In a hole in the ground there lived a hobbit.
@@ -564,18 +573,18 @@ Here are some more advanced examples to look at if you have time:
 <div class="toggle"><button>Show advanced examples</button>
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep -w o.. opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep -w o.. opening_lines.txt
 Now is the winter of our discontent.
 All children, except one, grow up.
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep [aeiou]t opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep [aeiou]t opening_lines.txt
 In a hole in the ground there lived a hobbit.
 It was love at first sight.
 It was the day my grandmother exploded.
 When he was nearly thirteen, my brother Jem got his arm badly broken at the elbow.
 Marley was dead, to begin with.
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep -w -i [aeiou]t opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep -w -i [aeiou]t opening_lines.txt
 It was a pleasure to burn.
 It was a bright, cold day in April, and the clocks were striking thirteen.
 It was love at first sight.
@@ -635,7 +644,7 @@ There you have it. Now all you have to do is read `sorted_grades.txt` and figure
 One of the most powerful features of Unix is that you can send the output from one command or program to any other command (as long as the second command accepts input of some sort). We do this by using what is known as a pipe. This is implemented using the '|' character (which is a character which always seems to be on different keys depending on the keyboard that you are using). Think of the pipe as simply connecting two Unix programs. Here's an example using two commands you saw earlier:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep was opening_lines.txt | wc -c
+(base) ubuntu@student-1:~/learning_unix$ grep was opening_lines.txt | wc -c
 316
 </pre>
 The first use of `grep` searches the specified file for lines matching 'was', then it sends the lines that match through a pipe to the `wc` program. We use the -c option to just count characters in the matching lines (316).
@@ -643,7 +652,7 @@ The first use of `grep` searches the specified file for lines matching 'was', th
 Here's an example which introduces some new Unix commands:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep was opening_lines.txt | sort | head -n 3 | wc -c
+(base) ubuntu@student-1:~/learning_unix$ grep was opening_lines.txt | sort | head -n 3 | wc -c
 130
 </pre>
 
@@ -687,11 +696,11 @@ This uses the `>` operator which is the reverse of the `>` operator - instead of
 One other use of the echo command is for displaying the contents of something known as environment variables. These contain user-specific or system-wide values that either reflect simple pieces of information (your username), or lists of useful locations on the file system. Some examples:
 
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo $USER
+(base) ubuntu@student-1:~/learning_unix$ echo $USER
 ubuntu
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo $HOME
+(base) ubuntu@student-1:~/learning_unix$ echo $HOME
 /home/ubuntu
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo $PATH
+(base) ubuntu@student-1:~/learning_unix$ echo $PATH
 /home/ubuntu/bin:/home/ubuntu/.local/bin:/home/ubuntu/anaconda2/bin:/home/ubuntu/anaconda2/condabin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/mnt/galaxy/tools/bin:/usr/lib/postgresql/9.5/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 </pre>  
                     

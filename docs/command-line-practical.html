@@ -57,9 +57,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -84,6 +82,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -98,7 +99,6 @@ body {
   padding-top: 65px;
   margin-top: -65px;
 }
-
 .section h2 {
   padding-top: 65px;
   margin-top: -65px;
@@ -118,6 +118,43 @@ body {
 .section h6 {
   padding-top: 65px;
   margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -139,18 +176,75 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -239,6 +333,16 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -297,8 +401,8 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Command line practical</h1>
-<h4 class="author"><em>Liz Batty</em></h4>
-<h4 class="date"><em>23 March, 2019</em></h4>
+<h4 class="author">Liz Batty</h4>
+<h4 class="date">24 March, 2019</h4>
 
 </div>
 
@@ -315,25 +419,30 @@ text-align: justify}
 <h1>Logging on to the server</h1>
 <p>Welcome to the first practical of this course, a tutorial in the Unix command line. If you are used to using Windows or Macs as your computer, the command line may look scary, but it is a very powerful tool for bioinformatics and if you learn how to use it, it will make your work much easier. Follow each example and check that you can type in the commands and reproduce the correct results.</p>
 <p>We will start by logging in to your computer. For this workshop, we are using a remote system called CLIMB, the Cloud Infrastructure for Microbial Bioinformatics. This makes it easy for us to give you all your own Unix server to work on for this course, but as the computers are in the UK, we need to use a Unix tool called <code>ssh</code> to access the computer. <strong><code>ssh</code> must be in lower-case - Unix commands are case-sensitive and <code>SSH</code> is not the same as <code>ssh</code>.</strong></p>
-<p>Open up the program <code>mobaXterm</code> on your computer. You have been given the IP address of your computer (four sets of numbers separated by dots) and a password. Type the following into your <code>mobaXterm</code> window:</p>
+<p>Open up the program <code>mobaXterm</code> on your computer. You have been given the IP address of your computer (four sets of numbers separated by dots). Type the following into your <code>mobaXterm</code> window:</p>
 <pre class="bash">
-ssh ubuntu@137.44.59.149
+ssh -i '<path.to/oucru.key>' ubuntu@137.44.59.149
 </pre>
-<p>replacing 137.44.59.149 with the IP address you have been given. When you hit Enter, you will be asked for your password. Type this in and hit Enter.</p>
-<p>Now you have logged on to the remote server. This is where you will do all the practical exercises for this course. You will see a screen which looks a lot like this:</p>
+<p>replacing <code>137.44.59.149</code> with the IP address you have been given, and <code>&lt;path.to/oucru.key&gt;</code> with the location of the <code>oucru.key</code> file on your computer.</p>
+You will see a message a bit like this appear on your screen:
 <pre class="bash">
+The authenticity of host '137.44.59.164 (137.44.59.164)' can't be established.
+ECDSA key fingerprint is SHA256:YCF2nOj7HGtPTX5Md6BKCh8h1MGhI4yu5t9frTutvLc.
+Are you sure you want to continue connecting (yes/no)?
+</pre
 
-=============================================
-Welcome to your Galaxy on the Cloud instance.
-=============================================
+Type `yes` and hit enter.
 
- * Documentation: https://wiki.galaxyproject.org/CloudMan
+Now you have logged on to the remote server. This is where you will do all the practical exercises for this course. You will see a screen which looks a lot like this:
 
-*** System restart required ***
-(base) ubuntu@liz-workshop-demo:~$
-
+<pre class="bash">
+<p>============================================= Welcome to your Galaxy on the Cloud instance. =============================================</p>
+<ul>
+<li>Documentation: <a href="https://wiki.galaxyproject.org/CloudMan" class="uri">https://wiki.galaxyproject.org/CloudMan</a></li>
+</ul>
+<p>*** System restart required *** (base) <a href="mailto:ubuntu@student-1">ubuntu@student-1</a>:~$</p>
 </pre>
-<p>This is called the command prompt. It shows you the username you have used to connect to the server (in this case ‘ubuntu’) and the name of the machine (my machine is called ‘liz-workshop-demo’), and the directory where you are (in this case, ‘~’ - more about this later). The $ marks the end of the command prompt.</p>
+<p>This is called the command prompt. It shows you the username you have used to connect to the server (in this case ‘ubuntu’) and the name of the machine (my machine is called ‘student-1’), and the directory where you are (in this case, ‘~’ - more about this later). The $ marks the end of the command prompt.</p>
 </div>
 <div id="files-and-directories" class="section level1 unnumbered">
 <h1>Files and directories</h1>
@@ -343,27 +452,27 @@ ls
 </pre>
 The output will look like this:
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ ls
+(base) ubuntu@student-1:~$ ls
 anaconda2  data  Desktop  galaxy-app  galaxy-indices  galaxy-tools  ncbi  scripts
-(base) ubuntu@liz-workshop-demo:~$
+(base) ubuntu@student-1:~$
 </pre>
 <p>This gives you a list of the files and directories in the directory you are in, then puts you back at the command prompt ready to type another command.</p>
 <p>The <code>ls</code> command is used to list the contents of any directory, not necessarily the one that you are currently in. Try the following:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ ls /etc/perl
+(base) ubuntu@student-1:~$ ls /etc/perl
 CPAN  Net  XML
-(base) ubuntu@liz-workshop-demo:~$
+(base) ubuntu@student-1:~$
 </pre>
 <p>Looking at directories from within a Unix terminal can often seem confusing. But bear in mind that these directories are exactly the same type of folders that you can see if you use any graphical file browser. From the root level (/) there are usually around 20 directories. You can treat the root directory like any other, e.g. you can list its contents with <code>ls</code>:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ ls /
+(base) ubuntu@student-1:~$ ls /
 bin  boot  cvmfs  dev  etc  galaxy  home  initrd.img  initrd.img.old  lib  lib64  lost+found  media  mnt  nonexistent  opt  proc  root  run  sbin  snap  srv  sys  tmp  usr  var  vmlinuz  vmlinuz.old
-(base) ubuntu@liz-workshop-demo:~$
+(base) ubuntu@student-1:~$
 </pre>
 <p>You might notice some of these names appearing in different colors. Many Unix systems will display files and directories differently by default. Other colors may be used for special types of files. When you log in to a computer you are working with your files in your home directory, and this is often inside a directory called ‘users’ or ‘home’.</p>
 <p>There may be many hundreds of directories on any Unix machine, so how do you know which one you are in? The command <code>pwd</code> will ‘Print the Working Directory’ and that’s pretty much all this command does:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ pwd
+(base) ubuntu@student-1:~$ pwd
 /home/ubuntu
 </pre>
 <p>When you log in to a Unix computer, you are typically placed into your home directory. In this example, after we log in, we are placed in a directory called ‘ubuntu’ which itself is a subdirectory of another directory called ‘home’. Conversely, ‘home’ is the parent directory of ‘ubuntu’. The first forward slash that appears in a list of directory names always refers to the top level directory of the file system (known as the root directory). The remaining forward slash (between ‘home’ and ‘ubuntu’) delimits the various parts of the directory hierarchy. If you ever get ‘lost’ in Unix, remember the <code>pwd</code> command.</p>
@@ -373,24 +482,24 @@ bin  boot  cvmfs  dev  etc  galaxy  home  initrd.img  initrd.img.old  lib  lib64
 <h1>Making and changing directories</h1>
 <p>If we want to make a new directory (e.g. to store some work related data), we can use the <code>mkdir</code> command:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ mkdir learning_unix
-(base) ubuntu@liz-workshop-demo:~$ ls
+(base) ubuntu@student-1:~$ mkdir learning_unix
+(base) ubuntu@student-1:~$ ls
 anaconda2  data  Desktop  galaxy-app  galaxy-indices  galaxy-tools  learning_unix  ncbi  scripts
 </pre>
 <p>We are in the <code>home</code> directory on the computer but we want to to work in the new <code>learning_unix</code> directory. To change directories in Unix, we use the <code>cd</code> command:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ cd learning_unix/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$
+(base) ubuntu@student-1:~$ cd learning_unix/
+(base) ubuntu@student-1:~/learning_unix$
 </pre>
 <p>Let’s make two new subdirectories and navigate into them:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mkdir outer
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd outer
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$
+(base) ubuntu@student-1:~/learning_unix$ mkdir outer
+(base) ubuntu@student-1:~/learning_unix$ cd outer
+(base) ubuntu@student-1:~/learning_unix/outer$
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$ mkdir inner
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$ cd inner/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer/inner$
+(base) ubuntu@student-1:~/learning_unix/outer$ mkdir inner
+(base) ubuntu@student-1:~/learning_unix/outer$ cd inner/
+(base) ubuntu@student-1:~/learning_unix/outer/inner$
 </pre>
 <p>We created the two directories in separate steps, but it is possible to use the <code>mkdir</code> command in way to do this all in one step.</p>
 <p>Like most Unix commands, <code>mkdir</code> supports command-line options which let you alter its behavior and functionality. Command-like options are - as the name suggests - optional arguments that are placed after the command name. They often take the form of single letters (following a dash). If we had used the <code>-p</code> option of the <code>mkdir</code> command we could have done this in one step. E.g.</p>
@@ -400,10 +509,10 @@ mkdir -p outer/inner
 <p><strong>Note the spaces either side of the -p!</strong></p>
 <p>Let’s change directory to the root directory, and then into our <code>home</code> directory</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer/inner$ cd /
-(base) ubuntu@liz-workshop-demo:/$ cd home
-(base) ubuntu@liz-workshop-demo:/home$ cd ubuntu
-(base) ubuntu@liz-workshop-demo:~$
+(base) ubuntu@student-1:~/learning_unix/outer/inner$ cd /
+(base) ubuntu@student-1:/$ cd home
+(base) ubuntu@student-1:/home$ cd ubuntu
+(base) ubuntu@student-1:~$
 </pre>
 <p>In this case, we may as well have just changed directory in one go:</p>
 <pre class="bash">
@@ -419,10 +528,10 @@ cd home/ubuntu/
 <p>Learn and understand the difference between these two commands.</p>
 <p>Frequently, you will find that you want to go ‘upwards’ one level in the directory hierarchy. Two dots <code>..</code> are used in Unix to refer to the parent directory of wherever you are. Every directory has a parent except the root level of the computer. Let’s go into the <code>learning_unix</code> directory and then navigate up two levels:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~$ cd learning_unix/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd ..
-(base) ubuntu@liz-workshop-demo:~$ cd ..
-(base) ubuntu@liz-workshop-demo:/home$
+(base) ubuntu@student-1:~$ cd learning_unix/
+(base) ubuntu@student-1:~/learning_unix$ cd ..
+(base) ubuntu@student-1:~$ cd ..
+(base) ubuntu@student-1:/home$
 </pre>
 <p>What if you wanted to navigate up two levels in the file system in one go? It’s very simple, just use two sets of the <code>..</code> operator, separated by a forward slash:</p>
 <pre class="bash">
@@ -430,9 +539,9 @@ cd ../..
 </pre>
 <p>Using <code>cd ..</code> allows us to change directory relative to where we are now. You can also always change to a directory based on its absolute location. E.g. if you are working in the <code>/home/ubuntu/learning_unix</code> directory and you then want to change to the <code>/tmp</code> directory, then you could do either of the following:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd ../../../tmp
+(base) ubuntu@student-1:~/learning_unix$ cd ../../../tmp
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd /tmp
+(base) ubuntu@student-1:~/learning_unix$ cd /tmp
 </pre>
 <p>They both achieve the same thing, but the 2nd example requires that you know about the full path from the root level of the computer to your directory of interest (the ‘path’ is an important concept in Unix). Sometimes it is quicker to change directories using the relative path, and other times it will be quicker to use the absolute path.</p>
 <p>Remember that the command prompt shows you the name of the directory that you are currently in, and that when you are in your home directory it shows you a tilde character (<code>~</code>) instead? This is because Unix uses the tilde character as a short-hand way of specifying a home directory.</p>
@@ -445,13 +554,13 @@ cd
 <p>Hopefully, you should find that <code>cd</code> and <code>cd ~</code> do the same thing, i.e. they take you back to your home directory (from wherever you were). You will frequently want to jump straight back to your home directory, and typing <code>cd</code> is a very quick way to get there.</p>
 <p>The <code>..</code> operator that we saw earlier can also be used with the ls command, e.g. you can list directories that are ‘above’ you:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd ~/learning_unix/outer/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$ ls ../../
+(base) ubuntu@student-1:~/learning_unix$ cd ~/learning_unix/outer/
+(base) ubuntu@student-1:~/learning_unix/outer$ ls ../../
 anaconda2  data  Desktop  galaxy-app  galaxy-indices  galaxy-tools  learning_unix  ncbi  scripts
 </pre>
 <p>Time to learn another useful command-line option. If you add the letter ‘l’ to the <code>ls</code> command it will give you a longer output compared to the default:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls -l /home
+(base) ubuntu@student-1:~/learning_unix$ ls -l /home
 total 24
 drwxr-xr-x  2 cloudgene  cloudgene 4096 Apr 10  2018 cloudgene
 drwxr-xr-x  2 fuse       users     4096 Mar 12 12:41 fuse
@@ -483,12 +592,12 @@ man man # yes even the man command has a manual page
 <h1>Removing Directories</h1>
 <p>We now have a few (empty) directories that we should remove. To do this use the <code>rmdir</code> command, this will only remove empty directories so it is quite safe to use. If you want to know more about this command (or any Unix command), then remember that you can just look at its <code>man</code> page.</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd ~/learning_unix/outer/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$ rmdir inner/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/outer$ cd ..
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ rmdir outer/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
-(base) ubuntu@liz-workshop-demo:~/learning_unix$
+(base) ubuntu@student-1:~/learning_unix$ cd ~/learning_unix/outer/
+(base) ubuntu@student-1:~/learning_unix/outer$ rmdir inner/
+(base) ubuntu@student-1:~/learning_unix/outer$ cd ..
+(base) ubuntu@student-1:~/learning_unix$ rmdir outer/
+(base) ubuntu@student-1:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$
 </pre>
 <p><strong>Note, you have to be outside a directory before you can remove it with <code>rmdir</code>!</strong></p>
 </div>
@@ -503,19 +612,19 @@ man man # yes even the man command has a manual page
 <h1>Working with files</h1>
 <p>The following sections will deal with Unix commands that help us to work with files, i.e. copy files to/from places, move files, rename files, remove files, and most importantly, look at files. First, we need to have some files to play with. The Unix command <code>touch</code> will let us create a new, empty file. The touch command does other things too, but for now we just want a couple of files to work with.</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ touch heaven.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ touch earth.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ touch heaven.txt
+(base) ubuntu@student-1:~/learning_unix$ touch earth.txt
+(base) ubuntu@student-1:~/learning_unix$ ls
 earth.txt  heaven.txt
 </pre>
 <p>Now, let’s assume that we want to move these files to a new directory (‘temp’). We will do this using the Unix <code>mv</code> (move) command. Remember to use tab completion:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mkdir temp
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mv heaven.txt temp/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mv earth.txt temp/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ mkdir temp
+(base) ubuntu@student-1:~/learning_unix$ mv heaven.txt temp/
+(base) ubuntu@student-1:~/learning_unix$ mv earth.txt temp/
+(base) ubuntu@student-1:~/learning_unix$ ls
 temp
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls temp/
+(base) ubuntu@student-1:~/learning_unix$ ls temp/
 earth.txt  heaven.txt
 </pre>
 <p>For the <code>mv</code> command, we always have to specify a source file (or directory) that we want to move, and then specify a target location. If we had wanted to we could have moved both files in one go by typing any of the following commands:</p>
@@ -535,22 +644,22 @@ Answer
 <p><br></p>
 <p>In the earlier example, the destination for the <code>mv</code> command was a directory name (temp). So we moved a file from its source location to a target location. Note that the target could have also been a (different) file name, rather than a directory, so <code>mv</code> can also allow us to rename a file. E.g. let’s make a new file and move it whilst renaming it at the same time:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ touch rags
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ touch rags
+(base) ubuntu@student-1:~/learning_unix$ ls
 rags  temp
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mv rags temp/riches
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls temp/
+(base) ubuntu@student-1:~/learning_unix$ mv rags temp/riches
+(base) ubuntu@student-1:~/learning_unix$ ls temp/
 earth.txt  heaven.txt  riches
 </pre>
 <p>In this example we create a new file (‘rags’) and move it to a new location and in the process change the name (to ‘riches’). So <code>mv</code> can rename a file as well as move it. The logical extension of this is using <code>mv</code> to rename a file without moving it (you have to use <code>mv</code> to do this as Unix does not have a separate ‘rename’ command):</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mv temp/riches temp/rags
+(base) ubuntu@student-1:~/learning_unix$ mv temp/riches temp/rags
 </pre>
 <p>It is important to understand that as long as you have specified a ‘source’ and a ‘target’ location when you are moving a file, then it doesn’t matter what your current directory is. You can move or copy things within the same directory or between different directories regardless of whether you are in any of those directories. Moving directories is just like moving files:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mkdir temp2
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mv temp2 temp
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls temp/
+(base) ubuntu@student-1:~/learning_unix$ mkdir temp2
+(base) ubuntu@student-1:~/learning_unix$ mv temp2 temp
+(base) ubuntu@student-1:~/learning_unix$ ls temp/
 earth.txt  heaven.txt  rags  temp2
 </pre>
 <p>This step moves the <code>temp2</code> directory inside the <code>temp</code> directory. Try creating a ‘temp3’ directory inside <code>learning_unix</code> and then <code>cd</code> to <code>/tmp</code>. Can you move <code>temp3</code> inside <code>temp2</code> without changing directory? When you are finished, <code>cd</code> back to <code>learning_unix</code>.</p>
@@ -559,11 +668,11 @@ earth.txt  heaven.txt  rags  temp2
 Answer
 </button>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ mkdir temp3
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd /tmp
-(base) ubuntu@liz-workshop-demo:/tmp$ mv ~/learning_unix/temp3 ~/learning_unix/temp/temp2
-(base) ubuntu@liz-workshop-demo:/tmp$ cd ~/learning_unix/
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls temp/temp2/
+(base) ubuntu@student-1:~/learning_unix$ mkdir temp3
+(base) ubuntu@student-1:~/learning_unix$ cd /tmp
+(base) ubuntu@student-1:/tmp$ mv ~/learning_unix/temp3 ~/learning_unix/temp/temp2
+(base) ubuntu@student-1:/tmp$ cd ~/learning_unix/
+(base) ubuntu@student-1:~/learning_unix$ ls temp/temp2/
 temp3
 </pre>
 </div>
@@ -576,38 +685,38 @@ temp3
 <p>Potentially, <code>rm</code> is a very dangerous command; if you delete something with <code>rm</code>, you will not get it back! It is possible to delete everything in your home directory (all directories and subdirectories) with <code>rm</code>, that is why it is such a dangerous command.</p>
 <p>Let me repeat that last part again. It is possible to delete EVERY file you have ever created with the <code>rm</code> command. Are you scared yet? You should be. Luckily there is a way of making rm a little bit safer. We can use it with the <code>-i</code> command-line option which will ask for confirmation before deleting anything (remember to use tab-completion). Run the following commands, and type “y” (for yes) to indicate you truly intend to delete the files.</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cd temp
-(base) ubuntu@liz-workshop-demo:~/learning_unix/temp$ ls
+(base) ubuntu@student-1:~/learning_unix$ cd temp
+(base) ubuntu@student-1:~/learning_unix/temp$ ls
 earth.txt  heaven.txt  rags  temp2
-(base) ubuntu@liz-workshop-demo:~/learning_unix/temp$ rm -i earth.txt heaven.txt rags
+(base) ubuntu@student-1:~/learning_unix/temp$ rm -i earth.txt heaven.txt rags
 rm: remove regular empty file 'earth.txt'? y
 rm: remove regular empty file 'heaven.txt'? y
 rm: remove regular empty file 'rags'? y
 </pre>
-<p>We could have simplified this step by using a wild-card (e.g. <code>rm -i *.txt</code>) or we could have made things more complex by removing each file with a separate <code>rm</code> command. Let’s finish cleaning up:</p>
+<p>We could have simplified this step by using a wild-card (e.g. <code>rm -i *.txt</code>) or we could have made things more complex by removing each file with a separate <code>rm</code> command. Let’s finish cleaning up:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix/temp$ rmdir temp2/temp3/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/temp$ rmdir temp2/
-(base) ubuntu@liz-workshop-demo:~/learning_unix/temp$ cd ..
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ rmdir temp/
+(base) ubuntu@student-1:~/learning_unix/temp$ rmdir temp2/temp3/
+(base) ubuntu@student-1:~/learning_unix/temp$ rmdir temp2/
+(base) ubuntu@student-1:~/learning_unix/temp$ cd ..
+(base) ubuntu@student-1:~/learning_unix$ rmdir temp/
 </pre>
 </div>
 <div id="copying-files" class="section level1 unnumbered">
 <h1>Copying files</h1>
 <p>Copying files with the <code>cp</code> (copy) command is very similar to moving them. Remember to always specify a source and a target location. Let’s create a new file and make a copy of it:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ touch file1
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cp file1 file2
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ touch file1
+(base) ubuntu@student-1:~/learning_unix$ cp file1 file2
+(base) ubuntu@student-1:~/learning_unix$ ls
 file1  file2
 </pre>
 <p>What if we wanted to copy files from a different directory to our current directory? Let’s put a file in our home directory (specified by <code>~</code> remember) and copy it to the current directory (<code>learning_unix</code>):</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ touch ~/file3
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls ~
+(base) ubuntu@student-1:~/learning_unix$ touch ~/file3
+(base) ubuntu@student-1:~/learning_unix$ ls ~
 anaconda2  data  Desktop  file3  galaxy-app  galaxy-indices  galaxy-tools  learning_unix  ncbi  scripts
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cp ~/file3 .
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ cp ~/file3 .
+(base) ubuntu@student-1:~/learning_unix$ ls
 file1  file2  file3
 </pre>
 <p>This last step introduces another new concept. In Unix, the current directory can be represented by a <code>.</code> (dot) character. You will mostly use this only for copying files to the current directory that you are in. Compare the following:</p>
@@ -619,7 +728,7 @@ ls ./
 <p>In this case, using the dot is somewhat pointless because ls will already list the contents of the current directory by default. Also note how the trailing slash is optional. You can use rm to remove the temporary files.</p>
 <p>Finally, let’s clean up this directory. Note the use of the * wildcard, which allows us to delete all three files at once.</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ rm file*
+(base) ubuntu@student-1:~/learning_unix$ rm file*
 </pre>
 <p>The <code>cp</code> command also allows us (with the use of a command-line option) to copy entire directories. Use <code>man cp</code> to see how the <code>-R</code> or <code>-r</code> options let you copy a directory recursively.</p>
 </div>
@@ -627,45 +736,45 @@ ls ./
 <h1>Looking at files</h1>
 <p>So far we have covered listing the contents of directories and moving/copying/deleting either files and/or directories. Now we will quickly cover how you can look at files. The less command lets you view (but not edit) text files. We will use the echo command to put some text in a file and then view it:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo "Call me Ishmael."
+(base) ubuntu@student-1:~/learning_unix$ echo "Call me Ishmael."
 Call me Ishmael.
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo "Call me Ishmael." > opening_lines.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ echo "Call me Ishmael." > opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ ls
 opening_lines.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ less opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ less opening_lines.txt
 </pre>
 <p>On its own, <code>echo</code> isn’t a very exciting Unix command. It just echoes text back to the screen. But we can redirect that text into an output file by using the <code>&gt;</code> symbol. This allows for something called file redirection.</p>
 <p>Careful when using file redirection (<code>&gt;</code>), it will overwrite any existing file of the same name</p>
 <p>When you are using less, you can bring up a page of help commands by pressing <code>h</code>, scroll forward a page by pressing <code>space</code>, or go forward or backwards one line at a time by pressing <code>j</code> or <code>k</code>. To exit less, press <code>q</code> (for quit). The <code>less</code> program also does many other useful things (including text searching).</p>
 <p>Let’s add another line to the file:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo "The primroses were over." >> opening_lines.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cat opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ echo "The primroses were over." >> opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ cat opening_lines.txt
 Call me Ishmael.
 The primroses were over.
 </pre>
 <p><strong>Notice that we use <code>&gt;&gt;</code> and not just <code>&gt;</code>.</strong> This operator will append to a file. If we only used <code>&gt;</code>, we would end up overwriting the file. The <code>cat</code> command displays the contents of the file (or files) and then returns you to the command line. Unlike <code>less</code> you have no control on how you view that text (or what you do with it). It is a very simple, but sometimes useful, command. You can use <code>cat</code> to quickly combine multiple files or, if you wanted to, make a copy of an existing file:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ cat opening_lines.txt > file_copy.txt
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ less file_copy.txt
+(base) ubuntu@student-1:~/learning_unix$ cat opening_lines.txt > file_copy.txt
+(base) ubuntu@student-1:~/learning_unix$ less file_copy.txt
 </pre>
 And again, let’s clean up the redundant file:
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ rm file_copy.txt
+(base) ubuntu@student-1:~/learning_unix$ rm file_copy.txt
 </pre>
 <p>Now let’s learn how to count the characters, words, and lines in a file.</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls
+(base) ubuntu@student-1:~/learning_unix$ ls
 opening_lines.txt
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ ls -l
+(base) ubuntu@student-1:~/learning_unix$ ls -l
 total 4
 -rw-rw-r-- 1 ubuntu ubuntu 42 Mar 20 08:52 opening_lines.txt
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ wc opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ wc opening_lines.txt
  2  7 42 opening_lines.txt
  
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ wc -l opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ wc -l opening_lines.txt
 2 opening_lines.txt
 </pre>
 <p>The <code>ls -l</code> option shows us a long listing, which includes the size of the file in bytes (in this case ‘42’). Another way of finding this out is by using Unix’s <code>wc</code> command (word count). By default this tells you many lines, words, and characters are in a specified file (or files), but you can use command-line options to give you just one of those statistics (in this case we count lines with <code>wc -l</code>).</p>
@@ -682,7 +791,7 @@ Answer
 <h1>Editing files</h1>
 <p><code>nano</code> is a lightweight editor installed on most Unix systems. There are many more powerful editors (such as ‘emacs’ and ‘vi’), but these have steep learning curves. <code>nano</code> is very simple. You can edit (or create) files by typing:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ nano opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ nano opening_lines.txt
 </pre>
 <p>You simply type the text you want to include in the file.</p>
 <p>The bottom of the nano window shows you a list of simple commands which are all accessible by typing ‘Control’ plus a letter. E.g. Control + X exits the program, Control + O will ‘write out’ or ‘save’ the file.</p>
@@ -712,7 +821,7 @@ Marley was dead, to begin with.
 <li>Use wildcard characters and other patterns to allow for alternatives (<code>*</code>, <code>.</code>, and <code>[]</code>)</li>
 </ul>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep was opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep was opening_lines.txt
 The Galactic Empire was dying.
 It was a pleasure to burn.
 It was a bright, cold day in April, and the clocks were striking thirteen.
@@ -722,7 +831,7 @@ When he was nearly thirteen, my brother Jem got his arm badly broken at the elbo
 Marley was dead, to begin with.
 </pre>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep -v was opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep -v was opening_lines.txt
 Call me Ishmael.
 The primroses were over.
 Now is the winter of our discontent.
@@ -731,15 +840,15 @@ In a hole in the ground there lived a hobbit.
 I am an invisible man.
 </pre>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep all opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep all opening_lines.txt
 Call me Ishmael.
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep -i all opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep -i all opening_lines.txt
 Call me Ishmael.
 All children, except one, grow up.
 </pre>
 <p>(Note how searching for ‘all’ without any options matches the word ‘call’, but not ‘All’ due to the capital letter.</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep in opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep in opening_lines.txt
 Now is the winter of our discontent.
 The Galactic Empire was dying.
 In a hole in the ground there lived a hobbit.
@@ -757,18 +866,18 @@ Here are some more advanced examples to look at if you have time:
 Show advanced examples
 </button>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep -w o.. opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep -w o.. opening_lines.txt
 Now is the winter of our discontent.
 All children, except one, grow up.
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep [aeiou]t opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep [aeiou]t opening_lines.txt
 In a hole in the ground there lived a hobbit.
 It was love at first sight.
 It was the day my grandmother exploded.
 When he was nearly thirteen, my brother Jem got his arm badly broken at the elbow.
 Marley was dead, to begin with.
 
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep -w -i [aeiou]t opening_lines.txt
+(base) ubuntu@student-1:~/learning_unix$ grep -w -i [aeiou]t opening_lines.txt
 It was a pleasure to burn.
 It was a bright, cold day in April, and the clocks were striking thirteen.
 It was love at first sight.
@@ -811,13 +920,13 @@ cut -f 3,8 grades.txt | paste grades_no_cheaters.txt - > sorted_grades.txt
 <h1>Combining commands with pipes</h1>
 <p>One of the most powerful features of Unix is that you can send the output from one command or program to any other command (as long as the second command accepts input of some sort). We do this by using what is known as a pipe. This is implemented using the ‘|’ character (which is a character which always seems to be on different keys depending on the keyboard that you are using). Think of the pipe as simply connecting two Unix programs. Here’s an example using two commands you saw earlier:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep was opening_lines.txt | wc -c
+(base) ubuntu@student-1:~/learning_unix$ grep was opening_lines.txt | wc -c
 316
 </pre>
 <p>The first use of <code>grep</code> searches the specified file for lines matching ‘was’, then it sends the lines that match through a pipe to the <code>wc</code> program. We use the -c option to just count characters in the matching lines (316).</p>
 <p>Here’s an example which introduces some new Unix commands:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ grep was opening_lines.txt | sort | head -n 3 | wc -c
+(base) ubuntu@student-1:~/learning_unix$ grep was opening_lines.txt | sort | head -n 3 | wc -c
 130
 </pre>
 <p>This example first sends the output of <code>grep</code> to the Unix <code>sort</code> command. This sorts a file alphanumerically by default. The sorted output is sent to the <code>head</code> command which by default shows the first 10 lines of a file. We use the <code>-n</code> option of this command to only show 3 lines. These 3 lines are then sent to the wc command as before.</p>
@@ -854,14 +963,14 @@ tr 'a-z' 'A-Z' < opening_lines.txt
 <h1>Environment variables</h1>
 <p>One other use of the echo command is for displaying the contents of something known as environment variables. These contain user-specific or system-wide values that either reflect simple pieces of information (your username), or lists of useful locations on the file system. Some examples:</p>
 <pre class="bash">
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo $USER
+(base) ubuntu@student-1:~/learning_unix$ echo $USER
 ubuntu
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo $HOME
+(base) ubuntu@student-1:~/learning_unix$ echo $HOME
 /home/ubuntu
-(base) ubuntu@liz-workshop-demo:~/learning_unix$ echo $PATH
+(base) ubuntu@student-1:~/learning_unix$ echo $PATH
 /home/ubuntu/bin:/home/ubuntu/.local/bin:/home/ubuntu/anaconda2/bin:/home/ubuntu/anaconda2/condabin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/mnt/galaxy/tools/bin:/usr/lib/postgresql/9.5/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 </pre>
-<p>The last one shows the content of the $PATH environment variable, which displays a colon-separated list of directories that are expected to contain programs that you can run. This includes all of the Unix commands that you have seen so far. These are files that live in directories which are run like programs (e.g. <code>ls</code> is just a special type of file in the <code>/bin</code> directory).</p>
+<p>The last one shows the content of the $PATH environment variable, which displays a colon-separated list of directories that are expected to contain programs that you can run. This includes all of the Unix commands that you have seen so far. These are files that live in directories which are run like programs (e.g. <code>ls</code> is just a special type of file in the <code>/bin</code> directory).</p>
 <p>Knowing how to change your $PATH to include custom directories can be necessary sometimes (e.g. if you install some new software in a non-standard location).</p>
 <script>
   $(".toggle").click(function() {
