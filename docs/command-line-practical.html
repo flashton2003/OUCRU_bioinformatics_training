@@ -57,9 +57,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -177,8 +175,6 @@ $(document).ready(function () {
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -337,6 +333,16 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -395,8 +401,8 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Command line practical</h1>
-<h4 class="author"><em>Liz Batty</em></h4>
-<h4 class="date"><em>24 March, 2019</em></h4>
+<h4 class="author">Liz Batty</h4>
+<h4 class="date">24 March, 2019</h4>
 
 </div>
 
@@ -415,9 +421,9 @@ text-align: justify}
 <p>We will start by logging in to your computer. For this workshop, we are using a remote system called CLIMB, the Cloud Infrastructure for Microbial Bioinformatics. This makes it easy for us to give you all your own Unix server to work on for this course, but as the computers are in the UK, we need to use a Unix tool called <code>ssh</code> to access the computer. <strong><code>ssh</code> must be in lower-case - Unix commands are case-sensitive and <code>SSH</code> is not the same as <code>ssh</code>.</strong></p>
 <p>Open up the program <code>mobaXterm</code> on your computer. You have been given the IP address of your computer (four sets of numbers separated by dots). Type the following into your <code>mobaXterm</code> window:</p>
 <pre class="bash">
-ssh -i '<path.to/oucru.key>' ubuntu@137.44.59.149
+ssh -i 'path.to/oucru.key' ubuntu@137.44.59.149
 </pre>
-<p>replacing <code>137.44.59.149</code> with the IP address you have been given, and <code>&lt;path.to/oucru.key&gt;</code> with the location of the <code>oucru.key</code> file on your computer.</p>
+<p>replacing <code>137.44.59.149</code> with the IP address you have been given, and <code>path.to/oucru.key</code> with the location of the <code>oucru.key</code> file on your computer.</p>
 You will see a message a bit like this appear on your screen:
 <pre class="bash">
 The authenticity of host '137.44.59.164 (137.44.59.164)' can't be established.
