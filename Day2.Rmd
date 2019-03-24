@@ -6,6 +6,8 @@ Schedule for Day 2
 
 AM
 
+* Demonstration - using FileZilla
+
 * [Lecture](20190206-sequenceqc.pdf) & [Practical](sequenceqc-practical.html) - Sequence quality control
 
 11.30am - OUCRU academic meeting
