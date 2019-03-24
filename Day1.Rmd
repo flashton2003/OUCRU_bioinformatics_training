@@ -14,7 +14,7 @@ AM
 
 PM
 
-* Lecture - Introduction to CLIMB
+* Introduction to CLIMB
 
 * Lecture & [practical](command-line-practical.html) - Introduction to command line
 
