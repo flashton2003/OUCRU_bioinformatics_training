@@ -463,9 +463,6 @@ div.tocify {
 <h4 class="author"><em>Liz Batty</em></h4>
 <h4 class="date"><em>25 March, 2019</em></h4>
 
-</div>
-
-
 <style>
 body {
 text-align: justify}
@@ -483,7 +480,7 @@ text-align: justify}
 <h1>Exercise 1</h1>
 <p>In this practical we will perform <em>de novo</em> assembly of a genome from Illumina reads. You will be assembling a strain of <em>Staphyloccocus aureus</em>.</p>
 <p>We will use SPAdes for this activity. SPAdes is one of a number of <em>de novo</em> assemblers that use short read sets as an input and the method for assembly is based on de Bruijn graphs. For information about SPAdes see this <a href="http://cab.spbu.ru/software/spades/">link</a> and there is a <a href="http://cab.spbu.ru/files/release3.13.0/manual.html">manual</a>.</p>
-<p>In this activity, we will perform a <em>de novo</em> assembly of a short read set (from an Illumina sequencer) using the SPAdes assembler. The output from SPAdes that we are interested in is a multifasta file that contains the draft genome sequence.</p>
+<p>In this activity, we will perform a <em>de novo</em> assembly of a short read set (from an Illumina sequencer) using the SPAdes assembler. The output from SPAdes that we are interested in is a multi-fasta file that contains the draft genome sequence.</p>
 <p>Navigate to the directory for the assembly activity:</p>
 <p><code>/home/ubuntu/data/day-2/assembly-practical</code></p>
 <p>You will see a pair of FASTQ files for a <em>S. aureus</em> strain.</p>
@@ -497,12 +494,12 @@ text-align: justify}
 <p>Spades will take around 6 or 7 minutes to run. When spades has finished, look at the output files which are produced.</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
-<p><strong>Question 3:</strong> Can you tell which k-mers Spades used for the assembly?</p>
+<p><strong>Question 3:</strong> What version of <code>spades</code> did we use for the assembly?</p>
 <div class="toggle">
 <button>
 Hint
 </button>
-<p>Look insides <code>spades.log</code>: this is the log file with all the information about how spades ran.</p>
+<p>Look inside <code>spades.log</code>: this is the log file with all the information about how spades ran and at the top it tells you the version. Or you can run <code>spades.py -v</code>.</p>
 </div>
 <p><br></p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
@@ -515,7 +512,7 @@ Hint
 <p>Now we will assess the quality of the contigs and scaffolds produced from Spades using a tool for assessing the quality of genome assemblies called Quast.</p>
 <p>Run the following command:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">quast</span> -o quast -l spades-contigs,spades-scaffolds S_aureus/contigs.fasta  S_aureus/scaffolds.fasta</code></pre></div>
-<p>Quast gives output both as text files, and as a report.html file which you can open in a web browser. Use FileZilla to move the quast report to your computer. This is the report.html file in the directory assembly/quast.</p>
+<p>Quast gives output both as text files, and as a report.html file which you can open in a web browser. Use FileZilla to move the quast report to your computer. This is the report.html file in the directory <code>~/data/day-2/assembly-practical/quast</code>.</p>
 <p>Double-click on <code>report.html</code> to open it in your browser. The report has an interactive table and a graph. Hover over each line in the table for an explanation.</p>
 <p><strong>Question 4:</strong> How many contigs (over 500bp) are there in the two assemblies? What is the n50 value for the two assemblies?</p>
 <p>Which assembly do you think is better?</p>
@@ -524,8 +521,9 @@ Hint
 </div>
 <div id="exercise-3" class="section level1 unnumbered">
 <h1>Exercise 3</h1>
-<p>We can also assess our assemblies by looking at the assembly graph. The assembly graph represents the assembly of the genome as a series of nodes and edges, showing regions which can be easily assembled and areas where there were multiple possibilities for assembly which have been resolved by the assembler. We will use a tool called Bandage for this. Bandage is a graphical tool so we will need to transfer the assembly graph files to the local computer and inspect them there.</p>
-<p>Open the program Bandage. Go to <code>File...</code> menu &gt; <code>Load Graph</code> and open the <code>assembly_graph.fastg</code> file which is already in the local directory. Once it is loaded push the <code>Draw graph</code> button in the <code>Graph Drawing</code> menu.</p>
+<p>We can also assess our assemblies by looking at the assembly graph. The assembly graph represents the assembly of the genome as a series of nodes and edges, showing regions which can be easily assembled and areas where there were multiple possibilities for assembly which have been resolved by the assembler. We will use a tool called Bandage for this.</p>
+<p>First we need to download the assembly graph file. Right-click on the following link: <a href="assembly_graph.fastg" class="uri">assembly_graph.fastg</a> and save the file on to your computer.</p>
+<p>Open the program Bandage from the Windows menu. Go to <code>File...</code> menu &gt; <code>Load Graph</code> and open the <code>assembly_graph.fastg</code> file. Once it is loaded push the <code>Draw graph</code> button in the <code>Graph Drawing</code> menu.</p>
 <center>
 <img src="images/drawgraph.png" />
 </center>
