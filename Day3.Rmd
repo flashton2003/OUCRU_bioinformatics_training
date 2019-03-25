@@ -14,6 +14,6 @@ PM
 
 * Post-lunch seminar - Trung Nguyen Vinh
 
-* Lecture & Practical - Genome annotation & visualisation
+* Lecture & [Practical](annotation_practical.html) - Genome annotation & visualisation
 
-* Lecture - Core/pan genome analysis
+* [Lecture](20190111-coregenome.pdf) - Core/pan genome analysis

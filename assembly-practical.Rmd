@@ -26,7 +26,7 @@ You will be assembling a strain of *Staphyloccocus aureus*.
 
 We will use SPAdes for this activity. SPAdes is one of a number of *de novo* assemblers that use short read sets as an input and the method for assembly is based on de Bruijn graphs. For information about SPAdes see this [link](http://cab.spbu.ru/software/spades/) and there is a [manual](http://cab.spbu.ru/files/release3.13.0/manual.html). 
 
-In this activity, we will perform a *de novo* assembly of a short read set (from an Illumina sequencer) using the SPAdes assembler. The output from SPAdes that we are interested in is a multifasta file that contains the draft genome sequence.
+In this activity, we will perform a *de novo* assembly of a short read set (from an Illumina sequencer) using the SPAdes assembler. The output from SPAdes that we are interested in is a multi-fasta file that contains the draft genome sequence.
 
 Navigate to the directory for the assembly activity:
 
@@ -52,10 +52,10 @@ Spades will take around 6 or 7 minutes  to run. When spades has finished, look a
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
-**Question 3:** Can you tell which k-mers Spades used for the assembly?
+**Question 3:** What version of `spades` did we use for the assembly?
 
 <div class="toggle"><button>Hint</button>
-Look insides `spades.log`: this is the log file with all the information about how spades ran.
+Look inside `spades.log`: this is the log file with all the information about how spades ran and at the top it tells you the version. Or you can run `spades.py -v`.
 </div><br>
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
@@ -73,7 +73,7 @@ Run the following command:
 quast -o quast -l spades-contigs,spades-scaffolds S_aureus/contigs.fasta  S_aureus/scaffolds.fasta
 ``` 
 
-Quast gives output both as text files, and as a report.html file which you can open in a web browser. Use FileZilla to move the quast report to your computer. This is the report.html file in the directory assembly/quast.
+Quast gives output both as text files, and as a report.html file which you can open in a web browser. Use FileZilla to move the quast report to your computer. This is the report.html file in the directory `~/data/day-2/assembly-practical/quast`.
 
 Double-click on `report.html` to open it in your browser. The report has an interactive table and a graph. Hover over each line in the table for an explanation.
 
@@ -85,9 +85,11 @@ Which assembly do you think is better?
 
 # Exercise 3 {-}
 
-We can also assess our assemblies by looking at the assembly graph. The assembly graph represents the assembly of the genome as a series of nodes and edges, showing regions which can be easily assembled and areas where there were multiple possibilities for assembly which have been resolved by the assembler. We will use a tool called Bandage for this. Bandage is a graphical tool so we will need to transfer the assembly graph files to the local computer and inspect them there.
+We can also assess our assemblies by looking at the assembly graph. The assembly graph represents the assembly of the genome as a series of nodes and edges, showing regions which can be easily assembled and areas where there were multiple possibilities for assembly which have been resolved by the assembler. We will use a tool called Bandage for this. 
 
-Open the program Bandage. Go to `File...` menu > `Load Graph` and open the `assembly_graph.fastg` file which is already in the local directory. Once it is loaded push the `Draw graph` button in the `Graph Drawing` menu. 
+First we need to download the assembly graph file. Right-click on the following link: [assembly_graph.fastg](assembly_graph.fastg)
+
+Open the program Bandage from the Windows menu. Go to `File...` menu > `Load Graph` and open the `assembly_graph.fastg` file. Once it is loaded push the `Draw graph` button in the `Graph Drawing` menu. 
 
 <center>![](images/drawgraph.png)</center>
 
