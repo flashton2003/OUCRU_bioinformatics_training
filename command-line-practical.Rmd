@@ -25,17 +25,18 @@ We will start by logging in to your computer. For this workshop, we are using a 
 Open up the program `mobaXterm` on your computer. You have been given the IP address of your computer (four sets of numbers separated by dots). Type the following into your `mobaXterm` window:
 
 <pre class="bash">
-ssh -i '<path.to/oucru.key>' ubuntu@137.44.59.149
+ssh -i 'path.to/oucru.key' ubuntu@137.44.59.149
 </pre>
 
-replacing `137.44.59.149` with the IP address you have been given, and `<path.to/oucru.key>` with the location of the `oucru.key` file on your computer. 
+replacing `137.44.59.149` with the IP address you have been given, and `path.to/oucru.key` with the location of the `oucru.key` file on your computer. 
 
 You will see a message a bit like this appear on your screen:
+
 <pre class="bash">
 The authenticity of host '137.44.59.164 (137.44.59.164)' can't be established.
 ECDSA key fingerprint is SHA256:YCF2nOj7HGtPTX5Md6BKCh8h1MGhI4yu5t9frTutvLc.
 Are you sure you want to continue connecting (yes/no)?
-</pre
+</pre>
 
 Type `yes` and hit enter.
 
