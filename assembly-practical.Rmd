@@ -87,7 +87,7 @@ Which assembly do you think is better?
 
 We can also assess our assemblies by looking at the assembly graph. The assembly graph represents the assembly of the genome as a series of nodes and edges, showing regions which can be easily assembled and areas where there were multiple possibilities for assembly which have been resolved by the assembler. We will use a tool called Bandage for this. 
 
-First we need to download the assembly graph file. Right-click on the following link: [assembly_graph.fastg](assembly_graph.fastg)
+First we need to download the assembly graph file. Right-click on the following link: [assembly_graph.fastg](assembly_graph.fastg) and save the file on to your computer.
 
 Open the program Bandage from the Windows menu. Go to `File...` menu > `Load Graph` and open the `assembly_graph.fastg` file. Once it is loaded push the `Draw graph` button in the `Graph Drawing` menu. 
 

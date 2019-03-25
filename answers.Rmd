@@ -4,8 +4,9 @@ title: "Answers"
 
 # Day 2 {-}
 
+* [Sequence QC practical](sequenceqc_practical_answers.html)
 * [Assembly practical](assembly_practical_answers.html)
-* [Sequenc QC](sequenceqc_practical_answers.html)
+
 
 # Day 3  {-}
 
