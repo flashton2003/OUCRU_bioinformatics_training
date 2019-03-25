@@ -18,4 +18,4 @@ PM
 
 * Lecture & [practical](command-line-practical.html) - Introduction to command line
 
-* [Lecture](20190324-Day_1-International-Sequence-Database) - Introduction to sequence databases
+* [Lecture](20190324-Day_1-International-Sequence-Database.pdf) - Introduction to sequence databases
