@@ -32,11 +32,15 @@ Navigate to the directory for the assembly activity:
 
 ```/home/ubuntu/data/day-2/assembly-practical```
 
-You will see a pair of FASTQ files for a *S. aureus* strain.
+You will see a pair of FASTQ files for a *S. aureus* strain. Notice that these FASTQ files have a slightly different filename which ends in `.gz`. This means that the files are gzipped, which is a way to compress the files and make them smaller. To look inside the FASTQ files which are gzipped, you will need to use `zless` to look inside a file, instead of using `less`. 
 
-**Question 1:** Look at the fastq files. How long are the sequencing reads?
+**Question 1:** Look at the fastq files. What is the sequence ID of the first FASTQ entry in the read 1 dataset?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
+<div class="toggle"><button>Hint</button>
+The command `zless S_aureus_1.fastq.gz` will open the file. 
+</div><br>
 
 Now we will run `spades` to assemble the genome: 
 
@@ -46,11 +50,14 @@ spades.py -1 S_aureus_1.fastq.gz  -2 S_aureus_2.fastq.gz -o S_aureus --careful -
 
 We will run spades with the `--careful` setting which aims to minimise the number of errors.
 
-**Question 2:** How many cores is this assembly using? How would you change this?
-
-Spades will take around 6 or 7 minutes  to run. When spades has finished, look at the output files which are produced. 
+**Question 2:** How many threads is this assembly using? How would you change this? 
+<div class="toggle"><button>Hint</button>
+Run the command `spades.py` to get the Spades help message which will explain which option controls the number of threads.
+</div><br>
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
+Spades will take around 6 or 7 minutes to run so this is a good time to get up and get a cup of tea. When spades has finished, look at the output files which are produced. 
 
 **Question 3:** What version of `spades` did we use for the assembly?
 
@@ -77,9 +84,7 @@ Quast gives output both as text files, and as a report.html file which you can o
 
 Double-click on `report.html` to open it in your browser. The report has an interactive table and a graph. Hover over each line in the table for an explanation.
 
-**Question 4:** How many contigs (over 500bp) are there in the two assemblies? What is the n50 value for the two assemblies?
-
-Which assembly do you think is better?
+**Question 4:** How many contigs (over 500bp) are there in the two assemblies? How long is the longest contig? How many Ns were added in the scaffolded genome? Which assembly do you think is better?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
@@ -95,6 +100,10 @@ Open the program Bandage from the Windows menu. Go to `File...` menu > `Load Gra
 
 **Question 5:** How many completely separate assembly graphs have been drawn? Why could you have multiple disconnected graphs?
 
+<div class="toggle"><button>Hint</button>
+Think about the DNA in the microbial cell and why it might be in multiple separate pieces.
+</div><br>
+
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 To investigate this further, colour in your graph according to the depth of coverage of each node. To do this, change `Random colours` to `Colour by depth` in the menu under `Graph Display`. The nodes are coloured from red to black, with higher coverage in red. 
@@ -105,7 +114,7 @@ To investigate this further, colour in your graph according to the depth of cove
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
-**Question 7**: Look at the plasmid graph (the smaller graph at the bottom of the screen). What colour are the nodes in this graph? Why might this be?
+**Question 7**: The large graph is the assemble of the chromosome, and the smaller one is the assembly of the plasmid in this strain. Look at the plasmid graph (the smaller graph at the bottom of the screen). What colour are the nodes in this graph? Why might this be?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 

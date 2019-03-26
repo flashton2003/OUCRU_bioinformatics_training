@@ -492,17 +492,31 @@ text-align: justify}
 <p>In this activity, we will perform a <em>de novo</em> assembly of a short read set (from an Illumina sequencer) using the SPAdes assembler. The output from SPAdes that we are interested in is a multi-fasta file that contains the draft genome sequence.</p>
 <p>Navigate to the directory for the assembly activity:</p>
 <p><code>/home/ubuntu/data/day-2/assembly-practical</code></p>
-<p>You will see a pair of FASTQ files for a <em>S. aureus</em> strain.</p>
-<p><strong>Question 1:</strong> Look at the fastq files. How long are the sequencing reads?</p>
+<p>You will see a pair of FASTQ files for a <em>S. aureus</em> strain. Notice that these FASTQ files have a slightly different filename which ends in <code>.gz</code>. This means that the files are gzipped, which is a way to compress the files and make them smaller. To look inside the FASTQ files which are gzipped, you will need to use <code>zless</code> to look inside a file, instead of using <code>less</code>.</p>
+<p><strong>Question 1:</strong> Look at the fastq files. What is the sequence ID of the first FASTQ entry in the read 1 dataset?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>The command <code>zless S_aureus_1.fastq.gz</code> will open the file.</p>
+</div>
+<p><br></p>
 <p>Now we will run <code>spades</code> to assemble the genome:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">spades.py</span> -1 S_aureus_1.fastq.gz  -2 S_aureus_2.fastq.gz -o S_aureus --careful -t 4</code></pre></div>
 <p>We will run spades with the <code>--careful</code> setting which aims to minimise the number of errors.</p>
-<p><strong>Question 2:</strong> How many cores is this assembly using? How would you change this?</p>
-<p>Spades will take around 6 or 7 minutes to run. When spades has finished, look at the output files which are produced.</p>
+<strong>Question 2:</strong> How many threads is this assembly using? How would you change this?
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>Run the command <code>spades.py</code> to get the Spades help message which will explain which option controls the number of threads.</p>
+</div>
+<p><br></p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
+<p>Spades will take around 6 or 7 minutes to run so this is a good time to get up and get a cup of tea. When spades has finished, look at the output files which are produced.</p>
 <p><strong>Question 3:</strong> What version of <code>spades</code> did we use for the assembly?</p>
 <div class="toggle">
 <button>
@@ -523,8 +537,7 @@ Hint
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">quast</span> -o quast -l spades-contigs,spades-scaffolds S_aureus/contigs.fasta  S_aureus/scaffolds.fasta</code></pre></div>
 <p>Quast gives output both as text files, and as a report.html file which you can open in a web browser. Use FileZilla to move the quast report to your computer. This is the report.html file in the directory <code>~/data/day-2/assembly-practical/quast</code>.</p>
 <p>Double-click on <code>report.html</code> to open it in your browser. The report has an interactive table and a graph. Hover over each line in the table for an explanation.</p>
-<p><strong>Question 4:</strong> How many contigs (over 500bp) are there in the two assemblies? What is the n50 value for the two assemblies?</p>
-<p>Which assembly do you think is better?</p>
+<p><strong>Question 4:</strong> How many contigs (over 500bp) are there in the two assemblies? How long is the longest contig? How many Ns were added in the scaffolded genome? Which assembly do you think is better?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
 </div>
@@ -537,6 +550,13 @@ Hint
 <img src="images/drawgraph.png" />
 </center>
 <p><strong>Question 5:</strong> How many completely separate assembly graphs have been drawn? Why could you have multiple disconnected graphs?</p>
+<div class="toggle">
+<button>
+Hint
+</button>
+<p>Think about the DNA in the microbial cell and why it might be in multiple separate pieces.</p>
+</div>
+<p><br></p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
 <p>To investigate this further, colour in your graph according to the depth of coverage of each node. To do this, change <code>Random colours</code> to <code>Colour by depth</code> in the menu under <code>Graph Display</code>. The nodes are coloured from red to black, with higher coverage in red.</p>
@@ -546,7 +566,7 @@ Hint
 <p><strong>Question 6:</strong> What do you notice about the colour of the short nodes and the long nodes in the chromosome graph? Why might this be?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
-<p><strong>Question 7</strong>: Look at the plasmid graph (the smaller graph at the bottom of the screen). What colour are the nodes in this graph? Why might this be?</p>
+<p><strong>Question 7</strong>: The large graph is the assemble of the chromosome, and the smaller one is the assembly of the plasmid in this strain. Look at the plasmid graph (the smaller graph at the bottom of the screen). What colour are the nodes in this graph? Why might this be?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
 </div>
