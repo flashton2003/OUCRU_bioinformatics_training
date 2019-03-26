@@ -8,7 +8,7 @@ Q3. 3.12.0
 
 **Exercise 2**
 
-Q4. 50 and 45 contigs, largest contigs are 255,441bp and 356,336bp
+Q4. 50 and 45 contigs, largest contigs are 255,441bp and 356,336bp, 486 Ns have been added in the scaffolded
 
 **Exercise 3**
 
