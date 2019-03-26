@@ -511,9 +511,11 @@ Hint
 </div>
 <p><br></p>
 <p>3.2. Now we are going to run our first BLAST. Enter the below command, where XXX is the outfmt option you chose in section 3.1</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">blastn</span> -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1_vs_salmonella_antigens.tsv</code></pre></div>
+<pre class="bash">
+blastn -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1_vs_salmonella_antigens.tsv
+</pre>
 <p>3.3. Then, examine the output file using <code>head</code>.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">head</span> Salm_1_vs_salmonella_antigens.tsv</code></pre></div>
+<p>head Salm_1_vs_salmonella_antigens.tsv`</p>
 <p><strong>Question 3:</strong> How many columns does the output have?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>

@@ -61,15 +61,13 @@ If you aren't sure which is the best format, move onto section 3.2 and experimen
 
 3.2. Now we are going to run our first BLAST. Enter the below command, where XXX is the outfmt option you chose in section 3.1
 
-```{bash, eval = FALSE} 
+<pre class="bash">
 blastn -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1_vs_salmonella_antigens.tsv
-``` 
+</pre>
 
 3.3. Then, examine the output file using `head`.
 
-```{bash, eval = FALSE} 
-head Salm_1_vs_salmonella_antigens.tsv
-```
+head Salm_1_vs_salmonella_antigens.tsv`
 
 **Question 3:** How many columns does the output have?
 
