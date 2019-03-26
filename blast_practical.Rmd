@@ -196,7 +196,7 @@ If a biologist uses the genes underlying a 'traditional' microbiological propert
 
 In exercise 2, you will use BLAST within the Bandage genome graph visualiser to determine whether antibiotic resistance determinants are carried on plasmids or chromosomes. 
 
-1. You will start by carrying out some basic data exploration on the command line of your remote instance. Locate the files in `OTN_bioinfx/Day3/AM/Salmonella_graph_genome_exercise`.
+1. You will start by carrying out some basic data exploration on the command line of your remote instance. Locate the files in `/home/ubuntu/data/day-3/blast-practical`.
 
 **Question 1:** What are the longest and shortest sequences in `genes_and_plasmids.fasta`?
 

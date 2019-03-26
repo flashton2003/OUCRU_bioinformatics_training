@@ -122,7 +122,9 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
+</head>
 
+<body>
 
 <style type = "text/css">
 .main-container {
@@ -240,6 +242,8 @@ $(document).ready(function () {
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
+
+<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -398,16 +402,6 @@ div.tocify {
 
 </style>
 
-
-
-</head>
-
-<body>
-
-
-<div class="container-fluid main-container">
-
-
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -466,8 +460,8 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">BLAST practical</h1>
-<h4 class="author">Philip Ashton</h4>
-<h4 class="date">26 March, 2019</h4>
+<h4 class="author"><em>Philip Ashton</em></h4>
+<h4 class="date"><em>26 March, 2019</em></h4>
 
 </div>
 
@@ -682,7 +676,7 @@ Hint
 <h1>Exercise 2</h1>
 <p>In exercise 2, you will use BLAST within the Bandage genome graph visualiser to determine whether antibiotic resistance determinants are carried on plasmids or chromosomes.</p>
 <ol style="list-style-type: decimal">
-<li>You will start by carrying out some basic data exploration on the command line of your remote instance. Locate the files in <code>OTN_bioinfx/Day3/AM/Salmonella_graph_genome_exercise</code>.</li>
+<li>You will start by carrying out some basic data exploration on the command line of your remote instance. Locate the files in <code>/home/ubuntu/data/day-3/blast-practical</code>.</li>
 </ol>
 <p><strong>Question 1:</strong> What are the longest and shortest sequences in <code>genes_and_plasmids.fasta</code>?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
