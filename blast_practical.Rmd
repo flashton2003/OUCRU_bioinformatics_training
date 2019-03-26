@@ -196,7 +196,9 @@ If a biologist uses the genes underlying a 'traditional' microbiological propert
 
 In exercise 2, you will use BLAST within the Bandage genome graph visualiser to determine whether antibiotic resistance determinants are carried on plasmids or chromosomes. 
 
-1. You will start by carrying out some basic data exploration on the command line of your remote instance. Locate the files in `/home/ubuntu/data/day-3/blast-practical`.
+1. You will start by carrying out some basic data exploration on the command line of your remote instance. Locate the files in `/home/ubuntu/data/day-3/blast-practical`. Below is the output of the following command `bioawk -c fastx '{ print $name, length($seq) }' < genes_and_plasmids.reduced.fasta`
+
+![bioawk output](https://i.imgur.com/de7ynJY.png)
 
 **Question 1:** What are the longest and shortest sequences in `genes_and_plasmids.fasta`?
 
@@ -215,7 +217,7 @@ Use google to tell you how to do this. [this answer](https://www.biostars.org/p/
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <div class="toggle"><button>Hint</button>
-Use `grep ‘>’ genes_and_plasmids.fasta` or the output of bioawk from above, to find the names of the sequences in the file.
+Use `grep ‘>’ genes_and_plasmids.fasta` to find the names of the sequences in the file.
 </div><br>
 
 2. Using filezilla, download the 3 FASTG files and genes_and_plasmids.fasta from `/home/ubuntu/data/day-3/blast-practical` to your local computer
