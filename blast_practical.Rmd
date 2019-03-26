@@ -26,12 +26,11 @@ To become familiar with:
 
 # Exercise 1 {-}
 
-In this exercise you will be given 6 assembled *Salmonella* genomes. You need to identify which serotype they are based on the results of BLAST analysis against a custom database, and cross checking the results with (a shortened version of) the Kauffman-White scheme.
+In this exercise you will be given 6 assembled *Salmonella* genomes. You need to identify which serotype they are based on the results of BLAST analysis against a custom database of *Salmonella* antigen genes, and cross checking the results with (a shortened version of) the Kauffman-White scheme.
 
-1. In the terminal, navigate to the `/home/ubuntu/data/day-3/blast-practical` directory, you should see 6 *Salmonella* reference genomes (fasta format) labelled `Salm_1` to `Salm_6` and a `salmonella_antigens.fasta` file. <br>
-In order to run BLAST, we need a query and a database. In this case, the database is going to be the `salmonella_antigens.fasta` file, and the queries are going to be the 6 *Salmonella* assemblies. For simplicity, we will process them one at a time.
+1. In the terminal, navigate to the `/home/ubuntu/data/day-3/blast-practical` directory, you should see 6 *Salmonella* reference genomes (fasta format) labelled `Salm_1` to `Salm_6` and a `salmonella_antigens.fasta` file. In order to run BLAST, we need a query and a database. In this case, the database is going to be the `salmonella_antigens.fasta` file, and the queries are going to be the 6 *Salmonella* assemblies. For simplicity, we will process them one at a time.
 
-2.  First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the `makeblastdb` program. <br>
+2.  First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the `makeblastdb` program. 
 
 ```{bash, eval = FALSE}
 makeblastdb -dbtype nucl -in salmonella_antigens.fasta
@@ -208,11 +207,11 @@ In exercise 2, you will use BLAST within the Bandage genome graph visualiser to 
 Use google to tell you how to do this. [this answer](https://www.biostars.org/p/118954/#119009) works well 
 </div><br>
 
-**Question 2:** What are the differences between the sequences which have a name beginning with ‘p’ (i.e. lowercase p) and those which don’t?
+**Question 2:** What are the differences between the sequences which have a name beginning with ‘p’ (i.e. lowercase p) and those which don’t? This is a question about your knowledge of microbiology naming conventions.
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
-**Question 3:** Either using Google or your microbiology knowledge, which genes in the file are typically plasmid-borne and which are typically chromosomal?
+**Question 3:** Either using Google or your microbiology knowledge, which AMR genes in the file are typically plasmid-borne and which are typically chromosomal?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
@@ -241,6 +240,10 @@ Look at [this](https://github.com/rrwick/Bandage/wiki/Effect-of-kmer-size)
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 6. Prepare the FASTG file for BLAST analysis by following the instructions from [here](https://github.com/rrwick/Bandage/wiki/BLAST-searches)
+
+<div class="alert alert-info">
+You need to install BLAST so that it can be used by Bandage. For this, download BLAST from [here](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-win64.exe), and place it in the same directory as the Bandage executable [Put executable path here].
+</div>
 
 7. BLAST the `genes_and_plasmids.fasta` against the genome loaded into Bandage. You can reduce the view to include only blast hits by changing the 'scope' drop down in the 'graph drawing' section, select 'around blast hits', change the distance to e.g. 2 or 3, and click draw graph. The distance controls how many contigs will be included in the view. Setting distance to 3 means that all contigs which are within 2 or 3 'jumps' of a contig with a blast hit will be included. Experiment with this parameter to see what effect having it at e.g. 0 and 10 has.
 

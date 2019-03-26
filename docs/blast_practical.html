@@ -482,10 +482,10 @@ text-align: justify}
 </div>
 <div id="exercise-1" class="section level1 unnumbered">
 <h1>Exercise 1</h1>
-<p>In this exercise you will be given 6 assembled <em>Salmonella</em> genomes. You need to identify which serotype they are based on the results of BLAST analysis against a custom database, and cross checking the results with (a shortened version of) the Kauffman-White scheme.</p>
+<p>In this exercise you will be given 6 assembled <em>Salmonella</em> genomes. You need to identify which serotype they are based on the results of BLAST analysis against a custom database of <em>Salmonella</em> antigen genes, and cross checking the results with (a shortened version of) the Kauffman-White scheme.</p>
 <ol style="list-style-type: decimal">
-<li><p>In the terminal, navigate to the <code>/home/ubuntu/data/day-3/blast-practical</code> directory, you should see 6 <em>Salmonella</em> reference genomes (fasta format) labelled <code>Salm_1</code> to <code>Salm_6</code> and a <code>salmonella_antigens.fasta</code> file. <br> In order to run BLAST, we need a query and a database. In this case, the database is going to be the <code>salmonella_antigens.fasta</code> file, and the queries are going to be the 6 <em>Salmonella</em> assemblies. For simplicity, we will process them one at a time.</p></li>
-<li><p>First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the <code>makeblastdb</code> program. <br></p></li>
+<li><p>In the terminal, navigate to the <code>/home/ubuntu/data/day-3/blast-practical</code> directory, you should see 6 <em>Salmonella</em> reference genomes (fasta format) labelled <code>Salm_1</code> to <code>Salm_6</code> and a <code>salmonella_antigens.fasta</code> file. In order to run BLAST, we need a query and a database. In this case, the database is going to be the <code>salmonella_antigens.fasta</code> file, and the queries are going to be the 6 <em>Salmonella</em> assemblies. For simplicity, we will process them one at a time.</p></li>
+<li><p>First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the <code>makeblastdb</code> program.</p></li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">makeblastdb</span> -dbtype nucl -in salmonella_antigens.fasta</code></pre></div>
 <p><strong>Question 1:</strong> How many sequences are there in the <code>salmonella_antigens.fasta</code> file? What are their names?</p>
@@ -692,10 +692,10 @@ Hint
 <p>Use google to tell you how to do this. <a href="https://www.biostars.org/p/118954/#119009">this answer</a> works well</p>
 </div>
 <p><br></p>
-<p><strong>Question 2:</strong> What are the differences between the sequences which have a name beginning with ‘p’ (i.e. lowercase p) and those which don’t?</p>
+<p><strong>Question 2:</strong> What are the differences between the sequences which have a name beginning with ‘p’ (i.e. lowercase p) and those which don’t? This is a question about your knowledge of microbiology naming conventions.</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
-<p><strong>Question 3:</strong> Either using Google or your microbiology knowledge, which genes in the file are typically plasmid-borne and which are typically chromosomal?</p>
+<p><strong>Question 3:</strong> Either using Google or your microbiology knowledge, which AMR genes in the file are typically plasmid-borne and which are typically chromosomal?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
 <div class="toggle">
@@ -726,7 +726,12 @@ Hint
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
 <ol start="6" style="list-style-type: decimal">
-<li><p>Prepare the FASTG file for BLAST analysis by following the instructions from <a href="https://github.com/rrwick/Bandage/wiki/BLAST-searches">here</a></p></li>
+<li>Prepare the FASTG file for BLAST analysis by following the instructions from <a href="https://github.com/rrwick/Bandage/wiki/BLAST-searches">here</a></li>
+</ol>
+<div class="alert alert-info">
+<p>You need to install BLAST so that it can be used by Bandage. For this, download BLAST from <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-win64.exe">here</a>, and place it in the same directory as the Bandage executable [Put executable path here].</p>
+</div>
+<ol start="7" style="list-style-type: decimal">
 <li><p>BLAST the <code>genes_and_plasmids.fasta</code> against the genome loaded into Bandage. You can reduce the view to include only blast hits by changing the ‘scope’ drop down in the ‘graph drawing’ section, select ‘around blast hits’, change the distance to e.g. 2 or 3, and click draw graph. The distance controls how many contigs will be included in the view. Setting distance to 3 means that all contigs which are within 2 or 3 ‘jumps’ of a contig with a blast hit will be included. Experiment with this parameter to see what effect having it at e.g. 0 and 10 has.</p></li>
 <li><p>Inspect the genome graph and the BLAST hits, explore the different options Bandage has for ‘scope’, zoom in and out, Node labels, Font etc.</p></li>
 </ol>
