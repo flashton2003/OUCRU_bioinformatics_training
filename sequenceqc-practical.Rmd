@@ -28,7 +28,7 @@ https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 
 This takes a BAM or FASTQ file as input. Here we will use the two FASTQ files from an isolate of *Burkholderia pseudomallei*.
 
-In the terminal, log on to your CLIMB server and navigate to the directory `/home/ubuntu/workshop/day-2/sequenceqc`
+In the terminal, log on to your CLIMB server and navigate to the directory `/home/ubuntu/data/day-2/sequenceqc-practical`
 
 <div class="toggle"><button>Hint</button>
 Use the `cd` command to change directory.
