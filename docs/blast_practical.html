@@ -485,7 +485,7 @@ text-align: justify}
 <p>In this exercise you will be given 6 assembled <em>Salmonella</em> genomes. You need to identify which serotype they are based on the results of BLAST analysis against a custom database of <em>Salmonella</em> antigen genes, and cross checking the results with (a shortened version of) the Kauffman-White scheme.</p>
 <ol style="list-style-type: decimal">
 <li><p>In the terminal, navigate to the <code>/home/ubuntu/data/day-3/blast-practical</code> directory, you should see 6 <em>Salmonella</em> reference genomes (fasta format) labelled <code>Salm_1</code> to <code>Salm_6</code> and a <code>salmonella_antigens.fasta</code> file. In order to run BLAST, we need a query and a database. In this case, the database is going to be the <code>salmonella_antigens.fasta</code> file, and the queries are going to be the 6 <em>Salmonella</em> assemblies. For simplicity, we will process them one at a time.</p></li>
-<li><p>First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the <code>makeblastdb</code> program.</p></li>
+<li><p>First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the <code>makeblastdb</code> program. -</p></li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">makeblastdb</span> -dbtype nucl -in salmonella_antigens.fasta</code></pre></div>
 <p><strong>Question 1:</strong> How many sequences are there in the <code>salmonella_antigens.fasta</code> file? What are their names?</p>
@@ -512,7 +512,7 @@ Hint
 <p><br></p>
 <p>3.2. Now we are going to run our first BLAST. Enter the below command, where XXX is the outfmt option you chose in section 3.1</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">blastn</span> -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1_vs_salmonella_antigens.tsv</code></pre></div>
-<p>3.3. Then, examine the output file using <code>head</code></p>
+<p>3.3. Then, examine the output file using <code>head</code>.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">head</span> Salm_1_vs_salmonella_antigens.tsv</code></pre></div>
 <p><strong>Question 3:</strong> How many columns does the output have?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">

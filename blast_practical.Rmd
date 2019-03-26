@@ -30,7 +30,7 @@ In this exercise you will be given 6 assembled *Salmonella* genomes. You need to
 
 1. In the terminal, navigate to the `/home/ubuntu/data/day-3/blast-practical` directory, you should see 6 *Salmonella* reference genomes (fasta format) labelled `Salm_1` to `Salm_6` and a `salmonella_antigens.fasta` file. In order to run BLAST, we need a query and a database. In this case, the database is going to be the `salmonella_antigens.fasta` file, and the queries are going to be the 6 *Salmonella* assemblies. For simplicity, we will process them one at a time.
 
-2.  First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the `makeblastdb` program. 
+2.  First we need to process the FASTA which will be our database so that it is compatible with BLAST. For this we use the `makeblastdb` program. -
 
 ```{bash, eval = FALSE}
 makeblastdb -dbtype nucl -in salmonella_antigens.fasta
@@ -65,7 +65,7 @@ If you aren't sure which is the best format, move onto section 3.2 and experimen
 blastn -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1_vs_salmonella_antigens.tsv
 ``` 
 
-3.3. Then, examine the output file using `head`
+3.3. Then, examine the output file using `head`.
 
 ```{bash, eval = FALSE} 
 head Salm_1_vs_salmonella_antigens.tsv
