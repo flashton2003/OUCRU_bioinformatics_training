@@ -45,7 +45,7 @@ makeblastdb -dbtype nucl -in salmonella_antigens.fasta
 Since we know that each fasta record has a header, and each header starts with a '>'. We can use `grep ‘>’ salmonella_antigens.fasta` to show all the sequence headers in the file. **CAREFUL** - make sure to include the quotation marks around the > in that command, or you will overwrite the contents of `salmonella_antigens.fasta`.
 </div><br>
 
-3.1. Now, we can BLAST our query against the database we just made. Note that we use `blastn` here as we are comparing nucleotides. Run
+3.1. Now, before we BLAST our query against the database we just made, we should decide which output format to use. Information on the output formats is available via the `-help` option. Note that we use `blastn` here as we are comparing nucleotides. Run:
 
 ```{bash, eval = FALSE} 
 blastn -help
@@ -99,7 +99,7 @@ What does the T in tsv stand for?
 Run the command with different outfmt options and look at the output file using `head` or `cat`.
 </div><br>
 
-3.4. Run blastn for each genome against the `salmonella_antigens.fasta` database. Remember to change the name of the 
+3.4. Run blastn for each genome against the `salmonella_antigens.fasta` database. Remember to change the name of the output file to contain the name of the input genome assembly. I.e. the results for Salm_1 should contain the name salm1.
 
 3.5.  Make sure that each of your output files (e.g. `Salm_1_vs_salmonella_antigens.tsv`) is in the best format for viewing in Excel before proceeding.
 
@@ -110,6 +110,10 @@ Run the command with different outfmt options and look at the output file using 
 4. Now, we are going to look at the BLAST output using Excel. For this, the output files (e.g. `Salm_1_vs_salmonella_antigens.tsv`) need to be on your local computer rather than your CLIMB instance.
 
 4.1. Use Filezilla to move the output files onto your local computer and open them one at a time using Excel.
+
+<div class="alert alert-info">
+You also need to download the `Salmonella serotypes.xlsx` file to your local computer.
+</div>
 
 4.2. You might notice that `blastn` does not include column names in the output, these are the column headings, paste them into row 1 in Excel.
 
@@ -157,7 +161,7 @@ Use Google to find out. For example, [here](http://www.metagenomics.wiki/tools/b
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
-**Question 12:** There are multiple different alleles of *fljB* and *fliC* in the BLAST database. Look at your BLAST results to identify the best fljB and fliC hits for each genome, and then lookup those alleles in the Salmonella Serotypes excel file to identify the serotype of each genome. Do this for all 6 genomes.
+**Question 12:** There are multiple different alleles of *fljB* and *fliC* in the BLAST database. Look at your BLAST results to identify the **best** *fljB* and *fliC* hits for each genome, and then look at the different serotypes in the Salmonella Serotypes excel file to identify which serotype has that combination of antigenic genes. Do this for all 6 genomes.
 
 <div class="alert alert-info">
 Reminder: *fliC* is H1 and *fljB* is H2.
@@ -169,7 +173,7 @@ Reminder: *fliC* is H1 and *fljB* is H2.
 One of the genomes might not have both H1 and H2.
 </div><br>
 
-6. Take the BLAST results for Salm_6. Filter the BLAST results so that only hits where the subject was either the ‘best’ `fljB` or ‘best’ `fliC`. You should have `6` blast hits.
+6. Take the BLAST results for Salm_6. Using Excel, filter the BLAST results so that only hits where the subject was either the ‘best’ `fljB` or ‘best’ `fliC`. You should have `6` blast hits.
 
 **Question 13:** Why are there 6 results?
 
@@ -223,7 +227,7 @@ Use `grep ‘>’ genes_and_plasmids.fasta` to find the names of the sequences i
 
 3. Load the first sample into Bandage following the instructions from the [Bandage github page](https://github.com/rrwick/Bandage/wiki/Getting-started#load-a-graph)
 
-**Question 4:** What are the characteristics of this assembly?
+**Question 4:** What are the characteristics of this assembly in terms of the length, the N50, etc?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
@@ -232,7 +236,7 @@ Use `grep ‘>’ genes_and_plasmids.fasta` to find the names of the sequences i
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 <div class="toggle"><button>Hint</button>
-Look at [this](https://github.com/rrwick/Bandage/wiki/Effect-of-kmer-size)
+Read [this](https://github.com/rrwick/Bandage/wiki/Effect-of-kmer-size)
 </div><br>
 
 **Question 6:** Can you see any sequences which look like they could be plasmids?
@@ -242,7 +246,7 @@ Look at [this](https://github.com/rrwick/Bandage/wiki/Effect-of-kmer-size)
 6. Prepare the FASTG file for BLAST analysis by following the instructions from [here](https://github.com/rrwick/Bandage/wiki/BLAST-searches)
 
 <div class="alert alert-info">
-You need to install BLAST so that it can be used by Bandage. For this, download BLAST from [here](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-win64.exe), and place it in the same directory as the Bandage executable [Put executable path here].
+You need to install BLAST so that it can be used by Bandage. For this, download BLAST from [here](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-win64.exe), and place it in the same directory as the Bandage executable [Put Bandage executable path here].
 </div>
 
 7. BLAST the `genes_and_plasmids.fasta` against the genome loaded into Bandage. You can reduce the view to include only blast hits by changing the 'scope' drop down in the 'graph drawing' section, select 'around blast hits', change the distance to e.g. 2 or 3, and click draw graph. The distance controls how many contigs will be included in the view. Setting distance to 3 means that all contigs which are within 2 or 3 'jumps' of a contig with a blast hit will be included. Experiment with this parameter to see what effect having it at e.g. 0 and 10 has.
