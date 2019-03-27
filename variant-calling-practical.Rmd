@@ -33,12 +33,14 @@ In here you will find part of a *Staphyloccocus aureus* reference genome, and th
 Run the following Snippy command line:
 
 ```{bash, eval=FALSE}
-snippy --outdir varcall --ref wildtype.gbk -R1 mutant_R1.fastq -R2 mutant_R2.fastq
+snippy --outdir varcall --ref wildtype.fna -R1 mutant_R1.fastq -R2 mutant_R2.fastq
 ```
 
 This should take only a few seconds. The output files will all be in the `varcall` directory. Navigate to this directory and look at the Snippy output files.
 
-**Question 1:** Which file extensions do you recognise? Do you know what type of data will be in each file?
+**Question 1:** Which file extensions do you recognise? Do you know what type of data will be in each file? Write down any you recognise below.
+
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 The `snps.bam` file contains the alignments of the reads in the `fastq` files against the reference genome. We will use a tool called `samtools` to look at the alignments and get some statistics about the alignment.
 
@@ -47,7 +49,7 @@ From the varcall directory, run the following command:
 
 This will show you the headers of the BAM file. These headers give you important information about the reads in the file, the reference genome, and how the file was generated.
 
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
 
 **Question 2:** Can you look at the headers and determine how long the reference genome is?
 
@@ -65,29 +67,33 @@ samtools flagstat snps.bam
 
 **Question 3:** How many reads are there in total? What percentage of them have been aligned to the reference?
 
-The `snps.txt` file has a summary of the variants called in this strain against the reference. 
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
+The `snps.txt` file has a summary of the variants called in this strain against the reference. 
+
 **Question 4:** How many variants were called? How many of them are deletions, insertions, multinucleotide polymorphisms (MNPs), and single nucleotide polymorphisms (SNPs)?
 
-<div class="toggle"><button>Hint</button>
+<div class="toggle"><button>Extra activity</button>
 You can look in more detail at the variant call in the `snps.vcf` file. This is a Variant Call Format file which has a standard set of information about each variant. 
 </div><br>
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
-As part of the Snippy variant calling process, it annotates the variants which are in genes with the functional consequences of the variant. To add functional annotation to the variants, we need to provide a reference genome which has gene annotations. This is provided in the `wildtype.gbk` file in the `variant_calling` directory.
+To add functional annotation to the variants, we need to provide a reference genome which has gene annotations to an annotation program. Ths is provided in the `wildtype.gbk` file in the `variant_calling` directory.
 
-Open the `wildtype.gbk` file and look at the gene annotations in the file. This is a Genbank-format file, which has a CDS entry for every coding sequence in the file with the gene name, the start and end positions on the reference genome, and a description of the protein product the gene produces.
+Open the `wildtype.gbk` file and look at the gene annotations in the file. This is a Genbank-format file, which has a CDS entry for every coding sequence in the file with the gene name, the start and end positions on the reference genome, and a description of the protein product the gene produces. You saw the Genbank format in yesterday's annotation lecture.
 
-**Question 5:** what are the start and end positions of the dnaC gene?
-
+**Question 5:** what are the start and end positions of the dnaC gene in the `wildtype.gbk` file?
 <div class="toggle"><button>Hint</button>
-Using the Genbank file, Snippy has added annotations to all the variants which fall inside a gene. You can see these in the file `snps.csv`.
-</div><br>
+In the `less` command, you can type `/` and the string you are looking for to search through the file.
+</div><br> 
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
+I have used the `wildtype.gbk` with a program called `snpEff` to add annotations to all the variants. These are in the file `/home/ubuntu/data/day-4/variant-calling-practical/answers/varcall/snps.csv`.
+
+Look inside this file for the answer to the following question.
 
 **Question 6:** How many of the variants are within a gene?
 

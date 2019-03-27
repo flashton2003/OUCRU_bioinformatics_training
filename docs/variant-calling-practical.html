@@ -491,14 +491,14 @@ text-align: justify}
 <p><code>/home/ubuntu/data/day-4/variant-calling-practical</code></p>
 <p>In here you will find part of a <em>Staphyloccocus aureus</em> reference genome, and the paired-end reads from an Illumina run of a different <em>Staphylococcus aureus</em> strain. We will use the tool <code>Snippy</code> to look for SNP, indels and rearrangements between the reference strain and our mutant strain.</p>
 <p>Run the following Snippy command line:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">snippy</span> --outdir varcall --ref wildtype.gbk -R1 mutant_R1.fastq -R2 mutant_R2.fastq</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">snippy</span> --outdir varcall --ref wildtype.fna -R1 mutant_R1.fastq -R2 mutant_R2.fastq</code></pre></div>
 <p>This should take only a few seconds. The output files will all be in the <code>varcall</code> directory. Navigate to this directory and look at the Snippy output files.</p>
-<p><strong>Question 1:</strong> Which file extensions do you recognise? Do you know what type of data will be in each file?</p>
+<p><strong>Question 1:</strong> Which file extensions do you recognise? Do you know what type of data will be in each file? Write down any you recognise below.</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
 <p>The <code>snps.bam</code> file contains the alignments of the reads in the <code>fastq</code> files against the reference genome. We will use a tool called <code>samtools</code> to look at the alignments and get some statistics about the alignment.</p>
 <p>From the varcall directory, run the following command: <code>samtools view -H snps.bam</code></p>
 <p>This will show you the headers of the BAM file. These headers give you important information about the reads in the file, the reference genome, and how the file was generated.</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
 <p><strong>Question 2:</strong> Can you look at the headers and determine how long the reference genome is?</p>
 <div class="toggle">
 <button>
@@ -512,31 +512,33 @@ Hint
 <p>Now we will use the <code>samtools flagstat</code> command to get some basic statistics about the alignment of reads to the genome. Run the following command:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">samtools</span> flagstat snps.bam</code></pre></div>
 <p><strong>Question 3:</strong> How many reads are there in total? What percentage of them have been aligned to the reference?</p>
-<p>The <code>snps.txt</code> file has a summary of the variants called in this strain against the reference.</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
+<p>The <code>snps.txt</code> file has a summary of the variants called in this strain against the reference.</p>
 <p><strong>Question 4:</strong> How many variants were called? How many of them are deletions, insertions, multinucleotide polymorphisms (MNPs), and single nucleotide polymorphisms (SNPs)?</p>
 <div class="toggle">
 <button>
-Hint
+Extra activity
 </button>
 <p>You can look in more detail at the variant call in the <code>snps.vcf</code> file. This is a Variant Call Format file which has a standard set of information about each variant.</p>
 </div>
 <p><br></p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
-<p>As part of the Snippy variant calling process, it annotates the variants which are in genes with the functional consequences of the variant. To add functional annotation to the variants, we need to provide a reference genome which has gene annotations. This is provided in the <code>wildtype.gbk</code> file in the <code>variant_calling</code> directory.</p>
-<p>Open the <code>wildtype.gbk</code> file and look at the gene annotations in the file. This is a Genbank-format file, which has a CDS entry for every coding sequence in the file with the gene name, the start and end positions on the reference genome, and a description of the protein product the gene produces.</p>
-<p><strong>Question 5:</strong> what are the start and end positions of the dnaC gene?</p>
+<p>To add functional annotation to the variants, we need to provide a reference genome which has gene annotations to an annotation program. Ths is provided in the <code>wildtype.gbk</code> file in the <code>variant_calling</code> directory.</p>
+<p>Open the <code>wildtype.gbk</code> file and look at the gene annotations in the file. This is a Genbank-format file, which has a CDS entry for every coding sequence in the file with the gene name, the start and end positions on the reference genome, and a description of the protein product the gene produces. You saw the Genbank format in yesterday’s annotation lecture.</p>
+<strong>Question 5:</strong> what are the start and end positions of the dnaC gene in the <code>wildtype.gbk</code> file?
 <div class="toggle">
 <button>
 Hint
 </button>
-<p>Using the Genbank file, Snippy has added annotations to all the variants which fall inside a gene. You can see these in the file <code>snps.csv</code>.</p>
+<p>In the <code>less</code> command, you can type <code>/</code> and the string you are looking for to search through the file.</p>
 </div>
 <p><br></p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
+<p>I have used the <code>wildtype.gbk</code> with a program called <code>snpEff</code> to add annotations to all the variants. These are in the file <code>/home/ubuntu/data/day-4/variant-calling-practical/answers/varcall/snps.csv</code>.</p>
+<p>Look inside this file for the answer to the following question.</p>
 <p><strong>Question 6:</strong> How many of the variants are within a gene?</p>
 <div class="toggle">
 <button>
