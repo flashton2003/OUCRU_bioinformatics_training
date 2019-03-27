@@ -246,7 +246,7 @@ Read [this](https://github.com/rrwick/Bandage/wiki/Effect-of-kmer-size)
 6. Prepare the FASTG file for BLAST analysis by following the instructions from [here](https://github.com/rrwick/Bandage/wiki/BLAST-searches)
 
 <div class="alert alert-info">
-You need to install BLAST so that it can be used by Bandage. For this, download BLAST from [here](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-win64.exe), and place it in the same directory as the Bandage executable [Put Bandage executable path here].
+You need to install BLAST so that it can be used by Bandage. For this, download BLAST from [here](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-win64.exe), and place it in the same directory as the Bandage executable. This will **probably** be in the download directory.
 </div>
 
 7. BLAST the `genes_and_plasmids.fasta` against the genome loaded into Bandage. You can reduce the view to include only blast hits by changing the 'scope' drop down in the 'graph drawing' section, select 'around blast hits', change the distance to e.g. 2 or 3, and click draw graph. The distance controls how many contigs will be included in the view. Setting distance to 3 means that all contigs which are within 2 or 3 'jumps' of a contig with a blast hit will be included. Experiment with this parameter to see what effect having it at e.g. 0 and 10 has.

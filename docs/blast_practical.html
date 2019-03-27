@@ -736,7 +736,7 @@ Hint
 <li>Prepare the FASTG file for BLAST analysis by following the instructions from <a href="https://github.com/rrwick/Bandage/wiki/BLAST-searches">here</a></li>
 </ol>
 <div class="alert alert-info">
-<p>You need to install BLAST so that it can be used by Bandage. For this, download BLAST from <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-win64.exe">here</a>, and place it in the same directory as the Bandage executable [Put Bandage executable path here].</p>
+<p>You need to install BLAST so that it can be used by Bandage. For this, download BLAST from <a href="ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-win64.exe">here</a>, and place it in the same directory as the Bandage executable. This will <strong>probably</strong> be in the download directory.</p>
 </div>
 <ol start="7" style="list-style-type: decimal">
 <li><p>BLAST the <code>genes_and_plasmids.fasta</code> against the genome loaded into Bandage. You can reduce the view to include only blast hits by changing the ‘scope’ drop down in the ‘graph drawing’ section, select ‘around blast hits’, change the distance to e.g. 2 or 3, and click draw graph. The distance controls how many contigs will be included in the view. Setting distance to 3 means that all contigs which are within 2 or 3 ‘jumps’ of a contig with a blast hit will be included. Experiment with this parameter to see what effect having it at e.g. 0 and 10 has.</p></li>
