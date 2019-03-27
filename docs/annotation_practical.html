@@ -422,9 +422,9 @@ First we need to update a program on the servers. Log in and run the following c
 brew upgrade && brew upgrade -v tbl2asn
 </pre>
 <p>This will take a couple of minutes.</p>
-<p>Now we will run the <a href="https://github.com/tseemann/prokka">prokka</a> program which we learned about in the lecture. We will first annotate the file <code>contigs.fasta</code>, which are the assembled <em>Staphyloccocus aureus</em> contigs from yesterday’s assembly practical.</p>
+<p>Now we will run the <a href="https://github.com/tseemann/prokka">prokka</a> program which we learned about in the lecture. We will annotate the file <code>contigs.fasta</code>, which are the assembled <em>Staphyloccocus aureus</em> contigs from yesterday’s assembly practical.</p>
 <pre class="bash">
-prokka --outdir s_aureus --prefix s_aureus --genus Staphyloccocus --cpus 4 --mincontiglen 500 contigs.fasta
+prokka --outdir s_aureus --prefix s_aureus --cpus 4 --mincontiglen 500 --locustag saureus contigs.fasta
 </pre>
 <p>This will take a couple of minutes. When it is complete, the output files will be in the <code>s_aureus</code> directory. There will be 10 output files.</p>
 <p>Look at the .txt file, which has summary statistics about the annotation.</p>
@@ -434,9 +434,7 @@ prokka --outdir s_aureus --prefix s_aureus --genus Staphyloccocus --cpus 4 --min
 <p><strong><em>Q2. Which file contains the protein sequences for every predicted coding sequence?</em></strong></p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
-<p>Now we will visualise the output of <code>prokka</code> using a tool called Artemis.</p>
-<p>First, transfer the <code>s_aureus.gff</code> file to your computer using FileZilla. Load Artemis. If it asks you to set the working directory, press OK. Then load the GFF file.</p>
-<p>From here we will take you through the Artemis visualisation with a live demo. Follow along with the demo onscreen.</p>
+<p>Now we will visualise the output of <code>prokka</code> using a tool called Artemis. From here we will take you through the Artemis visualisation with a live demo.</p>
 <script>
   $(".toggle").click(function() {
     $(this).toggleClass("open");

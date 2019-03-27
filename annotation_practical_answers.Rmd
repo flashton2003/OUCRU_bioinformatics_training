@@ -1,0 +1,23 @@
+**Exercise 1**
+
+Q1. ERR419108.2
+
+Q2. 4.
+
+Q3. 3.12.0
+
+**Exercise 2**
+
+Q4. 50 and 45 contigs, largest contigs are 255,441bp and 356,336bp, 486 Ns have been added in the scaffolded
+
+**Exercise 3**
+
+Q5. 2 separate graphs. This is the assembly of a whole chromosome and a plasmid.
+
+Q6. The short nodes are often red, indicating a high coverage, while the long nodes are black. The short nodes are often repeat regions where we have assembled a single copy of a multi-copy repeat.
+
+Q7. The nodes are all red, indicating that the plasmid is at higher copy number than the chromosome.
+
+**Optional Exercise 4**
+
+Q8. *K. pneumoniae* has 74 contigs and *M. tuberculosis* has 120 contigs. Both of them have more contigs than *S. aureus*.
