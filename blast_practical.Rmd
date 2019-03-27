@@ -263,7 +263,7 @@ It might be easier to view the BLAST results via the ‘Create/view BLAST search
 
 **Question 8:** If a plasmid is present, what does the ‘depth’ node label (combined with the graph structure) tell you about repeat sections in the plasmid?
 
-**Question 9:** In the assembly SRR5451253, what is interesting about the CTX-M15 encoding gene?
+**Question 9:** In the assembly SRR5451282, what is interesting about the CTX-M15 encoding gene?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
