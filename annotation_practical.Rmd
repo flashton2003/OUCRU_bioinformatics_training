@@ -21,7 +21,7 @@ To run annotation on a genome and understand the output files.
 
 First we need to update a program on the servers. Log in and run the following command:
 <pre class="bash">
-brew upgrade && brew upgrade tbl2asn`
+brew upgrade && brew upgrade -v tbl2asn
 </pre>
 
 This will take a couple of minutes.
@@ -37,11 +37,13 @@ This will take a couple of minutes. When it is complete, the output files will b
 Look at the .txt file, which has summary statistics about the annotation.
 
 ***Q1. How many coding sequences were predicted? ***
+
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
 
 
 ***Q2. Which file contains the protein sequences for every predicted coding sequence?***
+
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
 
