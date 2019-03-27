@@ -14,16 +14,42 @@ switch <- FALSE
 ```
 
 # Learning objectives {-}
-
+To run annotation on a genome and understand the output files.
 
 
 # Exercise 1 {-}
 
 First we need to update a program on the servers. Log in and run the following command:
-```{bash, eval=FALSE}
+<pre class="bash">
 brew upgrade && brew upgrade tbl2asn`
-```
+</pre>
 
+This will take a couple of minutes.
+
+Now we will run the [prokka](https://github.com/tseemann/prokka) program which we learned about in the lecture. We will first annotate the file `contigs.fasta`, which are the assembled *Staphyloccocus aureus* contigs from yesterday's assembly practical.
+
+<pre class="bash">
+prokka --outdir s_aureus --prefix s_aureus --genus Staphyloccocus --cpus 4 --mincontiglen 500 contigs.fasta
+</pre>
+
+This will take a couple of minutes. When it is complete, the output files will be in the `s_aureus` directory. There will be 10 output files.
+
+Look at the .txt file, which has summary statistics about the annotation.
+
+***Q1. How many coding sequences were predicted? ***
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
+
+
+***Q2. Which file contains the protein sequences for every predicted coding sequence?***
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
+
+Now we will visualise the output of `prokka` using a tool called Artemis.
+
+First, transfer the `s_aureus.gff` file to your computer using FileZilla. Load Artemis. If it asks you to set the working directory, press OK. Then load the GFF file.
+
+From here we will take you through the Artemis visualisation with a live demo. Follow along with the demo onscreen.
 
 <script>
   $(".toggle").click(function() {

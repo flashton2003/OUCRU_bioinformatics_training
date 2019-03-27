@@ -26,71 +26,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css" data-origin="pandoc">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
 <style type="text/css">
@@ -478,11 +413,30 @@ text-align: justify}
 </style>
 <div id="learning-objectives" class="section level1 unnumbered">
 <h1>Learning objectives</h1>
+<p>To run annotation on a genome and understand the output files.</p>
 </div>
 <div id="exercise-1" class="section level1 unnumbered">
 <h1>Exercise 1</h1>
-<p>First we need to update a program on the servers. Log in and run the following command:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">brew</span> upgrade <span class="kw">&amp;&amp;</span> <span class="ex">brew</span> upgrade tbl2asn<span class="kw">`</span></code></pre></div>
+First we need to update a program on the servers. Log in and run the following command:
+<pre class="bash">
+brew upgrade && brew upgrade tbl2asn`
+</pre>
+<p>This will take a couple of minutes.</p>
+<p>Now we will run the <a href="https://github.com/tseemann/prokka">prokka</a> program which we learned about in the lecture. We will first annotate the file <code>contigs.fasta</code>, which are the assembled <em>Staphyloccocus aureus</em> contigs from yesterday’s assembly practical.</p>
+<pre class="bash">
+prokka --outdir s_aureus --prefix s_aureus --genus Staphyloccocus --cpus 4 --mincontiglen 500 contigs.fasta
+</pre>
+<p>This will take a couple of minutes. When it is complete, the output files will be in the <code>s_aureus</code> directory. There will be 10 output files.</p>
+<p>Look at the .txt file, which has summary statistics about the annotation.</p>
+<strong><em>Q1. How many coding sequences were predicted? </em></strong>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
+<strong><em>Q2. Which file contains the protein sequences for every predicted coding sequence?</em></strong>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
+<p>Now we will visualise the output of <code>prokka</code> using a tool called Artemis.</p>
+<p>First, transfer the <code>s_aureus.gff</code> file to your computer using FileZilla. Load Artemis. If it asks you to set the working directory, press OK. Then load the GFF file.</p>
+<p>From here we will take you through the Artemis visualisation with a live demo. Follow along with the demo onscreen.</p>
 <script>
   $(".toggle").click(function() {
     $(this).toggleClass("open");
