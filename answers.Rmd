@@ -10,8 +10,9 @@ title: "Answers"
 
 # Day 3  {-}
 
-* [BLAST practical excercise 1](BLAST_practical_Ex1_Answers.html)
-* [BLAST practical excercise 2](BLAST_practical_Ex2_Answers.html)
+* [BLAST practical exercise 1](BLAST_practical_Ex1_Answers.html)
+* [BLAST practical exercise 2](BLAST_practical_Ex2_Answers.html)
+* [Annotation practical](annotation_practical_answers.html)
 
 # Day 4  {-}
 

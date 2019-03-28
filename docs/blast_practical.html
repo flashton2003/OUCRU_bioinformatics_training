@@ -122,9 +122,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -242,8 +240,6 @@ $(document).ready(function () {
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -402,6 +398,16 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -460,8 +466,8 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">BLAST practical</h1>
-<h4 class="author"><em>Philip Ashton</em></h4>
-<h4 class="date"><em>27 March, 2019</em></h4>
+<h4 class="author">Philip Ashton</h4>
+<h4 class="date">28 March, 2019</h4>
 
 </div>
 
@@ -516,7 +522,7 @@ blastn -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1
 </pre>
 <p>3.3. Then, examine the output file using <code>head</code>.</p>
 <pre class="bash">
-head Salm_1_vs_salmonella_antigens.tsv`
+head Salm_1_vs_salmonella_antigens.tsv
 </pre>
 <p><strong>Question 3:</strong> How many columns does the output have?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">

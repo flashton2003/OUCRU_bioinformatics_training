@@ -122,9 +122,7 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -242,8 +240,6 @@ $(document).ready(function () {
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -402,6 +398,16 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -460,8 +466,8 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Alignment and variant calling practical</h1>
-<h4 class="author"><em>Liz Batty</em></h4>
-<h4 class="date"><em>27 March, 2019</em></h4>
+<h4 class="author">Liz Batty</h4>
+<h4 class="date">28 March, 2019</h4>
 
 </div>
 
@@ -485,14 +491,14 @@ text-align: justify}
 <p><code>/home/ubuntu/data/day-4/variant-calling-practical</code></p>
 <p>In here you will find part of a <em>Staphyloccocus aureus</em> reference genome, and the paired-end reads from an Illumina run of a different <em>Staphylococcus aureus</em> strain. We will use the tool <code>Snippy</code> to look for SNP, indels and rearrangements between the reference strain and our mutant strain.</p>
 <p>Run the following Snippy command line:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">snippy</span> --outdir varcall --ref wildtype.gbk -R1 mutant_R1.fastq -R2 mutant_R2.fastq</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">snippy</span> --outdir varcall --ref wildtype.fna -R1 mutant_R1.fastq -R2 mutant_R2.fastq --ram 2 --force</code></pre></div>
 <p>This should take only a few seconds. The output files will all be in the <code>varcall</code> directory. Navigate to this directory and look at the Snippy output files.</p>
-<p><strong>Question 1:</strong> Which file extensions do you recognise? Do you know what type of data will be in each file?</p>
+<p><strong>Question 1:</strong> Which file extensions do you recognise? Do you know what type of data will be in each file? Write down any you recognise below.</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
 <p>The <code>snps.bam</code> file contains the alignments of the reads in the <code>fastq</code> files against the reference genome. We will use a tool called <code>samtools</code> to look at the alignments and get some statistics about the alignment.</p>
 <p>From the varcall directory, run the following command: <code>samtools view -H snps.bam</code></p>
 <p>This will show you the headers of the BAM file. These headers give you important information about the reads in the file, the reference genome, and how the file was generated.</p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
 <p><strong>Question 2:</strong> Can you look at the headers and determine how long the reference genome is?</p>
 <div class="toggle">
 <button>
@@ -506,31 +512,33 @@ Hint
 <p>Now we will use the <code>samtools flagstat</code> command to get some basic statistics about the alignment of reads to the genome. Run the following command:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">samtools</span> flagstat snps.bam</code></pre></div>
 <p><strong>Question 3:</strong> How many reads are there in total? What percentage of them have been aligned to the reference?</p>
-<p>The <code>snps.txt</code> file has a summary of the variants called in this strain against the reference.</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
+<p>The <code>snps.txt</code> file has a summary of the variants called in this strain against the reference.</p>
 <p><strong>Question 4:</strong> How many variants were called? How many of them are deletions, insertions, multinucleotide polymorphisms (MNPs), and single nucleotide polymorphisms (SNPs)?</p>
 <div class="toggle">
 <button>
-Hint
+Extra activity
 </button>
 <p>You can look in more detail at the variant call in the <code>snps.vcf</code> file. This is a Variant Call Format file which has a standard set of information about each variant.</p>
 </div>
 <p><br></p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
-<p>As part of the Snippy variant calling process, it annotates the variants which are in genes with the functional consequences of the variant. To add functional annotation to the variants, we need to provide a reference genome which has gene annotations. This is provided in the <code>wildtype.gbk</code> file in the <code>variant_calling</code> directory.</p>
-<p>Open the <code>wildtype.gbk</code> file and look at the gene annotations in the file. This is a Genbank-format file, which has a CDS entry for every coding sequence in the file with the gene name, the start and end positions on the reference genome, and a description of the protein product the gene produces.</p>
-<p><strong>Question 5:</strong> what are the start and end positions of the dnaC gene?</p>
+<p>To add functional annotation to the variants, we need to provide a reference genome which has gene annotations to an annotation program. Ths is provided in the <code>wildtype.gbk</code> file in the <code>variant_calling</code> directory.</p>
+<p>Open the <code>wildtype.gbk</code> file and look at the gene annotations in the file. This is a Genbank-format file, which has a CDS entry for every coding sequence in the file with the gene name, the start and end positions on the reference genome, and a description of the protein product the gene produces. You saw the Genbank format in yesterday’s annotation lecture.</p>
+<strong>Question 5:</strong> what are the start and end positions of the dnaC gene in the <code>wildtype.gbk</code> file?
 <div class="toggle">
 <button>
 Hint
 </button>
-<p>Using the Genbank file, Snippy has added annotations to all the variants which fall inside a gene. You can see these in the file <code>snps.csv</code>.</p>
+<p>In the <code>less</code> command, you can type <code>/</code> and the string you are looking for to search through the file.</p>
 </div>
 <p><br></p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
+<p>I have used the <code>wildtype.gbk</code> with a program called <code>snpEff</code> to add annotations to all the variants. These are in the file <code>/home/ubuntu/data/day-4/variant-calling-practical/answers/varcall/snps.csv</code>.</p>
+<p>Look inside this file for the answer to the following question.</p>
 <p><strong>Question 6:</strong> How many of the variants are within a gene?</p>
 <div class="toggle">
 <button>
@@ -544,11 +552,13 @@ Hint
 </div>
 <div id="exercise-2" class="section level1 unnumbered">
 <h1>Exercise 2</h1>
-<p>Now we will take a deeper look at how Snippy uses the read alignments to call a variant. Navigate to the desktop and open the program Tablet. This is an alignment viewer which allows you to open the BAM file and see the read alignments.</p>
+<p>Now we will take a deeper look at how Snippy uses the read alignments to call a variant.</p>
+<p>First we need to move some files to your local computer. Move the files <code>snps.bam</code> and <code>snps.bam.bai</code> from the snippy analysis directory ( <code>/home/ubuntu/data/day-4/variant-calling-practical/varcall</code> ), and the files <code>wildtype.fna</code> and <code>wildtype.gff</code> from the variant calling practical directory ( <code>/home/ubuntu/data/day-4/variant-calling-practical/</code> ).</p>
+<p>Now open the program <code>Tablet</code> on your local computer. This is an alignment viewer which allows you to open the BAM file and see the read alignments.</p>
 <p>Click on <code>Import an assembly into Tablet</code> under the <code>Getting Started</code> header. Under <code>Primary assembly file</code> select the snps.bam file in the data directory. Under <code>Secondary assembly file</code> select the <code>wildtype.fna</code> file. Now click <code>Open</code>. You will see a sidebar with the heading <code>Contigs: 1</code>. Click on the contig <code>Wildtype</code>. This will load the alignment. When the alignment has loaded, click on <code>Import Features</code> under <code>Home</code> and select the <code>wildtype.gff</code> file.</p>
 <p>In the alignment window, the top bars show an overview of the whole genome and the region you are looking at right now. Underneath this you can also see the reference genome (nucleotides and codons in genes), the locations of annotated coding sequences and RNA genes, and the coverage of reads at each position. Below these you can see the reads, with one row representing a sequence read.</p>
 <div class="figure">
-<img src="images/tablet.jpg" />
+<img src="images/tablet.png" />
 
 </div>
 <p>Try the different features available in Tablet to look at your alignment.</p>
@@ -592,8 +602,8 @@ Hint
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
 </div>
-<div id="exercise-3" class="section level1 unnumbered">
-<h1>Exercise 3</h1>
+<div id="optional-exercise-3" class="section level1 unnumbered">
+<h1>(Optional) Exercise 3</h1>
 <p>Lastly, we will look at larger genome rearrangements of the mutant strain versus the wildtype. We have already assembled the genome of the mutant strain into a file called <code>mutant_contigs.fna</code>. This was assembled using <code>spades</code> in the same way you learned in the assembly practical.</p>
 <p>Move the <code>mutant_contigs.fna</code> and <code>wildtype.fna</code> files to your local computer using FileZilla.</p>
 <p>Now we will align the two genomes with a program called <code>mauve</code>. <code>mauve</code> looks for conserved blocks between genomes, and by looking at where these blocks differ between genomes, we can see where parts of the genome have been rearranged between strains.</p>

@@ -68,7 +68,7 @@ blastn -query Salm_1.fasta -db salmonella_antigens.fasta -outfmt XXX -out Salm_1
 3.3. Then, examine the output file using `head`.
 
 <pre class="bash">
-head Salm_1_vs_salmonella_antigens.tsv`
+head Salm_1_vs_salmonella_antigens.tsv
 </pre>
 
 **Question 3:** How many columns does the output have?
