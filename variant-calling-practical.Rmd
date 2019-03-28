@@ -107,7 +107,7 @@ If they fall outside a gene, there will be no information in the last 8 columns 
 
 Now we will take a deeper look at how Snippy uses the read alignments to call a variant. 
 
-First we need to move some files to your local computer. Move the file `snps.bam` from the snippy analysis, and the files `wildtype.fna` and `wildtype.gff` from the variant calling practical directory.
+First we need to move some files to your local computer. Move the files `snps.bam` and `snps.bam.bai` from the snippy analysis directory ( `/home/ubuntu/data/day-4/variant-calling-practical/varcall` ), and the files `wildtype.fna` and `wildtype.gff` from the variant calling practical directory ( `/home/ubuntu/data/day-4/variant-calling-practical/` ).
 
 Now open the program `Tablet` on your local computer. This is an alignment viewer which allows you to open the BAM file and see the read alignments.
 
