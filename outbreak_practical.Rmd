@@ -55,6 +55,7 @@ ls -lh
 
 <pre class="bash">
 disty dataset1.aln | python ~/scripts/process_disty_output.py | histogram.py -b 30 --percentage
+
 </pre>
 
 The `process_disty_output.py` script is available [here](https://gist.github.com/flashton2003/6518a4a877f5a1dae781c75ff02c57a1). The `histogram.py` script is from [this](https://github.com/bitly/data_hacks) package.
@@ -105,7 +106,7 @@ iqtree -s dataset1.aln -nt AUTO
 The output of IQTREE is available in the file which ends `.log`.
 </div>
 
-** Question 9:** How many threads were selected as best? Why might the maximum number of threads not be selected?
+**Question 9:** How many threads were selected as best? Why might the maximum number of threads not be selected?
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
@@ -115,11 +116,11 @@ The output of IQTREE is available in the file which ends `.log`.
 
 **Question/task 10:** Identify the Haiti outbreak genomes in the tree. 
 
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
+
 <div class="toggle"><button>Hint</button>
 They are **most** of the non-black tips.
 </div><br>
-
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
 * Experiment with the different tree visualisation setting. The different tree settings look like this:
 
