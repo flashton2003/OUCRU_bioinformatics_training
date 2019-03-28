@@ -33,7 +33,7 @@ In here you will find part of a *Staphyloccocus aureus* reference genome, and th
 Run the following Snippy command line:
 
 ```{bash, eval=FALSE}
-snippy --outdir varcall --ref wildtype.fna -R1 mutant_R1.fastq -R2 mutant_R2.fastq
+snippy --outdir varcall --ref wildtype.fna -R1 mutant_R1.fastq -R2 mutant_R2.fastq --ram 2
 ```
 
 This should take only a few seconds. The output files will all be in the `varcall` directory. Navigate to this directory and look at the Snippy output files.

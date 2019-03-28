@@ -491,7 +491,7 @@ text-align: justify}
 <p><code>/home/ubuntu/data/day-4/variant-calling-practical</code></p>
 <p>In here you will find part of a <em>Staphyloccocus aureus</em> reference genome, and the paired-end reads from an Illumina run of a different <em>Staphylococcus aureus</em> strain. We will use the tool <code>Snippy</code> to look for SNP, indels and rearrangements between the reference strain and our mutant strain.</p>
 <p>Run the following Snippy command line:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">snippy</span> --outdir varcall --ref wildtype.fna -R1 mutant_R1.fastq -R2 mutant_R2.fastq</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">snippy</span> --outdir varcall --ref wildtype.fna -R1 mutant_R1.fastq -R2 mutant_R2.fastq --ram 2</code></pre></div>
 <p>This should take only a few seconds. The output files will all be in the <code>varcall</code> directory. Navigate to this directory and look at the Snippy output files.</p>
 <p><strong>Question 1:</strong> Which file extensions do you recognise? Do you know what type of data will be in each file? Write down any you recognise below.</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
