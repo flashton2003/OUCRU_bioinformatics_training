@@ -153,7 +153,7 @@ Now look at a insertion variant. There is one in the sirA gene. Navigate to this
 
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here..."></textarea>
 
-# Exercise 3 {-}
+# (Optional) Exercise 3 {-}
 
 Lastly, we will look at larger genome rearrangements of the mutant strain versus the wildtype. We have already assembled the genome of the mutant strain into a file called `mutant_contigs.fna`. This was assembled using `spades` in the same way you learned in the assembly practical.
 
