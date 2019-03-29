@@ -10,8 +10,12 @@ AM
 
 * [Lecture](20190206-sequenceqc.pdf) & [practical](sequenceqc-practical.html) - Sequence quality control
 
+* [Lecture](20180110-kraken-speciation.pdf) - speciation
+
 11.30am - OUCRU academic meeting
 
 PM
 
 * [Lecture](20190111_genomeassembly.pdf) & [practical](assembly-practical.html) - Genome assembly
+
+* [Torsten Lecture](De novo assembly - T.Seemann - OUCRU - HCMC, Vietnam, Tue 26 Mar 2019.pdf) - Genome assembly
