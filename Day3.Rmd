@@ -18,4 +18,4 @@ PM
 
 * [Lecture](20190111-coregenome.pdf) - Core/pan genome analysis
 
-*[Torsten Lecture](20190111-coregenome-torst.pdf) - Core/pan genome
+* [Torsten Lecture](20190111-coregenome-torst.pdf) - Core/pan genome
