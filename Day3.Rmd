@@ -8,7 +8,7 @@ AM
 
 * [Lecture](2019.03.12_BLAST_Lecture.pdf) & [Practical](blast_practical.html) - BLAST
 
-11.30am - OUCRU academic meeting (Prof Seemann) ([slides](How WGS is transforming public health micro - Wed 27 Mar 2019 -  OUCRU, HCMC, Vietnam.pdf))
+11.30am - OUCRU academic meeting (Prof Seemann) [slides](How WGS is transforming public health micro - Wed 27 Mar 2019 -  OUCRU, HCMC, Vietnam.pdf)
 
 PM
 
