@@ -56,4 +56,6 @@ AM - Group presentations; you will be divided into teams and have to design a bi
 
 PM - free time to talk to instructors about bioinformatics approaches to take with your own datasets or biological questions
 
-# Notice {-}
+# License {-}
+
+This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
