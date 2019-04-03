@@ -10,6 +10,10 @@ This is the website for the OUCRU-MORU bioinformatics workshop.
 This course is intended to take total beginners in bioinformatics and give them a grounding in the fundamentals. 
 By the end of the 5 day course, participants should be able to work on the command line and run and interpret some fundamental bioinformatics software.
 
+If you have any questions about this material, please contact pashton at oucru dot org or liz at tropmedres dot ac, or tweet us @flaston2003 & @embatty.
+
+The data for the course is available [here](https://www.dropbox.com/sh/qd13lyrz21wwine/AADyOzVmRUAtQrhS5-AJjepqa?dl=0) (around 5GB).
+
 # Course content {-}
 
 **Day 1**
