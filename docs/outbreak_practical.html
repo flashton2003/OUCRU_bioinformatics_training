@@ -57,7 +57,9 @@ h6 {
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 
+</head>
 
+<body>
 
 <style type = "text/css">
 .main-container {
@@ -175,6 +177,8 @@ $(document).ready(function () {
   menuAnchor.closest('li.dropdown').addClass('active');
 });
 </script>
+
+<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -333,16 +337,6 @@ div.tocify {
 
 </style>
 
-
-
-</head>
-
-<body>
-
-
-<div class="container-fluid main-container">
-
-
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -401,9 +395,8 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Outbreak practical</h1>
-
 <h4 class="author"><em>Philip Ashton</em></h4>
-<h4 class="date"><em>28 March, 2019</em></h4>
+<h4 class="date"><em>03 April, 2019</em></h4>
 
 </div>
 
@@ -492,7 +485,7 @@ iqtree -s dataset1.aln -nt AUTO
 <div class="alert alert-info">
 <p>The output of IQTREE is available in the file which ends <code>.log</code>.</p>
 </div>
-<p>** Question 9:** How many threads were selected as best? Why might the maximum number of threads not be selected?</p>
+<p><strong>Question 9:</strong> How many threads were selected as best? Why might the maximum number of threads not be selected?</p>
 <textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
 </textarea>
 <ul>
@@ -500,6 +493,8 @@ iqtree -s dataset1.aln -nt AUTO
 <li><p>Navigate to <a href="https://microreact.org/upload" class="uri">https://microreact.org/upload</a> and upload the <code>dataset1.aln.nwk</code> file and the <code>geog_loc_microreact.csv</code> file. The microreact interface is hopefully quite intuitive, spend a few minutes becoming familiar with the various options and buttons. Microreact is an ideal way to investigate relationships between phylogeny and geography (aka phylogeographical relationships).</p></li>
 </ul>
 <p><strong>Question/task 10:</strong> Identify the Haiti outbreak genomes in the tree.</p>
+<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
+</textarea>
 <div class="toggle">
 <button>
 Hint
@@ -507,8 +502,6 @@ Hint
 <p>They are <strong>most</strong> of the non-black tips.</p>
 </div>
 <p><br></p>
-<textarea id="name" name="name" cols="100" rows="3" placeholder="You can input your answer here...">
-</textarea>
 <ul>
 <li>Experiment with the different tree visualisation setting. The different tree settings look like this:</li>
 </ul>
