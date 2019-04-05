@@ -18,4 +18,4 @@ PM
 
 * [Lecture](20190111_genomeassembly.pdf) & [practical](assembly-practical.html) - Genome assembly
 
-* [Torsten Lecture](De novo assembly - T.Seemann - OUCRU - HCMC, Vietnam, Tue 26 Mar 2019.pdf) - Genome assembly
+* [Torsten Lecture](DenovoassemblyTSeemannOUCRUHCMCVietnamTue26Mar2019.pdf) - Genome assembly
